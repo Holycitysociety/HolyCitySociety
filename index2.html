@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holy City Society</title>
+  <style>
+    :root {
+      --bg: #061427;
+      --bg-2: #0d1d35;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --line: rgba(255, 255, 255, 0.14);
+      --line-strong: rgba(255, 255, 255, 0.24);
+      --text: #eef4fb;
+      --muted: rgba(238, 244, 251, 0.72);
+      --gold: #d6b36a;
+      --gold-soft: rgba(214, 179, 106, 0.28);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --shell: 1320px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(54, 88, 132, 0.25), transparent 32%),
+        linear-gradient(180deg, #0b1830 0%, #061427 48%, #04101f 100%);
+      font-family: Georgia, "Times New Roman", serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(calc(100% - 40px), var(--shell));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(6, 20, 39, 0.82), rgba(6, 20, 39, 0.42));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 40px), var(--shell));
+      margin: 0 auto;
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .site-header a {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      color: var(--muted);
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+
+    .site-header a:hover,
+    .site-header a[aria-current="page"] {
+      color: var(--text);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.92rem;
+      color: #f4f7fc;
+    }
+
+    .brand-mark {
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 34px 0 26px;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 86vh;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(4, 16, 31, 0.88) 0%, rgba(4, 16, 31, 0.74) 26%, rgba(4, 16, 31, 0.38) 50%, rgba(4, 16, 31, 0.18) 65%, rgba(4, 16, 31, 0.2) 100%),
+        url("B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg") center center / cover no-repeat;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(214, 179, 106, 0.16), transparent 26%),
+        linear-gradient(to top, rgba(3, 10, 19, 0.68), rgba(3, 10, 19, 0.08) 35%, rgba(3, 10, 19, 0.22));
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(320px, 560px) 1fr;
+      min-height: 86vh;
+      align-items: end;
+      padding: 62px;
+    }
+
+    .hero-panel {
+      padding: 34px 34px 30px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(7, 18, 34, 0.54), rgba(7, 18, 34, 0.72));
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.74rem;
+      line-height: 1.7;
+    }
+
+    .hero-title {
+      margin: 0 0 18px;
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: 0.96;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 20px;
+      max-width: 36ch;
+      color: rgba(238, 244, 251, 0.9);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-quote {
+      margin: 0 0 28px;
+      max-width: 34ch;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      border: 1px solid rgba(214, 179, 106, 0.46);
+      background: linear-gradient(180deg, rgba(214, 179, 106, 0.24), rgba(214, 179, 106, 0.14));
+      color: #fff7e5;
+      box-shadow: 0 0 0 1px rgba(214, 179, 106, 0.12) inset;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .hero-aside {
+      align-self: start;
+      justify-self: end;
+      width: min(100%, 300px);
+      padding-top: 10px;
+    }
+
+    .floating-card {
+      margin-left: auto;
+      padding: 20px 20px 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .floating-label {
+      margin: 0 0 10px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+    }
+
+    .floating-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.75;
+    }
+
+    .section {
+      padding: 18px 0 90px;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .overview-card {
+      padding: 26px 24px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+    }
+
+    .overview-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.18rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    .overview-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .site-footer {
+      padding: 0 0 42px;
+    }
+
+    .footer-inner {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 1100px) {
+      .header-inner {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 0;
+      }
+
+      .nav-left,
+      .nav-right,
+      .brand {
+        justify-content: center;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        align-items: end;
+        gap: 24px;
+        padding: 30px;
+      }
+
+      .hero-aside {
+        justify-self: start;
+        width: min(100%, 420px);
+      }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell,
+      .header-inner {
+        width: min(calc(100% - 24px), var(--shell));
+      }
+
+      .site-header a {
+        font-size: 0.68rem;
+      }
+
+      .nav-left,
+      .nav-right {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        letter-spacing: 0.18em;
+        font-size: 0.76rem;
+        white-space: normal;
+      }
+
+      .hero {
+        padding-top: 14px;
+      }
+
+      .hero-card,
+      .hero-content {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 18px;
+      }
+
+      .hero-panel {
+        padding: 24px 20px 22px;
+        border-radius: 22px;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.82rem;
+      }
+
+      .hero-quote {
+        font-size: 0.94rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <nav class="nav-left" aria-label="Primary left">
+        <a href="index.html">Praxis</a>
+        <a href="virtues.html">Energeia</a>
+      </nav>
+
+      <div class="brand" aria-label="Holy City Society">
+        <span class="brand-mark">✠</span>
+        <span>Holy City Society</span>
+        <span class="brand-mark">✠</span>
+      </div>
+
+      <nav class="nav-right" aria-label="Primary right">
+        <a href="clergy.html">Clergy</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-card">
+          <div class="hero-content">
+            <div class="hero-panel">
+              <p class="eyebrow">Ordo Equestris Civitatis Sanctae</p>
+              <h1 class="hero-title">A Holy Society<br />for a City Set on a Hill</h1>
+              <p class="hero-subtitle">
+                Continuing the quest to build an illuminated, free, and holy society
+              </p>
+              <p class="hero-quote">
+                “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="virtues.html">Enter the Virtues</a>
+                <a class="btn btn-secondary" href="clergy.html">View the Order</a>
+              </div>
+            </div>
+
+            <aside class="hero-aside">
+              <div class="floating-card">
+                <p class="floating-label">Mission</p>
+                <p class="floating-copy">
+                  A contemplative and chivalric society ordered toward illumination, formation,
+                  and the restoration of holy culture.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="overview-grid">
+          <article class="overview-card">
+            <h2>Contemplation</h2>
+            <p>
+              A life directed toward prayer, recollection, and the recovery of the interior life.
+            </p>
+          </article>
+          <article class="overview-card">
+            <h2>Virtue</h2>
+            <p>
+              Formation through discipline, noble action, and the ordered pursuit of the good.
+            </p>
+          </article>
+          <article class="overview-card">
+            <h2>Holy Society</h2>
+            <p>
+              The renewal of communal life under truth, freedom, beauty, and sacred responsibility.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <div>Holy City Society</div>
+      <div>Ordo Equestris Civitatis Sanctae</div>
+    </div>
+  </footer>
+</body>
+</html>
