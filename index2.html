@@ -132,13 +132,36 @@
     }
 
     .card-wordmark {
-      margin-bottom: 28px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .wordmark-rule {
+      width: 120px;
+      height: 1px;
+      margin: 0 auto 18px;
+      background: rgba(182, 151, 90, 0.5);
+    }
+
+    .wordmark-latin-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .footed-cross {
+      font-size: 1rem;
+      line-height: 1;
+      color: #8a6b33;
+      transform: translateY(-1px);
     }
 
     .card-wordmark-latin {
-      margin: 0 0 12px;
-      font-size: 0.8rem;
-      line-height: 1.6;
+      margin: 0;
+      font-size: 0.78rem;
+      line-height: 1.5;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--ink-soft);
@@ -146,12 +169,19 @@
 
     .card-wordmark-english {
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(2.4rem, 3vw, 4.1rem);
-      line-height: 0.95;
+      font-size: clamp(2.15rem, 2.8vw, 3.8rem);
+      line-height: 0.94;
       font-weight: 500;
       letter-spacing: 0.01em;
       color: var(--ink);
+    }
+
+    .card-wordmark-english span {
+      display: block;
     }
 
     .hero-text {
@@ -252,13 +282,27 @@
         border-radius: 18px;
       }
 
+      .wordmark-rule {
+        width: 84px;
+        margin-bottom: 14px;
+      }
+
+      .wordmark-latin-row {
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .footed-cross {
+        font-size: 0.88rem;
+      }
+
       .card-wordmark-latin {
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
+        font-size: 0.64rem;
+        letter-spacing: 0.11em;
       }
 
       .card-wordmark-english {
-        font-size: 2rem;
+        font-size: 1.9rem;
       }
 
       .hero-text,
@@ -277,7 +321,7 @@
 
     <div class="page-wordmark" aria-label="Holy City Society">
       <div class="page-wordmark-main">Holy City Society</div>
-      <div class="page-wordmark-sub"></div>
+      <div class="page-wordmark-sub">Societas Sanctae Civitatis</div>
     </div>
   </header>
 
@@ -288,9 +332,17 @@
       <div class="hero-overlay">
         <div class="hero-card">
           <div class="card-wordmark">
-            <div class="card-wordmark-latin">Societas Equestris Civitatis Sanctae</div>
+            <div class="wordmark-rule"></div>
+
+            <div class="wordmark-latin-row">
+              <span class="footed-cross">✠</span>
+              <span class="card-wordmark-latin">Ordo Equestris Civitatis Sanctae</span>
+              <span class="footed-cross">✠</span>
+            </div>
+
             <h1 class="card-wordmark-english" id="hero-english-name">
-              Equestrian Society of the Holy City
+              <span>The Equestrian Order</span>
+              <span>of the Holy City</span>
             </h1>
           </div>
 
