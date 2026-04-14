@@ -12,10 +12,9 @@
       --bg: #071427;
       --text: #eef2f7;
       --muted: rgba(238, 242, 247, 0.74);
-      --gold: #b6975a;
       --line: rgba(255, 255, 255, 0.14);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-      --shadow-soft: 0 22px 54px rgba(0, 0, 0, 0.14);
+      --shadow-soft: 0 20px 48px rgba(0, 0, 0, 0.14);
       --radius: 34px;
       --radius-card: 28px;
       --shell: 1280px;
@@ -23,7 +22,6 @@
       --card-line: rgba(24, 28, 34, 0.05);
       --ink: #191d24;
       --ink-soft: #74664f;
-      --body-ink: #2a2f37;
       --quote-ink: #4a4f57;
     }
 
@@ -90,15 +88,6 @@
       color: #f6f7f4;
     }
 
-    .page-wordmark-sub {
-      margin-top: 8px;
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(182, 151, 90, 0.95);
-      min-height: 1em;
-    }
-
     .hero-panel {
       position: relative;
       margin-top: 10px;
@@ -125,90 +114,65 @@
     .hero-card {
       position: sticky;
       top: 28px;
-      width: min(575px, calc(100% - 28px));
-      padding: 34px 36px 34px;
+      width: min(540px, calc(100% - 28px));
+      padding: 34px 34px 30px;
       background: var(--card-bg);
       color: var(--ink);
       border: 1px solid var(--card-line);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-soft);
-    }
-
-    .card-inner {
-      position: relative;
-      z-index: 1;
       text-align: center;
     }
 
-    .card-wordmark {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .card-title-main {
-      margin: 0 0 10px;
+    .card-title {
+      margin: 0 0 8px;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(2.1rem, 2.7vw, 3.1rem);
+      font-size: clamp(2.2rem, 2.75vw, 3.2rem);
       line-height: 0.98;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       color: var(--ink);
     }
 
-    .card-title-being {
-      margin: 0 0 16px;
+    .card-connector {
+      margin: 0 0 10px;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.05rem, 1.2vw, 1.28rem);
-      line-height: 1.1;
+      font-size: clamp(1rem, 1.15vw, 1.22rem);
+      line-height: 1.05;
       font-style: italic;
       color: var(--ink-soft);
     }
 
-    .wordmark-latin-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .footed-cross {
-      color: #8d723a;
-      font-size: 0.95rem;
-      line-height: 1;
-      transform: translateY(-1px);
-      flex: 0 0 auto;
-    }
-
-    .card-wordmark-latin {
-      margin: 0;
+    .card-latin {
+      margin: 0 0 8px;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.22rem, 1.45vw, 1.58rem);
-      line-height: 1.08;
+      font-size: clamp(1.32rem, 1.6vw, 1.8rem);
+      line-height: 1.06;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.055em;
       text-transform: uppercase;
       color: var(--ink-soft);
       text-wrap: balance;
     }
 
-    .hero-text {
-      margin: 0 0 28px;
-      font-size: 0.84rem;
-      line-height: 1.72;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--body-ink);
-      text-align: center;
+    .card-english {
+      margin: 0 0 22px;
+      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
+      font-size: clamp(1.22rem, 1.45vw, 1.6rem);
+      line-height: 1.08;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #353942;
+      text-wrap: balance;
     }
 
-    .hero-quote {
+    .card-quote {
       margin: 0;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       line-height: 1.72;
       font-style: italic;
       color: var(--quote-ink);
-      text-align: center;
     }
 
     .site-footer {
@@ -242,20 +206,20 @@
 
       .hero-card {
         top: 20px;
-        width: min(510px, 100%);
-        padding: 28px 24px 26px;
+        width: min(500px, 100%);
+        padding: 28px 24px 24px;
       }
 
-      .card-title-main {
-        font-size: 2.35rem;
+      .card-title {
+        font-size: 2.45rem;
       }
 
-      .card-title-being {
-        font-size: 1.08rem;
+      .card-latin {
+        font-size: 1.42rem;
       }
 
-      .card-wordmark-latin {
-        font-size: 1.06rem;
+      .card-english {
+        font-size: 1.28rem;
       }
     }
 
@@ -281,11 +245,6 @@
         letter-spacing: 0.06em;
       }
 
-      .page-wordmark-sub {
-        font-size: 0.68rem;
-        letter-spacing: 0.16em;
-      }
-
       .hero-panel,
       .hero-overlay {
         min-height: 110vh;
@@ -302,38 +261,28 @@
       .hero-card {
         top: 12px;
         width: 100%;
-        padding: 22px 18px 20px;
+        padding: 22px 18px 18px;
         border-radius: 18px;
       }
 
-      .wordmark-latin-row {
-        gap: 8px;
+      .card-title {
+        font-size: 1.95rem;
       }
 
-      .footed-cross {
-        font-size: 0.8rem;
+      .card-connector {
+        font-size: 0.92rem;
       }
 
-      .card-title-main {
-        font-size: 1.9rem;
-      }
-
-      .card-title-being {
-        font-size: 0.95rem;
-        margin-bottom: 12px;
-      }
-
-      .card-wordmark-latin {
-        font-size: 0.84rem;
+      .card-latin {
+        font-size: 1.02rem;
         letter-spacing: 0.04em;
       }
 
-      .hero-text {
-        font-size: 0.75rem;
-        letter-spacing: 0.06em;
+      .card-english {
+        font-size: 0.98rem;
       }
 
-      .hero-quote {
+      .card-quote {
         font-size: 0.84rem;
       }
     }
@@ -348,37 +297,20 @@
 
     <div class="page-wordmark" aria-label="Holy City Society">
       <div class="page-wordmark-main">Holy City Society</div>
-      <div class="page-wordmark-sub"></div>
     </div>
   </header>
 
   <main class="shell">
-    <section class="hero-panel" aria-labelledby="card-title-main">
+    <section class="hero-panel" aria-labelledby="card-title">
       <div class="hero-image" role="img" aria-label="Blue engraved holy city on a hill with mounted riders"></div>
 
       <div class="hero-overlay">
         <div class="hero-card">
-          <div class="card-inner">
-            <div class="card-wordmark">
-              <h1 class="card-title-main" id="card-title-main">Holy City Society</h1>
-              <p class="card-title-being">and the</p>
-
-              <div class="wordmark-latin-row">
-                <span class="footed-cross">✠</span>
-                <div class="card-wordmark-latin">Ordo Equestris Civitatis Sanctae</div>
-                <span class="footed-cross">✠</span>
-              </div>
-            </div>
-
-            <p class="hero-text">
-              Continuing the quest to build an<br>
-              illuminated, free, and holy society
-            </p>
-
-            <p class="hero-quote">
-              “Ye are the light of the world. A city that is set on a hill cannot be hid.”
-            </p>
-          </div>
+          <h1 class="card-title" id="card-title">Holy City Society</h1>
+          <p class="card-connector">of the</p>
+          <p class="card-latin">Ordo Equestris Civitatis Sanctae</p>
+          <p class="card-english">The Equestrian Order of the Holy City</p>
+          <p class="card-quote">“Ye are the light of the world. A city that is set on a hill cannot be hid.”</p>
         </div>
       </div>
     </section>
@@ -386,7 +318,7 @@
 
   <footer class="site-footer shell">
     <div class="footer-rule"></div>
-    <div class="footer-copy">Societas Sanctae Civitatis</div>
+    <div class="footer-copy">Ordo Equestris Civitatis Sanctae</div>
   </footer>
 </body>
 </html>
