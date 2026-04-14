@@ -13,7 +13,6 @@
       --text: #eef2f7;
       --muted: rgba(238, 242, 247, 0.74);
       --gold: #b6975a;
-      --gold-soft: rgba(182, 151, 90, 0.42);
       --line: rgba(255, 255, 255, 0.14);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
       --shadow-soft: 0 22px 54px rgba(0, 0, 0, 0.14);
@@ -21,9 +20,11 @@
       --radius-card: 28px;
       --shell: 1280px;
       --card-bg: #ffffff;
-      --card-line: rgba(24, 28, 34, 0.06);
+      --card-line: rgba(24, 28, 34, 0.05);
       --ink: #191d24;
-      --ink-soft: #6b5d48;
+      --ink-soft: #74664f;
+      --body-ink: #2a2f37;
+      --quote-ink: #4a4f57;
     }
 
     * {
@@ -123,22 +124,13 @@
     .hero-card {
       position: sticky;
       top: 28px;
-      width: min(560px, calc(100% - 28px));
-      padding: 38px 36px 32px;
+      width: min(575px, calc(100% - 28px));
+      padding: 34px 36px 34px;
       background: var(--card-bg);
       color: var(--ink);
       border: 1px solid var(--card-line);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-soft);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border: 1px solid rgba(24, 28, 34, 0.05);
-      border-radius: 20px;
-      pointer-events: none;
     }
 
     .card-inner {
@@ -147,15 +139,8 @@
     }
 
     .card-wordmark {
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       text-align: center;
-    }
-
-    .wordmark-rule {
-      width: 148px;
-      height: 1px;
-      margin: 0 auto 22px;
-      background: var(--gold-soft);
     }
 
     .wordmark-latin-row {
@@ -163,12 +148,12 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
 
     .footed-cross {
       color: #8d723a;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       line-height: 1;
       transform: translateY(-1px);
       flex: 0 0 auto;
@@ -177,10 +162,10 @@
     .card-wordmark-latin {
       margin: 0;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.18rem, 1.45vw, 1.55rem);
-      line-height: 1.05;
+      font-size: clamp(1.22rem, 1.45vw, 1.58rem);
+      line-height: 1.08;
       font-weight: 500;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--ink-soft);
       text-wrap: balance;
@@ -189,10 +174,10 @@
     .card-wordmark-english {
       margin: 0;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.8rem, 2.15vw, 2.45rem);
-      line-height: 1.02;
+      font-size: clamp(2rem, 2.25vw, 2.7rem);
+      line-height: 1.0;
       font-weight: 500;
-      letter-spacing: 0.015em;
+      letter-spacing: 0.01em;
       color: var(--ink);
       text-wrap: balance;
     }
@@ -202,22 +187,22 @@
     }
 
     .hero-text {
-      margin: 0 0 18px;
-      max-width: 26ch;
-      font-size: 0.8rem;
-      line-height: 1.68;
-      letter-spacing: 0.08em;
+      margin: 0 0 28px;
+      max-width: 30ch;
+      font-size: 0.84rem;
+      line-height: 1.72;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: #2b2f36;
+      color: var(--body-ink);
     }
 
     .hero-quote {
       margin: 0;
       max-width: 28ch;
-      font-size: 0.92rem;
-      line-height: 1.7;
+      font-size: 0.9rem;
+      line-height: 1.72;
       font-style: italic;
-      color: #3f434a;
+      color: var(--quote-ink);
     }
 
     .site-footer {
@@ -251,21 +236,16 @@
 
       .hero-card {
         top: 20px;
-        width: min(500px, 100%);
-        padding: 30px 24px 24px;
-      }
-
-      .wordmark-rule {
-        width: 128px;
-        margin-bottom: 18px;
+        width: min(510px, 100%);
+        padding: 28px 24px 26px;
       }
 
       .card-wordmark-latin {
-        font-size: 1.02rem;
+        font-size: 1.06rem;
       }
 
       .card-wordmark-english {
-        font-size: 1.95rem;
+        font-size: 2rem;
       }
     }
 
@@ -312,46 +292,36 @@
       .hero-card {
         top: 12px;
         width: 100%;
-        padding: 22px 18px 18px;
+        padding: 22px 18px 20px;
         border-radius: 18px;
-      }
-
-      .hero-card::before {
-        inset: 10px;
-        border-radius: 14px;
-      }
-
-      .wordmark-rule {
-        width: 88px;
-        margin-bottom: 14px;
       }
 
       .wordmark-latin-row {
         gap: 8px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       .footed-cross {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
       }
 
       .card-wordmark-latin {
-        font-size: 0.82rem;
-        letter-spacing: 0.05em;
+        font-size: 0.84rem;
+        letter-spacing: 0.04em;
       }
 
       .card-wordmark-english {
-        font-size: 1.58rem;
+        font-size: 1.62rem;
         line-height: 1.02;
       }
 
       .hero-text {
-        font-size: 0.74rem;
-        letter-spacing: 0.07em;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
       }
 
       .hero-quote {
-        font-size: 0.86rem;
+        font-size: 0.84rem;
       }
     }
   </style>
@@ -377,8 +347,6 @@
         <div class="hero-card">
           <div class="card-inner">
             <div class="card-wordmark">
-              <div class="wordmark-rule"></div>
-
               <div class="wordmark-latin-row">
                 <span class="footed-cross">✠</span>
                 <div class="card-wordmark-latin">Ordo Equestris Civitatis Sanctae</div>
@@ -386,7 +354,7 @@
               </div>
 
               <h1 class="card-wordmark-english" id="hero-english-name">
-                <span class="line">Equestrian Order</span>
+                <span class="line">The Equestrian Order</span>
                 <span class="line">of the Holy City</span>
               </h1>
             </div>
