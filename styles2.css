@@ -2,16 +2,17 @@
   --bg: #071427;
   --text: #eef2f7;
   --muted: rgba(238, 242, 247, 0.74);
-  --ink: #1b1f25;
   --gold: #b6975a;
   --line: rgba(255, 255, 255, 0.14);
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.22);
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.18);
   --radius: 34px;
   --radius-card: 22px;
   --shell: 1280px;
-  --card-bg: rgba(245, 242, 235, 0.92);
+  --card-bg: rgba(255, 252, 246, 0.96);
   --card-line: rgba(27, 31, 37, 0.08);
+  --ink: #1b1f25;
+  --ink-soft: #5d5140;
 }
 
 * {
@@ -63,11 +64,11 @@ a {
   color: var(--text);
 }
 
-.wordmark {
+.page-wordmark {
   text-align: center;
 }
 
-.wordmark-main {
+.page-wordmark-main {
   font-family: "Cormorant Garamond", Cochin, Garamond, serif;
   font-size: clamp(2.1rem, 3.6vw, 4.2rem);
   line-height: 0.95;
@@ -77,7 +78,7 @@ a {
   color: #f6f7f4;
 }
 
-.wordmark-sub {
+.page-wordmark-sub {
   margin-top: 8px;
   font-size: 0.8rem;
   letter-spacing: 0.22em;
@@ -104,10 +105,10 @@ a {
   background: url("B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg") center center / cover no-repeat;
 }
 
-.hero-copy {
+.hero-card {
   position: relative;
   z-index: 2;
-  width: min(380px, calc(100% - 64px));
+  width: min(430px, calc(100% - 64px));
   margin: 64px 0 64px 64px;
   padding: 34px 30px 30px;
   color: var(--ink);
@@ -115,24 +116,28 @@ a {
   border: 1px solid var(--card-line);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(6px);
 }
 
-.hero-kicker {
-  margin: 0 0 20px;
+.card-wordmark {
+  margin-bottom: 24px;
+}
+
+.card-wordmark-latin {
+  margin-bottom: 10px;
   font-size: 0.82rem;
-  line-height: 1.65;
-  letter-spacing: 0.14em;
+  line-height: 1.6;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #6f5a34;
+  color: var(--ink-soft);
 }
 
-.hero-title {
-  margin: 0 0 20px;
+.card-wordmark-english {
+  margin: 0;
   font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-  font-size: clamp(2.5rem, 2.8vw, 4rem);
+  font-size: clamp(2.1rem, 2.7vw, 3.4rem);
   line-height: 0.98;
   font-weight: 500;
+  letter-spacing: 0.01em;
   color: var(--ink);
 }
 
@@ -175,8 +180,8 @@ a {
     min-height: 880px;
   }
 
-  .hero-copy {
-    width: min(420px, calc(100% - 40px));
+  .hero-card {
+    width: min(460px, calc(100% - 40px));
     margin: 24px 20px;
     padding: 28px 22px 22px;
   }
@@ -199,12 +204,12 @@ a {
     flex-wrap: wrap;
   }
 
-  .wordmark-main {
+  .page-wordmark-main {
     font-size: 2rem;
     letter-spacing: 0.06em;
   }
 
-  .wordmark-sub {
+  .page-wordmark-sub {
     font-size: 0.68rem;
     letter-spacing: 0.16em;
   }
@@ -217,19 +222,20 @@ a {
     min-height: 620px;
   }
 
-  .hero-copy {
+  .hero-card {
     width: calc(100% - 24px);
     margin: 12px;
     padding: 24px 18px 18px;
     border-radius: 18px;
   }
 
-  .hero-title {
-    font-size: 2.15rem;
+  .card-wordmark-latin {
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
   }
 
-  .hero-kicker {
-    font-size: 0.74rem;
+  .card-wordmark-english {
+    font-size: 2rem;
   }
 
   .hero-text,
