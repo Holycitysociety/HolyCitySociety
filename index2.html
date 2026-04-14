@@ -4,449 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Holy City Society</title>
-  <style>
-    :root {
-      --bg: #07111d;
-      --bg-soft: #0c1828;
-      --paper: #f1ede4;
-      --paper-2: #e7e0d3;
-      --ink: #181b20;
-      --text: #eef2f7;
-      --muted: rgba(238, 242, 247, 0.68);
-      --line: rgba(255, 255, 255, 0.12);
-      --line-soft: rgba(255, 255, 255, 0.08);
-      --gold: #b89b63;
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-      --shell: 1360px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top, rgba(76, 101, 138, 0.12), transparent 30%),
-        linear-gradient(180deg, #0a1421 0%, #07111d 100%);
-      font-family: Georgia, "Times New Roman", serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .shell {
-      width: min(calc(100% - 40px), var(--shell));
-      margin: 0 auto;
-    }
-
-    .site-header {
-      padding: 28px 0 18px;
-    }
-
-    .header-grid {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .nav-right {
-      justify-content: flex-end;
-    }
-
-    .site-header a {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.72rem;
-      color: var(--muted);
-      transition: color 160ms ease;
-    }
-
-    .site-header a:hover,
-    .site-header a[aria-current="page"] {
-      color: var(--text);
-    }
-
-    .brand {
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      font-size: 0.84rem;
-      white-space: nowrap;
-      color: #f4f6fa;
-    }
-
-    .brand .cross {
-      color: var(--gold);
-    }
-
-    .hero-wrap {
-      padding: 12px 0 48px;
-    }
-
-    .frame {
-      position: relative;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    .frame::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid var(--line-soft);
-      pointer-events: none;
-    }
-
-    .composition {
-      display: grid;
-      grid-template-columns: minmax(320px, 430px) 1fr;
-      min-height: 880px;
-    }
-
-    .text-panel {
-      padding: 64px 42px 54px 42px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-right: 1px solid var(--line-soft);
-    }
-
-    .text-top {
-      max-width: 300px;
-    }
-
-    .order-name {
-      margin: 0 0 22px;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.72rem;
-      line-height: 1.85;
-    }
-
-    .title {
-      margin: 0 0 28px;
-      font-size: clamp(2.35rem, 3vw, 4.2rem);
-      line-height: 0.94;
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      color: #f8fafc;
-    }
-
-    .mission {
-      margin: 0 0 24px;
-      color: rgba(238, 242, 247, 0.86);
-      font-size: 0.95rem;
-      line-height: 1.95;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-    }
-
-    .scripture {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.9;
-      font-style: italic;
-    }
-
-    .text-bottom {
-      padding-top: 36px;
-    }
-
-    .seal-line {
-      width: 72px;
-      height: 1px;
-      background: rgba(184, 155, 99, 0.55);
-      margin-bottom: 18px;
-    }
-
-    .seal-copy {
-      margin: 0;
-      max-width: 260px;
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.9;
-      letter-spacing: 0.04em;
-    }
-
-    .image-stage {
-      position: relative;
-      display: grid;
-      place-items: center;
-      padding: 54px;
-    }
-
-    .image-plate {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      min-height: 700px;
-      background: var(--paper);
-      overflow: hidden;
-      box-shadow: inset 0 0 0 1px rgba(24, 27, 32, 0.06);
-    }
-
-    .image-plate::before {
-      content: "";
-      position: absolute;
-      inset: 20px;
-      border: 1px solid rgba(24, 27, 32, 0.08);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 34px;
-      background:
-        linear-gradient(180deg, rgba(241, 237, 228, 0.06), rgba(231, 224, 211, 0.12)),
-        url("B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg") center center / cover no-repeat;
-      filter: saturate(0.9) contrast(1.02);
-    }
-
-    .plate-caption {
-      position: absolute;
-      left: 34px;
-      right: 34px;
-      bottom: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      color: rgba(24, 27, 32, 0.56);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.62rem;
-      z-index: 3;
-    }
-
-    .lower-band {
-      border-top: 1px solid var(--line-soft);
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 20px;
-      align-items: center;
-      padding: 18px 24px 4px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.68rem;
-    }
-
-    .lower-band .center {
-      color: rgba(238, 242, 247, 0.82);
-    }
-
-    .lower-band .right {
-      text-align: right;
-    }
-
-    @media (max-width: 1100px) {
-      .composition {
-        grid-template-columns: 1fr;
-      }
-
-      .text-panel {
-        border-right: 0;
-        border-bottom: 1px solid var(--line-soft);
-        padding: 44px 28px 38px;
-      }
-
-      .text-top {
-        max-width: none;
-      }
-
-      .text-bottom {
-        padding-top: 28px;
-      }
-
-      .image-stage {
-        padding: 28px;
-      }
-
-      .image-plate {
-        min-height: 560px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .shell {
-        width: min(calc(100% - 22px), var(--shell));
-      }
-
-      .site-header {
-        padding-top: 18px;
-      }
-
-      .header-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .nav-left,
-      .nav-right,
-      .brand {
-        justify-content: center;
-      }
-
-      .nav-left,
-      .nav-right {
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .brand {
-        white-space: normal;
-        letter-spacing: 0.18em;
-        font-size: 0.76rem;
-      }
-
-      .frame {
-        padding: 10px;
-      }
-
-      .frame::before {
-        inset: 10px;
-      }
-
-      .text-panel {
-        padding: 32px 18px 28px;
-      }
-
-      .title {
-        font-size: 2.15rem;
-      }
-
-      .mission {
-        font-size: 0.82rem;
-      }
-
-      .scripture,
-      .seal-copy {
-        font-size: 0.9rem;
-      }
-
-      .image-stage {
-        padding: 16px;
-      }
-
-      .image-plate {
-        min-height: 420px;
-      }
-
-      .hero-image {
-        inset: 16px 16px 42px;
-      }
-
-      .plate-caption {
-        left: 16px;
-        right: 16px;
-        bottom: 12px;
-        font-size: 0.56rem;
-      }
-
-      .lower-band {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 14px 14px 2px;
-      }
-
-      .lower-band .right {
-        text-align: center;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles2.css" />
 </head>
 <body>
-  <header class="site-header shell">
-    <div class="header-grid">
-      <nav class="nav-left" aria-label="Primary left">
-        <a href="index.html" aria-current="page">Praxis</a>
-        <a href="virtues.html">Energeia</a>
-      </nav>
+  <header class="site-header">
+    <div class="shell">
+      <div class="top-rule"></div>
 
-      <div class="brand">
-        <span class="cross">✠</span>
-        Holy City Society
-        <span class="cross">✠</span>
+      <div class="header-grid">
+        <nav class="nav nav-left" aria-label="Primary">
+          <a href="index.html" aria-current="page">Praxis</a>
+          <a href="virtues.html">Energeia</a>
+        </nav>
+
+        <div class="brand-lockup" aria-label="Holy City Society">
+          <div class="brand-kicker">✠ Civitas Sancta ✠</div>
+
+          <div class="brand-name">
+            <span>Holy City</span>
+            <span>Society</span>
+          </div>
+
+          <div class="brand-subline">Equestrian Order of the Holy City</div>
+          <div class="brand-latin">Ordo Equestris Civitatis Sanctae</div>
+        </div>
+
+        <nav class="nav nav-right" aria-label="Secondary">
+          <a href="clergy.html">Clergy</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
-
-      <nav class="nav-right" aria-label="Primary right">
-        <a href="clergy.html">Clergy</a>
-        <a href="contact.html">Contact</a>
-      </nav>
     </div>
   </header>
 
-  <main class="hero-wrap shell">
-    <section class="frame" aria-labelledby="hero-title">
-      <div class="composition">
-        <div class="text-panel">
-          <div class="text-top">
-            <p class="order-name">Ordo Equestris Civitatis Sanctae</p>
+  <main class="hero-wrap">
+    <div class="shell">
+      <section class="hero-frame" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="copy-top">
+              <p class="order-name">The Contemplative and Chivalric Face of Holy City Society</p>
 
-            <h1 class="title" id="hero-title">
-              A Holy
-              Society
-              Ordered
-              to Light
-            </h1>
+              <h1 class="hero-title" id="hero-title">
+                A Holy Society<br />
+                Ordered to Light
+              </h1>
 
-            <p class="mission">
-              Continuing the quest to build an illuminated, free, and holy society
-            </p>
+              <p class="hero-subtitle">
+                Continuing the quest to build an illuminated, free, and holy society
+              </p>
 
-            <p class="scripture">
-              “Ye are the light of the world. A city that is set on a hill cannot be hid.”
-            </p>
+              <p class="hero-quote">
+                “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+              </p>
+            </div>
+
+            <div class="copy-bottom">
+              <div class="copy-rule"></div>
+              <p class="copy-note">
+                Publicly, Holy City Society. Chivalrically, the Equestrian Order of the Holy City. Formally, Ordo Equestris Civitatis Sanctae.
+              </p>
+            </div>
           </div>
 
-          <div class="text-bottom">
-            <div class="seal-line"></div>
-            <p class="seal-copy">
-              Contemplative, chivalric, and civic formation under a disciplined and sacred rule of life.
-            </p>
-          </div>
-        </div>
+          <div class="hero-image-wrap">
+            <div class="hero-image-frame">
+              <div class="hero-image" role="img" aria-label="Holy city on a hill with mounted riders"></div>
 
-        <div class="image-stage">
-          <div class="image-plate">
-            <div class="hero-image" role="img" aria-label="Blue engraved city on a hill with mounted riders"></div>
-            <div class="plate-caption">
-              <span>Holy City Society</span>
-              <span>Civitas Sancta</span>
+              <div class="image-caption">
+                <span>Holy City Society</span>
+                <span>Civitas Sancta</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="lower-band">
-        <div>Contemplation</div>
-        <div class="center">Ordo Equestris Civitatis Sanctae</div>
-        <div class="right">Holy Society</div>
-      </div>
-    </section>
+        <div class="lower-band">
+          <div>Contemplation</div>
+          <div class="center">Equestrian Order of the Holy City</div>
+          <div class="right">Holy Society</div>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-rule"></div>
+      <div class="footer-copy">Holy City Society</div>
+    </div>
+  </footer>
 </body>
 </html>
