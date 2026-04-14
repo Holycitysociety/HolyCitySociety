@@ -76,16 +76,13 @@
       color: var(--text);
     }
 
-    .page-titleblock {
+    .page-wordmark {
       text-align: center;
-      max-width: 980px;
-      margin: 0 auto;
     }
 
-    .page-title-main {
-      margin: 0 0 8px;
+    .page-wordmark-main {
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(2.2rem, 3.8vw, 4.5rem);
+      font-size: clamp(2.1rem, 3.6vw, 4.2rem);
       line-height: 0.95;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -93,44 +90,12 @@
       color: #f6f7f4;
     }
 
-    .page-title-being {
-      margin: 0 0 8px;
-      font-size: 0.82rem;
-      line-height: 1.2;
-      letter-spacing: 0.2em;
+    .page-wordmark-sub {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .page-title-latin {
-      margin: 0 0 6px;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.3rem, 1.7vw, 2rem);
-      line-height: 1.04;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: rgba(182, 151, 90, 0.98);
-      text-wrap: balance;
-    }
-
-    .page-title-or {
-      margin: 0 0 6px;
-      font-size: 0.9rem;
-      line-height: 1.2;
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .page-title-english {
-      margin: 0;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.55rem, 2vw, 2.4rem);
-      line-height: 1.02;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      color: #f1f3f7;
-      text-wrap: balance;
+      color: rgba(182, 151, 90, 0.95);
     }
 
     .hero-panel {
@@ -159,8 +124,8 @@
     .hero-card {
       position: sticky;
       top: 28px;
-      width: min(520px, calc(100% - 28px));
-      padding: 30px 32px 28px;
+      width: min(585px, calc(100% - 28px));
+      padding: 34px 36px 34px;
       background: var(--card-bg);
       color: var(--ink);
       border: 1px solid var(--card-line);
@@ -172,8 +137,63 @@
       text-align: center;
     }
 
+    .card-titlepage {
+      margin-bottom: 26px;
+    }
+
+    .card-main-title {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
+      font-size: clamp(2.4rem, 2.8vw, 3.6rem);
+      line-height: 0.94;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .card-being {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .card-latin {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
+      font-size: clamp(1.45rem, 1.8vw, 2rem);
+      line-height: 1.04;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-wrap: balance;
+    }
+
+    .card-or {
+      margin: 0 0 8px;
+      font-size: 0.92rem;
+      line-height: 1.2;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+
+    .card-english {
+      margin: 0;
+      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
+      font-size: clamp(1.7rem, 2vw, 2.3rem);
+      line-height: 1.02;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
     .hero-text {
-      margin: 0 0 22px;
+      margin: 0 0 24px;
       font-size: 0.84rem;
       line-height: 1.72;
       letter-spacing: 0.07em;
@@ -222,20 +242,20 @@
 
       .hero-card {
         top: 20px;
-        width: min(470px, 100%);
-        padding: 26px 22px 24px;
+        width: min(520px, 100%);
+        padding: 28px 24px 26px;
       }
 
-      .page-title-main {
-        font-size: 3rem;
+      .card-main-title {
+        font-size: 2.7rem;
       }
 
-      .page-title-latin {
-        font-size: 1.45rem;
+      .card-latin {
+        font-size: 1.55rem;
       }
 
-      .page-title-english {
-        font-size: 1.85rem;
+      .card-english {
+        font-size: 1.95rem;
       }
     }
 
@@ -256,28 +276,14 @@
         flex-wrap: wrap;
       }
 
-      .page-title-main {
+      .page-wordmark-main {
         font-size: 2rem;
         letter-spacing: 0.06em;
       }
 
-      .page-title-being {
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
-      }
-
-      .page-title-latin {
-        font-size: 1.02rem;
-        letter-spacing: 0.03em;
-      }
-
-      .page-title-or {
-        font-size: 0.8rem;
-      }
-
-      .page-title-english {
-        font-size: 1.28rem;
-        line-height: 1.04;
+      .page-wordmark-sub {
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
       }
 
       .hero-panel,
@@ -300,6 +306,29 @@
         border-radius: 18px;
       }
 
+      .card-main-title {
+        font-size: 2rem;
+      }
+
+      .card-being {
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+      }
+
+      .card-latin {
+        font-size: 1.14rem;
+        letter-spacing: 0.03em;
+      }
+
+      .card-or {
+        font-size: 0.82rem;
+      }
+
+      .card-english {
+        font-size: 1.42rem;
+        line-height: 1.04;
+      }
+
       .hero-text {
         font-size: 0.75rem;
         letter-spacing: 0.06em;
@@ -318,22 +347,27 @@
       <a href="virtues.html">Energeia</a>
     </nav>
 
-    <div class="page-titleblock" aria-label="Holy City Society title">
-      <h1 class="page-title-main">Holy City Society</h1>
-      <p class="page-title-being">Being the</p>
-      <p class="page-title-latin">Ordo Equestris Civitatis Sanctae,</p>
-      <p class="page-title-or">or,</p>
-      <p class="page-title-english">The Equestrian Order of the Holy City</p>
+    <div class="page-wordmark" aria-label="Holy City Society">
+      <div class="page-wordmark-main">Holy City Society</div>
+      <div class="page-wordmark-sub">Societas Sanctae Civitatis</div>
     </div>
   </header>
 
   <main class="shell">
-    <section class="hero-panel" aria-labelledby="page-title-main">
+    <section class="hero-panel" aria-labelledby="card-main-title">
       <div class="hero-image" role="img" aria-label="Blue engraved holy city on a hill with mounted riders"></div>
 
       <div class="hero-overlay">
         <div class="hero-card">
           <div class="card-inner">
+            <div class="card-titlepage">
+              <h1 class="card-main-title" id="card-main-title">Holy City Society</h1>
+              <p class="card-being">Being the</p>
+              <p class="card-latin">Ordo Equestris Civitatis Sanctae,</p>
+              <p class="card-or">or,</p>
+              <p class="card-english">The Equestrian Order of the Holy City</p>
+            </div>
+
             <p class="hero-text">
               Continuing the quest to build an illuminated, free, and holy society
             </p>
