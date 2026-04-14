@@ -122,68 +122,56 @@
       border: 1px solid var(--card-line);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-soft);
-      text-align: center;
     }
 
-    .card-title {
-      margin: 0 0 8px;
+    .card-title-block {
+      margin-bottom: 24px;
+      text-align: center;
       font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(2.2rem, 2.75vw, 3.2rem);
-      line-height: 0.98;
+    }
+
+    .card-title-line {
+      margin: 0;
+      font-size: clamp(1.55rem, 1.95vw, 2.05rem);
+      line-height: 1.04;
       font-weight: 500;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.035em;
       text-transform: uppercase;
       color: var(--ink);
     }
 
-    .card-connector {
-      margin: 0 0 10px;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1rem, 1.15vw, 1.22rem);
+    .card-title-line + .card-title-line {
+      margin-top: 6px;
+    }
+
+    .card-title-small {
+      margin: 6px 0;
+      font-size: clamp(0.92rem, 1vw, 1.02rem);
       line-height: 1.05;
       font-style: italic;
-      color: var(--ink-soft);
-    }
-
-    .card-latin {
-      margin: 0 0 8px;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.32rem, 1.6vw, 1.8rem);
-      line-height: 1.06;
       font-weight: 500;
-      letter-spacing: 0.055em;
-      text-transform: uppercase;
+      letter-spacing: 0.015em;
+      text-transform: none;
       color: var(--ink-soft);
-      text-wrap: balance;
-    }
-
-    .card-english {
-      margin: 0 0 22px;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.22rem, 1.45vw, 1.6rem);
-      line-height: 1.08;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      color: #353942;
-      text-wrap: balance;
     }
 
     .card-body {
-      margin: 0 0 24px;
-      font-size: 0.86rem;
+      margin: 0 0 22px;
+      font-size: 0.9rem;
       line-height: 1.72;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--body-ink);
-      text-wrap: balance;
+      text-align: left;
     }
 
     .card-quote {
       margin: 0;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.72;
       font-style: italic;
       color: var(--quote-ink);
+      text-align: left;
     }
 
     .site-footer {
@@ -221,16 +209,12 @@
         padding: 28px 24px 24px;
       }
 
-      .card-title {
-        font-size: 2.45rem;
+      .card-title-line {
+        font-size: 1.7rem;
       }
 
-      .card-latin {
-        font-size: 1.42rem;
-      }
-
-      .card-english {
-        font-size: 1.28rem;
+      .card-title-small {
+        font-size: 0.95rem;
       }
     }
 
@@ -276,30 +260,18 @@
         border-radius: 18px;
       }
 
-      .card-title {
-        font-size: 1.95rem;
+      .card-title-line {
+        font-size: 1.2rem;
+        letter-spacing: 0.03em;
       }
 
-      .card-connector {
-        font-size: 0.92rem;
+      .card-title-small {
+        font-size: 0.82rem;
       }
 
-      .card-latin {
-        font-size: 1.02rem;
-        letter-spacing: 0.04em;
-      }
-
-      .card-english {
-        font-size: 0.98rem;
-      }
-
-      .card-body {
-        font-size: 0.76rem;
-        letter-spacing: 0.06em;
-      }
-
+      .card-body,
       .card-quote {
-        font-size: 0.84rem;
+        font-size: 0.82rem;
       }
     }
   </style>
@@ -317,15 +289,17 @@
   </header>
 
   <main class="shell">
-    <section class="hero-panel" aria-labelledby="card-title">
+    <section class="hero-panel" aria-labelledby="card-title-main">
       <div class="hero-image" role="img" aria-label="Blue engraved holy city on a hill with mounted riders"></div>
 
       <div class="hero-overlay">
         <div class="hero-card">
-          <h1 class="card-title" id="card-title">Holy City Society</h1>
-          <p class="card-connector">of the</p>
-          <p class="card-latin">Ordo Equestris Civitatis Sanctae</p>
-          <p class="card-english">The Equestrian Order of the Holy City</p>
+          <div class="card-title-block">
+            <h1 class="card-title-line" id="card-title-main">Holy City Society</h1>
+            <p class="card-title-small">of the</p>
+            <p class="card-title-line">Ordo Equestris Civitatis Sanctae</p>
+            <p class="card-title-line">The Equestrian Order of the Holy City</p>
+          </div>
 
           <p class="card-body">
             Continuing the quest to build an<br>
