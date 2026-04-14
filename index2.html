@@ -12,7 +12,6 @@
       --bg: #071427;
       --text: #eef2f7;
       --muted: rgba(238, 242, 247, 0.78);
-      --muted-soft: rgba(238, 242, 247, 0.58);
       --line: rgba(255, 255, 255, 0.14);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
       --shadow-soft: 0 20px 48px rgba(0, 0, 0, 0.14);
@@ -25,9 +24,6 @@
       --ink-soft: #74664f;
       --body-ink: #2a2f37;
       --quote-ink: #4a4f57;
-      --header-bg: rgba(7, 20, 39, 0.88);
-      --header-bg-scrolled: rgba(7, 20, 39, 0.16);
-      --header-border: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -59,43 +55,18 @@
     }
 
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      padding-top: 18px;
-      padding-bottom: 16px;
-      background: var(--header-bg);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--header-border);
-      transition:
-        background 220ms ease,
-        border-color 220ms ease,
-        backdrop-filter 220ms ease,
-        padding 220ms ease;
-    }
-
-    body.scrolled .site-header {
-      background: var(--header-bg-scrolled);
-      border-bottom-color: transparent;
-      backdrop-filter: blur(4px);
-      padding-top: 12px;
-      padding-bottom: 12px;
+      padding-top: 34px;
+      padding-bottom: 18px;
     }
 
     .top-nav {
       display: flex;
       justify-content: center;
       gap: 42px;
-      margin-bottom: 18px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-size: 0.8rem;
-      color: var(--muted-soft);
-      transition: margin 220ms ease;
-    }
-
-    body.scrolled .top-nav {
-      margin-bottom: 12px;
+      color: var(--muted);
     }
 
     .top-nav a:hover,
@@ -103,58 +74,9 @@
       color: var(--text);
     }
 
-    .header-titles {
-      text-align: center;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      color: #f6f7f4;
-    }
-
-    .header-title-line {
-      margin: 0;
-      font-size: clamp(1.28rem, 1.58vw, 1.62rem);
-      line-height: 1.04;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      transition:
-        font-size 220ms ease,
-        line-height 220ms ease,
-        opacity 220ms ease;
-    }
-
-    .header-title-line + .header-title-line {
-      margin-top: 4px;
-    }
-
-    .header-title-small {
-      margin: 4px 0;
-      font-size: clamp(0.9rem, 0.95vw, 0.96rem);
-      line-height: 1.05;
-      font-style: italic;
-      font-weight: 500;
-      letter-spacing: 0.015em;
-      text-transform: none;
-      color: var(--muted);
-      transition:
-        font-size 220ms ease,
-        opacity 220ms ease,
-        margin 220ms ease;
-    }
-
-    body.scrolled .header-title-line {
-      font-size: clamp(1.02rem, 1.22vw, 1.16rem);
-      line-height: 1;
-    }
-
-    body.scrolled .header-title-small {
-      font-size: 0.78rem;
-      margin: 2px 0;
-      opacity: 0.92;
-    }
-
     .hero-panel {
       position: relative;
-      margin-top: 16px;
+      margin-top: 10px;
       margin-bottom: 40px;
       min-height: 180vh;
       border-radius: var(--radius);
@@ -177,19 +99,45 @@
 
     .hero-card {
       position: sticky;
-      top: 148px;
+      top: 28px;
       width: min(540px, calc(100% - 28px));
-      padding: 30px 34px 28px;
+      padding: 34px 34px 30px;
       background: var(--card-bg);
       color: var(--ink);
       border: 1px solid var(--card-line);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-soft);
-      transition: top 220ms ease;
     }
 
-    body.scrolled .hero-card {
-      top: 104px;
+    .card-title-block {
+      margin-bottom: 24px;
+      text-align: center;
+      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
+    }
+
+    .card-title-line {
+      margin: 0;
+      font-size: clamp(1.28rem, 1.58vw, 1.62rem);
+      line-height: 1.04;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .card-title-line + .card-title-line {
+      margin-top: 6px;
+    }
+
+    .card-title-small {
+      margin: 6px 0;
+      font-size: clamp(0.9rem, 0.95vw, 0.96rem);
+      line-height: 1.05;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: 0.015em;
+      text-transform: none;
+      color: var(--ink-soft);
     }
 
     .card-body {
@@ -241,25 +189,17 @@
       }
 
       .hero-card {
-        top: 136px;
+        top: 20px;
         width: min(500px, 100%);
         padding: 28px 24px 24px;
       }
 
-      body.scrolled .hero-card {
-        top: 92px;
-      }
-
-      .header-title-line {
+      .card-title-line {
         font-size: 1.38rem;
       }
 
-      .header-title-small {
+      .card-title-small {
         font-size: 0.9rem;
-      }
-
-      body.scrolled .header-title-line {
-        font-size: 1.04rem;
       }
     }
 
@@ -269,33 +209,15 @@
       }
 
       .site-header {
-        padding-top: 14px;
-        padding-bottom: 12px;
+        padding-top: 22px;
+        padding-bottom: 14px;
       }
 
       .top-nav {
         gap: 18px;
-        margin-bottom: 12px;
         font-size: 0.7rem;
         letter-spacing: 0.14em;
         flex-wrap: wrap;
-      }
-
-      .header-title-line {
-        font-size: 1.02rem;
-        letter-spacing: 0.025em;
-      }
-
-      .header-title-small {
-        font-size: 0.78rem;
-      }
-
-      body.scrolled .header-title-line {
-        font-size: 0.88rem;
-      }
-
-      body.scrolled .header-title-small {
-        font-size: 0.7rem;
       }
 
       .hero-panel,
@@ -312,14 +234,19 @@
       }
 
       .hero-card {
-        top: 118px;
+        top: 12px;
         width: 100%;
         padding: 22px 18px 18px;
         border-radius: 18px;
       }
 
-      body.scrolled .hero-card {
-        top: 88px;
+      .card-title-line {
+        font-size: 1.02rem;
+        letter-spacing: 0.025em;
+      }
+
+      .card-title-small {
+        font-size: 0.78rem;
       }
 
       .card-body,
@@ -330,28 +257,26 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="shell">
-      <nav class="top-nav" aria-label="Primary">
-        <a href="index.html" aria-current="page">Praxis</a>
-        <a href="virtues.html">Energeia</a>
-      </nav>
-
-      <div class="header-titles" aria-label="Holy City Society of the Ordo Equestris Civitatis Sanctae">
-        <h1 class="header-title-line">Holy City Society</h1>
-        <p class="header-title-small">of the</p>
-        <p class="header-title-line">Ordo Equestris Civitatis Sanctae</p>
-        <p class="header-title-line">The Equestrian Order of the Holy City</p>
-      </div>
-    </div>
+  <header class="site-header shell">
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Praxis</a>
+      <a href="virtues.html">Energeia</a>
+    </nav>
   </header>
 
   <main class="shell">
-    <section class="hero-panel" aria-label="Holy City Society hero panel">
+    <section class="hero-panel" aria-labelledby="card-title-main">
       <div class="hero-image" role="img" aria-label="Blue engraved holy city on a hill with mounted riders"></div>
 
       <div class="hero-overlay">
         <div class="hero-card">
+          <div class="card-title-block">
+            <h1 class="card-title-line" id="card-title-main">Holy City Society</h1>
+            <p class="card-title-small">of the</p>
+            <p class="card-title-line">Ordo Equestris Civitatis Sanctae</p>
+            <p class="card-title-line">The Equestrian Order of the Holy City</p>
+          </div>
+
           <p class="card-body">
             Continuing the quest to build an<br>
             illuminated, free, and holy society
@@ -369,18 +294,5 @@
     <div class="footer-rule"></div>
     <div class="footer-copy">Ordo Equestris Civitatis Sanctae</div>
   </footer>
-
-  <script>
-    const setScrolledState = () => {
-      if (window.scrollY > 24) {
-        document.body.classList.add('scrolled');
-      } else {
-        document.body.classList.remove('scrolled');
-      }
-    };
-
-    setScrolledState();
-    window.addEventListener('scroll', setScrolledState, { passive: true });
-  </script>
 </body>
 </html>
