@@ -12,13 +12,22 @@
       --bg: #071427;
       --text: #eef2f7;
       --muted: rgba(238, 242, 247, 0.78);
-      --muted-soft: rgba(238, 242, 247, 0.64);
+      --muted-soft: rgba(238, 242, 247, 0.58);
       --line: rgba(255, 255, 255, 0.14);
-      --line-soft: rgba(255, 255, 255, 0.08);
-      --shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --shadow-soft: 0 20px 48px rgba(0, 0, 0, 0.14);
       --radius: 34px;
+      --radius-card: 28px;
       --shell: 1280px;
-      --gold-soft: rgba(214, 193, 156, 0.9);
+      --card-bg: #ffffff;
+      --card-line: rgba(24, 28, 34, 0.05);
+      --ink: #191d24;
+      --ink-soft: #74664f;
+      --body-ink: #2a2f37;
+      --quote-ink: #4a4f57;
+      --header-bg: rgba(7, 20, 39, 0.88);
+      --header-bg-scrolled: rgba(7, 20, 39, 0.16);
+      --header-border: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -53,44 +62,40 @@
       position: sticky;
       top: 0;
       z-index: 50;
+      padding-top: 18px;
+      padding-bottom: 16px;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--header-border);
       transition:
-        background-color 220ms ease,
-        backdrop-filter 220ms ease,
+        background 220ms ease,
         border-color 220ms ease,
-        box-shadow 220ms ease,
+        backdrop-filter 220ms ease,
         padding 220ms ease;
-      background: rgba(7, 20, 39, 0.94);
-      border-bottom: 1px solid var(--line-soft);
-      box-shadow: var(--shadow);
     }
 
-    .site-header.is-scrolled {
-      background: rgba(7, 20, 39, 0.14);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      border-bottom-color: rgba(255, 255, 255, 0.04);
-      box-shadow: none;
-    }
-
-    .header-inner {
-      padding: 22px 0 24px;
-      transition: padding 220ms ease;
-    }
-
-    .site-header.is-scrolled .header-inner {
-      padding: 12px 0 14px;
+    body.scrolled .site-header {
+      background: var(--header-bg-scrolled);
+      border-bottom-color: transparent;
+      backdrop-filter: blur(4px);
+      padding-top: 12px;
+      padding-bottom: 12px;
     }
 
     .top-nav {
       display: flex;
       justify-content: center;
       gap: 42px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--muted-soft);
-      transition: margin 220ms ease, opacity 220ms ease;
+      transition: margin 220ms ease;
+    }
+
+    body.scrolled .top-nav {
+      margin-bottom: 12px;
     }
 
     .top-nav a:hover,
@@ -98,86 +103,63 @@
       color: var(--text);
     }
 
-    .site-header.is-scrolled .top-nav {
-      margin-bottom: 10px;
-    }
-
-    .title-block {
+    .header-titles {
       text-align: center;
-      max-width: 980px;
-      margin: 0 auto;
-      transition: transform 220ms ease, opacity 220ms ease;
+      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
+      color: #f6f7f4;
     }
 
-    .title-line {
+    .header-title-line {
       margin: 0;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(1.28rem, 1.52vw, 1.56rem);
+      font-size: clamp(1.28rem, 1.58vw, 1.62rem);
       line-height: 1.04;
       font-weight: 500;
       letter-spacing: 0.03em;
       text-transform: uppercase;
-      color: var(--text);
-      text-wrap: balance;
+      transition:
+        font-size 220ms ease,
+        line-height 220ms ease,
+        opacity 220ms ease;
     }
 
-    .title-line + .title-line {
+    .header-title-line + .header-title-line {
       margin-top: 4px;
     }
 
-    .title-small {
-      margin: 6px 0;
-      font-family: "Cormorant Garamond", Cochin, Garamond, serif;
-      font-size: clamp(0.92rem, 0.96vw, 1rem);
-      line-height: 1.02;
+    .header-title-small {
+      margin: 4px 0;
+      font-size: clamp(0.9rem, 0.95vw, 0.96rem);
+      line-height: 1.05;
       font-style: italic;
       font-weight: 500;
-      color: var(--gold-soft);
+      letter-spacing: 0.015em;
+      text-transform: none;
+      color: var(--muted);
+      transition:
+        font-size 220ms ease,
+        opacity 220ms ease,
+        margin 220ms ease;
     }
 
-    .header-body {
-      max-width: 760px;
-      margin: 18px auto 0;
-      transition: margin 220ms ease, opacity 220ms ease, max-height 220ms ease;
+    body.scrolled .header-title-line {
+      font-size: clamp(1.02rem, 1.22vw, 1.16rem);
+      line-height: 1;
     }
 
-    .site-header.is-scrolled .header-body {
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      margin-top: 0;
-    }
-
-    .header-copy {
-      margin: 0 0 14px;
-      font-size: 0.86rem;
-      line-height: 1.72;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-align: center;
-      color: rgba(238, 242, 247, 0.92);
-      text-wrap: balance;
-    }
-
-    .header-quote {
-      margin: 0;
-      font-size: 0.9rem;
-      line-height: 1.72;
-      font-style: italic;
-      text-align: center;
-      color: rgba(238, 242, 247, 0.82);
-      text-wrap: balance;
+    body.scrolled .header-title-small {
+      font-size: 0.78rem;
+      margin: 2px 0;
+      opacity: 0.92;
     }
 
     .hero-panel {
       position: relative;
-      width: min(calc(100% - 44px), var(--shell));
-      margin: 10px auto 40px;
-      min-height: 170vh;
+      margin-top: 16px;
+      margin-bottom: 40px;
+      min-height: 180vh;
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-      background: #dfe8f0;
+      box-shadow: var(--shadow);
     }
 
     .hero-image {
@@ -186,20 +168,58 @@
       background: url("B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg") center center / cover no-repeat;
     }
 
-    .hero-spacer {
+    .hero-overlay {
       position: relative;
-      min-height: 170vh;
+      z-index: 2;
+      min-height: 180vh;
+      padding: 28px;
+    }
+
+    .hero-card {
+      position: sticky;
+      top: 148px;
+      width: min(540px, calc(100% - 28px));
+      padding: 30px 34px 28px;
+      background: var(--card-bg);
+      color: var(--ink);
+      border: 1px solid var(--card-line);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      transition: top 220ms ease;
+    }
+
+    body.scrolled .hero-card {
+      top: 104px;
+    }
+
+    .card-body {
+      margin: 0 0 22px;
+      font-size: 0.9rem;
+      line-height: 1.72;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--body-ink);
+      text-align: left;
+    }
+
+    .card-quote {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.72;
+      font-style: italic;
+      color: var(--quote-ink);
+      text-align: left;
     }
 
     .site-footer {
-      padding: 0 0 34px;
+      padding-bottom: 34px;
     }
 
     .footer-rule {
-      width: min(calc(100% - 44px), var(--shell));
-      margin: 0 auto 14px;
+      width: 100%;
       height: 1px;
       background: rgba(255, 255, 255, 0.18);
+      margin-bottom: 14px;
     }
 
     .footer-copy {
@@ -211,124 +231,156 @@
     }
 
     @media (max-width: 980px) {
-      .header-inner {
-        padding: 18px 0 20px;
-      }
-
-      .top-nav {
-        gap: 28px;
-        font-size: 0.74rem;
-      }
-
-      .title-line {
-        font-size: 1.18rem;
-      }
-
-      .header-copy,
-      .header-quote {
-        font-size: 0.84rem;
-      }
-
       .hero-panel,
-      .hero-spacer {
+      .hero-overlay {
         min-height: 130vh;
+      }
+
+      .hero-overlay {
+        padding: 20px;
+      }
+
+      .hero-card {
+        top: 136px;
+        width: min(500px, 100%);
+        padding: 28px 24px 24px;
+      }
+
+      body.scrolled .hero-card {
+        top: 92px;
+      }
+
+      .header-title-line {
+        font-size: 1.38rem;
+      }
+
+      .header-title-small {
+        font-size: 0.9rem;
+      }
+
+      body.scrolled .header-title-line {
+        font-size: 1.04rem;
       }
     }
 
     @media (max-width: 640px) {
-      .shell,
-      .hero-panel,
-      .footer-rule {
+      .shell {
         width: min(calc(100% - 24px), var(--shell));
+      }
+
+      .site-header {
+        padding-top: 14px;
+        padding-bottom: 12px;
       }
 
       .top-nav {
         gap: 18px;
-        margin-bottom: 14px;
-        font-size: 0.68rem;
+        margin-bottom: 12px;
+        font-size: 0.7rem;
         letter-spacing: 0.14em;
         flex-wrap: wrap;
       }
 
-      .title-line {
-        font-size: 0.98rem;
+      .header-title-line {
+        font-size: 1.02rem;
         letter-spacing: 0.025em;
       }
 
-      .title-small {
+      .header-title-small {
         font-size: 0.78rem;
       }
 
-      .header-copy,
-      .header-quote {
-        font-size: 0.8rem;
+      body.scrolled .header-title-line {
+        font-size: 0.88rem;
+      }
+
+      body.scrolled .header-title-small {
+        font-size: 0.7rem;
+      }
+
+      .hero-panel,
+      .hero-overlay {
+        min-height: 110vh;
       }
 
       .hero-panel {
         border-radius: 22px;
-        margin-top: 8px;
       }
 
-      .hero-panel,
-      .hero-spacer {
-        min-height: 110vh;
+      .hero-overlay {
+        padding: 12px;
+      }
+
+      .hero-card {
+        top: 118px;
+        width: 100%;
+        padding: 22px 18px 18px;
+        border-radius: 18px;
+      }
+
+      body.scrolled .hero-card {
+        top: 88px;
+      }
+
+      .card-body,
+      .card-quote {
+        font-size: 0.82rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="site-header" id="siteHeader">
-    <div class="shell header-inner">
+  <header class="site-header">
+    <div class="shell">
       <nav class="top-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Praxis</a>
         <a href="virtues.html">Energeia</a>
       </nav>
 
-      <div class="title-block">
-        <h1 class="title-line">Holy City Society</h1>
-        <p class="title-small">of the</p>
-        <p class="title-line">Ordo Equestris Civitatis Sanctae</p>
-        <p class="title-line">The Equestrian Order of the Holy City</p>
-      </div>
-
-      <div class="header-body">
-        <p class="header-copy">
-          Continuing the quest to build an<br>
-          illuminated, free, and holy society
-        </p>
-
-        <p class="header-quote">
-          “Ye are the light of the world. A city that is set on a hill cannot be hid.”
-        </p>
+      <div class="header-titles" aria-label="Holy City Society of the Ordo Equestris Civitatis Sanctae">
+        <h1 class="header-title-line">Holy City Society</h1>
+        <p class="header-title-small">of the</p>
+        <p class="header-title-line">Ordo Equestris Civitatis Sanctae</p>
+        <p class="header-title-line">The Equestrian Order of the Holy City</p>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero-panel" aria-label="Holy City image panel">
+  <main class="shell">
+    <section class="hero-panel" aria-label="Holy City Society hero panel">
       <div class="hero-image" role="img" aria-label="Blue engraved holy city on a hill with mounted riders"></div>
-      <div class="hero-spacer"></div>
+
+      <div class="hero-overlay">
+        <div class="hero-card">
+          <p class="card-body">
+            Continuing the quest to build an<br>
+            illuminated, free, and holy society
+          </p>
+
+          <p class="card-quote">
+            “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer shell">
     <div class="footer-rule"></div>
     <div class="footer-copy">Ordo Equestris Civitatis Sanctae</div>
   </footer>
 
   <script>
-    const header = document.getElementById('siteHeader');
-
-    function updateHeaderState() {
-      if (window.scrollY > 40) {
-        header.classList.add('is-scrolled');
+    const setScrolledState = () => {
+      if (window.scrollY > 24) {
+        document.body.classList.add('scrolled');
       } else {
-        header.classList.remove('is-scrolled');
+        document.body.classList.remove('scrolled');
       }
-    }
+    };
 
-    updateHeaderState();
-    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    setScrolledState();
+    window.addEventListener('scroll', setScrolledState, { passive: true });
   </script>
 </body>
 </html>
