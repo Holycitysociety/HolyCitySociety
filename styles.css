@@ -72,6 +72,8 @@ a {
   color: var(--text);
 }
 
+/* Main title */
+
 .wordmark {
   display: flex;
   align-items: center;
@@ -79,7 +81,7 @@ a {
   gap: 18px;
   color: #f6f7f4;
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.785rem, 2.94vw, 2.975rem);
+  font-size: clamp(1.964rem, 3.234vw, 3.273rem);
   font-weight: 500;
   letter-spacing: 0.055em;
   line-height: 0.88;
@@ -145,15 +147,17 @@ a {
   text-transform: uppercase;
 }
 
+/* Society and Equestrian Order title */
+
 .hero-title {
   max-width: 620px;
   margin: 0 0 26px;
   color: #f6f7f4;
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(2.38rem, 3.36vw, 3.92rem);
+  font-size: clamp(1.904rem, 2.688vw, 3.136rem);
   font-weight: 500;
   letter-spacing: -0.025em;
-  line-height: 0.9;
+  line-height: 0.94;
 }
 
 .hero-text {
@@ -226,7 +230,7 @@ a {
 
   .wordmark {
     gap: 8px;
-    font-size: 1.505rem;
+    font-size: 1.656rem;
     letter-spacing: 0.025em;
     line-height: 0.84;
   }
@@ -263,9 +267,9 @@ a {
   .hero-title {
     max-width: 100%;
     margin-bottom: 20px;
-    font-size: clamp(1.75rem, 7.56vw, 2.1rem);
+    font-size: clamp(1.4rem, 6.048vw, 1.68rem);
     letter-spacing: -0.025em;
-    line-height: 0.92;
+    line-height: 0.96;
   }
 
   .hero-text {
@@ -287,7 +291,7 @@ a {
 
 @media (max-width: 390px) {
   .wordmark {
-    font-size: 1.365rem;
+    font-size: 1.502rem;
   }
 
   .hero-art {
@@ -299,6 +303,6 @@ a {
   }
 
   .hero-title {
-    font-size: 1.645rem;
+    font-size: 1.316rem;
   }
 }
