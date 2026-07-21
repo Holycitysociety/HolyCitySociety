@@ -169,14 +169,10 @@ a {
   text-transform: uppercase;
 }
 
-/* English first */
-
 .formal-english {
   margin-bottom: 17px;
   color: var(--text);
 }
-
-/* Latin second */
 
 .formal-latin {
   margin-bottom: 0;
@@ -200,8 +196,6 @@ a {
   transform-origin: left center;
 }
 
-/* English spacing */
-
 .formal-english .fit-text {
   --tracking-em: 0.025;
   --word-spacing-em: 0;
@@ -213,8 +207,6 @@ a {
   letter-spacing: 0.025em;
   word-spacing: normal;
 }
-
-/* Latin spacing */
 
 .formal-latin .fit-text {
   --tracking-em: 0.055;
@@ -430,7 +422,6 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.016;
-
     letter-spacing: 0.016em;
   }
 
@@ -485,7 +476,6 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.012;
-
     letter-spacing: 0.012em;
   }
 
