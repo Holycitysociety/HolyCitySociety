@@ -7,7 +7,7 @@
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
-  --wordmark-width: 34rem;
+  --wordmark-width: 31rem;
 }
 
 * {
@@ -121,7 +121,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(44px, 5.2vw, 78px);
+  padding: clamp(54px, 5.8vw, 88px);
 }
 
 /* Bilingual wordmark */
@@ -140,50 +140,49 @@ a {
   font-family: "Cormorant Garamond", Garamond, serif;
   font-weight: 500;
   font-kerning: normal;
-  line-height: 0.98;
   text-align: left;
 }
 
-.fitted-title-line {
+.title-line {
   display: block;
-  width: 100%;
-  margin: 0;
+  width: auto;
   white-space: nowrap;
-  font-kerning: normal;
-  text-rendering: optimizeLegibility;
 }
 
 .formal-latin {
+  margin-bottom: 14px;
   color: var(--gold);
-  font-size: clamp(1.52rem, 2.2vw, 2.62rem);
-  letter-spacing: 0;
+  font-size: clamp(1.36rem, 1.95vw, 2.34rem);
+  letter-spacing: 0.035em;
+  line-height: 0.94;
   text-transform: uppercase;
 }
 
 .formal-english {
   color: var(--text);
-  font-size: clamp(1.79rem, 2.59vw, 3.08rem);
-  letter-spacing: 0;
+  font-size: clamp(1.6rem, 2.3vw, 2.75rem);
+  letter-spacing: -0.018em;
+  line-height: 0.94;
   text-transform: none;
 }
 
 /* Mission */
 
 .mission {
-  max-width: 580px;
+  max-width: 540px;
   margin: 0 0 34px;
   color: rgba(242, 242, 237, 0.86);
-  font-size: clamp(0.92rem, 1.1vw, 1.08rem);
+  font-size: clamp(0.9rem, 1.05vw, 1.04rem);
   font-weight: 500;
-  letter-spacing: 0.12em;
-  line-height: 1.8;
+  letter-spacing: 0.11em;
+  line-height: 1.75;
   text-transform: uppercase;
 }
 
 /* Scripture */
 
 .scripture {
-  max-width: 560px;
+  max-width: 540px;
   margin: 0;
   padding: 0;
   color: var(--gold);
@@ -192,15 +191,15 @@ a {
 .scripture p {
   margin: 0 0 12px;
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.14rem, 1.45vw, 1.52rem);
+  font-size: clamp(1.12rem, 1.4vw, 1.46rem);
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .scripture cite {
   display: block;
   color: rgba(194, 154, 82, 0.84);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-style: normal;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -215,11 +214,15 @@ a {
   }
 
   .hero-copy {
-    padding: 48px 42px;
+    padding: 52px 44px;
   }
 
   .bilingual-wordmark {
     width: 100%;
+  }
+
+  .title-line {
+    white-space: normal;
   }
 }
 
@@ -241,11 +244,15 @@ a {
   }
 
   .hero-copy {
-    padding: 48px 42px 56px;
+    padding: 52px 44px 60px;
   }
 
   .bilingual-wordmark {
-    width: min(100%, 42rem);
+    width: min(100%, 36rem);
+  }
+
+  .title-line {
+    white-space: nowrap;
   }
 }
 
@@ -298,7 +305,7 @@ a {
   }
 
   .hero-copy {
-    padding: 34px 26px 40px;
+    padding: 38px 30px 44px;
   }
 
   .bilingual-wordmark {
@@ -307,11 +314,16 @@ a {
   }
 
   .formal-latin {
-    font-size: clamp(1.12rem, 5vw, 1.5rem);
+    margin-bottom: 11px;
+    font-size: clamp(1rem, 4.5vw, 1.28rem);
+    letter-spacing: 0.025em;
+    line-height: 0.96;
   }
 
   .formal-english {
-    font-size: clamp(1.32rem, 5.88vw, 1.76rem);
+    font-size: clamp(1.18rem, 5.3vw, 1.5rem);
+    letter-spacing: -0.015em;
+    line-height: 0.96;
   }
 
   .mission {
@@ -334,7 +346,7 @@ a {
 }
 
 @media (max-width: 430px) {
-  .fitted-title-line {
+  .title-line {
     white-space: normal;
   }
 }
@@ -349,14 +361,14 @@ a {
   }
 
   .hero-copy {
-    padding: 30px 22px 36px;
+    padding: 34px 24px 38px;
   }
 
   .formal-latin {
-    font-size: 1.08rem;
+    font-size: 0.96rem;
   }
 
   .formal-english {
-    font-size: 1.27rem;
+    font-size: 1.13rem;
   }
 }
