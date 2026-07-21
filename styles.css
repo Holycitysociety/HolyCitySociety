@@ -10,11 +10,6 @@
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
-
-  /*
-    Common finished width of all six formal-title lines.
-  */
-
   --wordmark-width: 30rem;
 }
 
@@ -168,13 +163,6 @@ a {
   display: block;
   width: 100%;
   white-space: nowrap;
-
-  /*
-    Creates the visual equivalent of double spaces
-    between words while keeping valid HTML spacing.
-  */
-
-  word-spacing: 0.42em;
 }
 
 .opening-cross {
@@ -185,11 +173,6 @@ a {
   line-height: 1;
   vertical-align: 0.13em;
 }
-
-/*
-  JavaScript assigns a different font size to every line.
-  Letter and word spacing remain consistent within each language.
-*/
 
 .formal-latin {
   margin-bottom: 15px;
@@ -217,6 +200,10 @@ a {
   text-transform: uppercase;
 }
 
+.mission span {
+  display: block;
+}
+
 /* Scripture */
 
 .scripture {
@@ -233,6 +220,10 @@ a {
   font-style: italic;
   font-weight: 500;
   line-height: 1.5;
+}
+
+.scripture p span {
+  display: block;
 }
 
 .scripture cite {
@@ -369,10 +360,6 @@ a {
     width: 100%;
     margin-bottom: 30px;
     padding-left: 18px;
-  }
-
-  .title-line {
-    word-spacing: 0.34em;
   }
 
   .opening-cross {
