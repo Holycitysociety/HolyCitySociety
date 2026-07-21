@@ -1,3 +1,128 @@
+:root {
+  --bg: #061426;
+  --panel: #0f1f34;
+  --text: #f2f2ed;
+  --muted: rgba(242, 242, 237, 0.72);
+  --gold: #c29a52;
+  --shell: 1380px;
+  --radius: 30px;
+  --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "EB Garamond", Garamond, serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-shell {
+  width: min(calc(100% - 48px), var(--shell));
+  margin-inline: auto;
+}
+
+/* Header */
+
+.site-header {
+  padding-top: 32px;
+  padding-bottom: 34px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.top-nav a {
+  transition: color 160ms ease;
+}
+
+.top-nav a:hover,
+.top-nav a:focus-visible,
+.top-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.site-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  color: var(--text);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 0.9;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-cross {
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-size: 0.52em;
+}
+
+/* Hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(400px, 0.92fr);
+  min-height: 720px;
+  margin-bottom: 48px;
+  overflow: hidden;
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-art {
+  min-height: 720px;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(6, 20, 38, 0),
+      rgba(15, 31, 52, 0.05) 72%,
+      rgba(15, 31, 52, 0.46)
+    ),
+    url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(44px, 5.2vw, 78px);
+}
+
 /* Bilingual wordmark */
 
 .bilingual-wordmark {
@@ -12,9 +137,9 @@
   margin: 0;
   font-family: "Cormorant Garamond", Garamond, serif;
   font-weight: 500;
+  font-kerning: normal;
   line-height: 0.96;
   text-align: left;
-  font-kerning: normal;
 }
 
 .title-line {
@@ -24,7 +149,7 @@
   white-space: nowrap;
 }
 
-/* Latin: uppercase and 15% smaller than English */
+/* Latin is uppercase and 15% smaller than English */
 
 .formal-latin {
   color: var(--gold);
@@ -33,13 +158,13 @@
   text-transform: uppercase;
 }
 
-/* The shorter Latin line receives wider tracking */
+/* Slightly expand the shorter second Latin line */
 
 .formal-latin .title-line-two {
   letter-spacing: 0.12em;
 }
 
-/* English: normal title case */
+/* English remains in normal title case */
 
 .formal-english {
   color: var(--text);
@@ -48,8 +173,218 @@
   text-transform: none;
 }
 
-/* The shorter English line receives restrained tracking */
+/* Slightly expand the shorter second English line */
 
 .formal-english .title-line-two {
   letter-spacing: 0.045em;
+}
+
+/* Mission */
+
+.mission {
+  max-width: 580px;
+  margin: 0 0 34px;
+  color: rgba(242, 242, 237, 0.86);
+  font-size: clamp(0.92rem, 1.1vw, 1.08rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+/* Scripture */
+
+.scripture {
+  max-width: 560px;
+  margin: 0;
+  padding: 0;
+  color: var(--gold);
+}
+
+.scripture p {
+  margin: 0 0 12px;
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.14rem, 1.45vw, 1.52rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.scripture cite {
+  display: block;
+  color: rgba(194, 154, 82, 0.84);
+  font-size: 0.74rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.95fr);
+  }
+
+  .hero-copy {
+    padding: 48px 42px;
+  }
+
+  .formal-title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-art {
+    min-height: 520px;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(6, 20, 38, 0),
+        rgba(15, 31, 52, 0.1)
+      ),
+      url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
+  }
+
+  .hero-copy {
+    padding: 48px 42px 56px;
+  }
+
+  .formal-title {
+    max-width: 760px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(calc(100% - 24px), var(--shell));
+  }
+
+  .site-header {
+    padding-top: 22px;
+    padding-bottom: 26px;
+  }
+
+  .top-nav {
+    gap: 28px;
+    margin-bottom: 22px;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .site-name {
+    gap: 10px;
+    font-size: 1.78rem;
+    letter-spacing: 0.07em;
+    line-height: 0.9;
+  }
+
+  .site-name > span:nth-child(2) {
+    max-width: 280px;
+  }
+
+  .site-cross {
+    font-size: 0.38em;
+  }
+
+  .hero {
+    margin-bottom: 28px;
+    border-radius: 22px;
+  }
+
+  .hero-art {
+    min-height: 390px;
+    background-position: center top;
+  }
+
+  .hero-copy {
+    padding: 34px 26px 40px;
+  }
+
+  .bilingual-wordmark {
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  .formal-title {
+    max-width: 100%;
+  }
+
+  .title-line {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .formal-latin {
+    font-size: clamp(1.305rem, 6.12vw, 1.683rem);
+    letter-spacing: 0.025em;
+    line-height: 0.98;
+  }
+
+  .formal-latin .title-line-two {
+    letter-spacing: 0.075em;
+  }
+
+  .formal-english {
+    font-size: clamp(1.53rem, 7.2vw, 1.98rem);
+    line-height: 0.98;
+  }
+
+  .formal-english .title-line-two {
+    letter-spacing: 0.025em;
+  }
+
+  .mission {
+    margin-bottom: 26px;
+    font-size: 0.8rem;
+    letter-spacing: 0.075em;
+    line-height: 1.68;
+  }
+
+  .scripture p {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    line-height: 1.52;
+  }
+
+  .scripture cite {
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 430px) {
+  .title-line {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-name {
+    font-size: 1.58rem;
+  }
+
+  .hero-art {
+    min-height: 360px;
+  }
+
+  .hero-copy {
+    padding: 30px 22px 36px;
+  }
+
+  .formal-latin {
+    font-size: 1.224rem;
+  }
+
+  .formal-english {
+    font-size: 1.44rem;
+  }
 }
