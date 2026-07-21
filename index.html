@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet"
   />
 
@@ -46,9 +46,7 @@
         >
           <p class="formal-title formal-latin">
             <span class="title-line">
-              <span class="fit-text">
-                Societas et
-              </span>
+              <span class="fit-text">Societas atque</span>
             </span>
 
             <span class="title-line">
@@ -62,34 +60,38 @@
 
           <h1 class="formal-title formal-english" id="formal-title">
             <span class="title-line">
-              <span class="fit-text">
-                T h e&nbsp;&nbsp;S o c i e t y&nbsp;&nbsp;&amp;
-              </span>
+              <span class="fit-text">The Society &amp;</span>
             </span>
 
             <span class="title-line">
-              <span class="fit-text">
-                Equestrian Order
-              </span>
+              <span class="fit-text">Equestrian Order of</span>
             </span>
 
             <span class="title-line">
-              <span class="fit-text">
-                Of The Holy City
-              </span>
+              <span class="fit-text">The Holy City</span>
             </span>
           </h1>
         </div>
 
-        <p class="mission">
-          <span>Continuing the quest to build</span>
-          <span>an illuminated, free, and holy society</span>
+        <p class="mission equal-size-group">
+          <span class="equal-size-line">
+            Continuing the quest to build
+          </span>
+
+          <span class="equal-size-line">
+            an illuminated, free, and holy society
+          </span>
         </p>
 
         <blockquote class="scripture">
-          <p>
-            <span>“Ye are the light of the world.</span>
-            <span>A city that is set on a hill cannot be hid.”</span>
+          <p class="equal-size-group">
+            <span class="equal-size-line">
+              “Ye are the light of the world.
+            </span>
+
+            <span class="equal-size-line">
+              A city that is set on a hill cannot be hid.”
+            </span>
           </p>
 
           <cite>Matthew 5:14</cite>
@@ -100,10 +102,17 @@
 
   <script>
     (() => {
-      const fittedTextSelector = ".fit-text";
       const referenceFontSize = 100;
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
+
+      function numericCustomProperty(element, propertyName, fallback) {
+        const value = Number.parseFloat(
+          getComputedStyle(element).getPropertyValue(propertyName)
+        );
+
+        return Number.isFinite(value) ? value : fallback;
+      }
 
       function transformedText(element) {
         const text = element.textContent.trim();
@@ -120,23 +129,14 @@
         return text;
       }
 
-      function numericCustomProperty(element, propertyName, fallback) {
-        const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(propertyName)
-        );
-
-        return Number.isFinite(value) ? value : fallback;
-      }
-
       function measureTextAtReferenceSize(element) {
         const styles = getComputedStyle(element);
         const text = transformedText(element);
 
         const fontStyle = styles.fontStyle || "normal";
         const fontVariant = styles.fontVariant || "normal";
-        const fontWeight = styles.fontWeight || "500";
-        const fontFamily =
-          styles.fontFamily || "Cormorant, Garamond, serif";
+        const fontWeight = styles.fontWeight || "400";
+        const fontFamily = styles.fontFamily || "serif";
 
         context.font =
           `${fontStyle} ${fontVariant} ${fontWeight} ` +
@@ -150,36 +150,27 @@
           0
         );
 
-        const numberOfGaps = Math.max(text.length - 1, 0);
+        const characterGaps = Math.max(text.length - 1, 0);
 
         const trackingWidth =
-          trackingEm * referenceFontSize * numberOfGaps;
+          trackingEm * referenceFontSize * characterGaps;
 
         return glyphWidth + trackingWidth;
       }
 
-      function availableWidthFor(element) {
+      function fitFormalLine(element) {
         const line = element.closest(".title-line");
-
-        return Math.max(line.clientWidth - 2, 0);
-      }
-
-      function fitElement(element) {
-        const targetWidth = availableWidthFor(element);
+        const targetWidth = Math.max(line.clientWidth - 2, 0);
 
         if (targetWidth <= 0) {
           return;
         }
 
-        const referenceWidth =
-          measureTextAtReferenceSize(element);
+        const referenceWidth = measureTextAtReferenceSize(element);
 
         if (referenceWidth <= 0) {
           return;
         }
-
-        const calculatedSize =
-          referenceFontSize * (targetWidth / referenceWidth);
 
         const minimumSize = numericCustomProperty(
           element,
@@ -193,6 +184,9 @@
           180
         );
 
+        const calculatedSize =
+          referenceFontSize * (targetWidth / referenceWidth);
+
         const finalSize = Math.max(
           minimumSize,
           Math.min(calculatedSize, maximumSize)
@@ -201,10 +195,63 @@
         element.style.fontSize = `${finalSize}px`;
       }
 
-      function fitAllLines() {
+      function fitEqualSizeGroup(group) {
+        const lines = Array.from(
+          group.querySelectorAll(".equal-size-line")
+        );
+
+        if (!lines.length) {
+          return;
+        }
+
+        const targetWidth = Math.max(group.clientWidth - 2, 0);
+
+        if (targetWidth <= 0) {
+          return;
+        }
+
+        const longestReferenceWidth = Math.max(
+          ...lines.map(measureTextAtReferenceSize)
+        );
+
+        if (longestReferenceWidth <= 0) {
+          return;
+        }
+
+        const minimumSize = numericCustomProperty(
+          group,
+          "--minimum-group-size",
+          10
+        );
+
+        const maximumSize = numericCustomProperty(
+          group,
+          "--maximum-group-size",
+          72
+        );
+
+        const calculatedSize =
+          referenceFontSize *
+          (targetWidth / longestReferenceWidth);
+
+        const finalSize = Math.max(
+          minimumSize,
+          Math.min(calculatedSize, maximumSize)
+        );
+
+        lines.forEach((line) => {
+          line.style.fontSize = `${finalSize}px`;
+        });
+      }
+
+      function fitAllTypography() {
         document
-          .querySelectorAll(fittedTextSelector)
-          .forEach(fitElement);
+          .querySelectorAll(".fit-text")
+          .forEach(fitFormalLine);
+
+        document
+          .querySelectorAll(".equal-size-group")
+          .forEach(fitEqualSizeGroup);
       }
 
       let resizeFrame;
@@ -213,7 +260,7 @@
         window.cancelAnimationFrame(resizeFrame);
 
         resizeFrame =
-          window.requestAnimationFrame(fitAllLines);
+          window.requestAnimationFrame(fitAllTypography);
       }
 
       if (document.fonts && document.fonts.ready) {
@@ -223,10 +270,7 @@
       }
 
       window.addEventListener("resize", scheduleFit);
-      window.addEventListener(
-        "orientationchange",
-        scheduleFit
-      );
+      window.addEventListener("orientationchange", scheduleFit);
     })();
   </script>
 </body>
