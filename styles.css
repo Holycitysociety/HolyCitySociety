@@ -7,7 +7,7 @@
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
-  --wordmark-width: 38rem;
+  --wordmark-width: 40rem;
 }
 
 * {
@@ -93,7 +93,7 @@ a {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(430px, 0.92fr);
   min-height: 720px;
   margin-bottom: 48px;
   overflow: hidden;
@@ -122,7 +122,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(50px, 5.4vw, 82px);
+  padding: clamp(48px, 5vw, 78px);
   text-align: center;
 }
 
@@ -130,18 +130,27 @@ a {
 
 .bilingual-wordmark {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  align-items: center;
-  column-gap: clamp(28px, 3vw, 48px);
+  grid-template-columns:
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr);
+  align-items: stretch;
+  column-gap: clamp(22px, 2.5vw, 38px);
   width: min(100%, var(--wordmark-width));
   margin-bottom: 42px;
 }
 
 .formal-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0;
   font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.2rem, 1.62vw, 1.95rem);
   font-weight: 500;
   font-kerning: normal;
+  letter-spacing: 0;
+  line-height: 1.02;
 }
 
 .title-line {
@@ -151,20 +160,20 @@ a {
 
 .formal-latin {
   color: var(--gold);
-  font-size: clamp(1.15rem, 1.55vw, 1.9rem);
-  letter-spacing: 0.045em;
-  line-height: 1.02;
   text-align: right;
   text-transform: uppercase;
 }
 
 .formal-english {
   color: var(--text);
-  font-size: clamp(1.35rem, 1.82vw, 2.24rem);
-  letter-spacing: -0.015em;
-  line-height: 1.02;
   text-align: left;
   text-transform: none;
+}
+
+.wordmark-divider {
+  width: 1px;
+  min-height: 100%;
+  background: rgba(194, 154, 82, 0.62);
 }
 
 /* Mission */
@@ -213,24 +222,20 @@ a {
 
 @media (max-width: 1100px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(400px, 0.95fr);
+    grid-template-columns: minmax(0, 1fr) minmax(410px, 0.95fr);
   }
 
   .hero-copy {
-    padding: 48px 38px;
+    padding: 48px 36px;
   }
 
   .bilingual-wordmark {
-    column-gap: 24px;
+    column-gap: 22px;
     width: 100%;
   }
 
-  .formal-latin {
-    font-size: clamp(1rem, 1.65vw, 1.55rem);
-  }
-
-  .formal-english {
-    font-size: clamp(1.18rem, 1.94vw, 1.82rem);
+  .formal-title {
+    font-size: clamp(1rem, 1.55vw, 1.48rem);
   }
 }
 
@@ -257,15 +262,11 @@ a {
 
   .bilingual-wordmark {
     width: min(100%, 42rem);
-    column-gap: 40px;
+    column-gap: 34px;
   }
 
-  .formal-latin {
+  .formal-title {
     font-size: clamp(1.15rem, 2.5vw, 1.65rem);
-  }
-
-  .formal-english {
-    font-size: clamp(1.35rem, 2.95vw, 1.94rem);
   }
 }
 
@@ -314,26 +315,22 @@ a {
   }
 
   .hero-copy {
-    padding: 38px 24px 44px;
+    padding: 38px 22px 44px;
   }
 
   .bilingual-wordmark {
-    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
-    column-gap: 18px;
+    grid-template-columns:
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr);
+    column-gap: 15px;
     width: 100%;
     margin-bottom: 30px;
   }
 
-  .formal-latin {
+  .formal-title {
     font-size: clamp(0.76rem, 3.45vw, 1rem);
-    letter-spacing: 0.025em;
-    line-height: 1.06;
-  }
-
-  .formal-english {
-    font-size: clamp(0.9rem, 4.05vw, 1.18rem);
-    letter-spacing: -0.01em;
-    line-height: 1.06;
+    line-height: 1.07;
   }
 
   .mission {
@@ -357,19 +354,15 @@ a {
 
 @media (max-width: 430px) {
   .bilingual-wordmark {
-    column-gap: 14px;
+    column-gap: 12px;
+  }
+
+  .formal-title {
+    font-size: 0.76rem;
   }
 
   .title-line {
     white-space: normal;
-  }
-
-  .formal-latin {
-    font-size: 0.78rem;
-  }
-
-  .formal-english {
-    font-size: 0.92rem;
   }
 }
 
@@ -383,14 +376,10 @@ a {
   }
 
   .hero-copy {
-    padding: 34px 20px 38px;
+    padding: 34px 18px 38px;
   }
 
-  .formal-latin {
-    font-size: 0.72rem;
-  }
-
-  .formal-english {
-    font-size: 0.85rem;
+  .formal-title {
+    font-size: 0.7rem;
   }
 }
