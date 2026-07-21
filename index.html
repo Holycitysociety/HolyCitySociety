@@ -15,6 +15,30 @@
   />
 
   <link rel="stylesheet" href="./styles.css" />
+
+  <style>
+    /*
+      Temporary English-first arrangement.
+
+      The English block now supplies the internal gap,
+      while the Latin block sits flush above the larger
+      wordmark-to-mission spacing.
+    */
+
+    .wordmark-english-first .formal-english {
+      margin-bottom: 17px;
+    }
+
+    .wordmark-english-first .formal-latin {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+      .wordmark-english-first .formal-english {
+        margin-bottom: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -40,8 +64,6 @@
       ></div>
 
       <div class="hero-copy">
-        <p class="institutional-caption">Sub Nomine</p>
-
         <div
           class="bilingual-wordmark wordmark-english-first"
           aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
@@ -326,6 +348,13 @@
           return;
         }
 
+        /*
+          Latin lines two and three fill the width.
+
+          The first Latin line is 80% of the smaller
+          font size used by its two supporting lines.
+        */
+
         const latinSecondSize =
           calculateFormalLineSize(latinLines[1]);
 
@@ -338,11 +367,21 @@
             latinThirdSize
           ) * firstLineScale;
 
+        /*
+          English lines two and three fill the width
+          independently.
+        */
+
         const englishSecondSize =
           calculateFormalLineSize(englishLines[1]);
 
         const englishThirdSize =
           calculateFormalLineSize(englishLines[2]);
+
+        /*
+          The first English line matches the actual
+          rendered width of the first Latin line.
+        */
 
         const latinFirstWidth =
           renderedWidthAtSize(
