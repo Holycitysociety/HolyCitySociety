@@ -6,6 +6,7 @@
 
   --gold: #f0c75e;
   --gold-soft: rgba(240, 199, 94, 0.88);
+  --accent-blue: #a8c2de;
 
   --shell: 1380px;
   --radius: 30px;
@@ -133,23 +134,6 @@ a {
   padding: clamp(54px, 5.4vw, 82px);
 }
 
-/* Institutional caption */
-
-.institutional-caption {
-  width: min(100%, var(--wordmark-width));
-  max-width: 100%;
-  margin: -22px 0 24px;
-  color: var(--gold-soft);
-  font-family: "EB Garamond", Garamond, serif;
-  font-size: 0.72rem;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 /* Bilingual formal wordmark */
 
 .bilingual-wordmark {
@@ -167,7 +151,7 @@ a {
   bottom: 0;
   left: 0;
   width: 1px;
-  background: var(--gold);
+  background: var(--accent-blue);
 }
 
 .formal-title {
@@ -192,7 +176,7 @@ a {
 
 .formal-latin {
   margin-bottom: 0;
-  color: var(--gold);
+  color: var(--accent-blue);
   font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
 }
@@ -236,6 +220,7 @@ a {
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
+  color: var(--accent-blue);
   font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
   letter-spacing: 0.0375em;
@@ -368,10 +353,6 @@ a {
   .hero-copy {
     padding: 50px 44px 58px;
   }
-
-  .institutional-caption {
-    margin-top: -18px;
-  }
 }
 
 /* Mobile */
@@ -427,12 +408,6 @@ a {
     padding: 36px 24px 44px;
   }
 
-  .institutional-caption {
-    margin: -14px 0 20px;
-    font-size: 0.64rem;
-    letter-spacing: 0.14em;
-  }
-
   .bilingual-wordmark {
     width: 100%;
     max-width: 100%;
@@ -458,7 +433,6 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.01;
-
     letter-spacing: 0.01em;
   }
 
@@ -499,11 +473,6 @@ a {
     padding: 32px 20px 38px;
   }
 
-  .institutional-caption {
-    margin: -12px 0 18px;
-    font-size: 0.62rem;
-  }
-
   .bilingual-wordmark {
     padding-left: 14px;
   }
@@ -518,7 +487,6 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.006;
-
     letter-spacing: 0.006em;
   }
 
