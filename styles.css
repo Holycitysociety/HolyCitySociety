@@ -133,13 +133,7 @@ a {
   padding: clamp(54px, 5.4vw, 82px);
 }
 
-/*
-  Caption above the ruled wordmark.
-
-  The negative top margin raises SUB NOMINE.
-  The larger bottom margin leaves approximately
-  one caption-line of open space beneath it.
-*/
+/* Institutional caption */
 
 .institutional-caption {
   width: min(100%, var(--wordmark-width));
@@ -162,7 +156,7 @@ a {
   position: relative;
   width: min(100%, var(--wordmark-width));
   max-width: 100%;
-  margin-bottom: 42px;
+  margin-bottom: 38px;
   padding-left: 24px;
 }
 
@@ -185,30 +179,22 @@ a {
   text-transform: uppercase;
 }
 
-/* English-first internal spacing */
-
-.wordmark-english-first .formal-english {
-  margin-bottom: 17px;
-}
-
-.wordmark-english-first .formal-latin {
-  margin-bottom: 0;
-}
-
-/* Latin: Cinzel Regular 400 */
-
-.formal-latin {
-  color: var(--gold);
-  font-family: "Cinzel", "Times New Roman", serif;
-  font-weight: 400;
-}
-
-/* English: Cormorant medium */
+/* English first */
 
 .formal-english {
+  margin-bottom: 15px;
   color: var(--text);
   font-family: "Cormorant", Garamond, serif;
   font-weight: 500;
+}
+
+/* Latin second */
+
+.formal-latin {
+  margin-bottom: 0;
+  color: var(--gold);
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-weight: 400;
 }
 
 .title-line {
@@ -224,22 +210,8 @@ a {
   display: inline-block;
   flex: 0 0 auto;
   white-space: nowrap;
-  line-height: 1.02;
+  line-height: 1.08;
   transform-origin: left center;
-}
-
-/* Latin spacing */
-
-.formal-latin .fit-text {
-  --tracking-em: 0.0375;
-  --word-spacing-em: 0.125;
-  --minimum-fit-size: 10;
-  --maximum-fit-size: 180;
-
-  font-family: "Cinzel", "Times New Roman", serif;
-  font-weight: 400;
-  letter-spacing: 0.0375em;
-  word-spacing: 0.125em;
 }
 
 /* English spacing */
@@ -254,6 +226,20 @@ a {
   font-weight: 500;
   letter-spacing: 0.017em;
   word-spacing: normal;
+}
+
+/* Latin spacing */
+
+.formal-latin .fit-text {
+  --tracking-em: 0.0375;
+  --word-spacing-em: 0.125;
+  --minimum-fit-size: 10;
+  --maximum-fit-size: 180;
+
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.0375em;
+  word-spacing: 0.125em;
 }
 
 /* Mission */
@@ -450,16 +436,16 @@ a {
   .bilingual-wordmark {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 34px;
+    margin-bottom: 32px;
     padding-left: 16px;
   }
 
-  .wordmark-english-first .formal-english {
-    margin-bottom: 16px;
+  .formal-english {
+    margin-bottom: 14px;
   }
 
   .fit-text {
-    line-height: 1.04;
+    line-height: 1.1;
   }
 
   .formal-latin .fit-text {
@@ -472,6 +458,7 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.01;
+
     letter-spacing: 0.01em;
   }
 
@@ -531,6 +518,7 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.006;
+
     letter-spacing: 0.006em;
   }
 
