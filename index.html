@@ -90,73 +90,141 @@
 
   <script>
     (() => {
-      const SELECTOR = ".fitted-title-line";
+      const lineSelector = ".fitted-title-line";
+      let resizeFrame;
 
-      function getNumericStyle(element, propertyName, fallback) {
+      function readNumber(element, property, fallback) {
         const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(propertyName)
+          getComputedStyle(element).getPropertyValue(property)
         );
 
         return Number.isFinite(value) ? value : fallback;
       }
 
-      function fitLineToWidth(line) {
-        const availableWidth = line.clientWidth;
+      function countCharacterGaps(text) {
+        const characters = Array.from(text.trim());
+        return Math.max(characters.length - 1, 1);
+      }
 
-        if (availableWidth <= 0) {
+      function measureNaturalWidth(line, fontSize) {
+        line.style.fontSize = `${fontSize}px`;
+        line.style.letterSpacing = "0px";
+
+        return line.getBoundingClientRect().width;
+      }
+
+      function fitLine(line) {
+        const title = line.closest(".formal-title");
+        const targetWidth = line.clientWidth;
+
+        if (!title || targetWidth <= 0) {
           return;
         }
 
-        const parentTitle = line.closest(".formal-title");
-        const isLatin = parentTitle.classList.contains("formal-latin");
-
-        const minimumSize = getNumericStyle(
-          parentTitle,
+        const minimumSize = readNumber(
+          title,
           "--minimum-line-size",
-          isLatin ? 14 : 16
+          16
         );
 
-        const maximumSize = getNumericStyle(
-          parentTitle,
+        const maximumSize = readNumber(
+          title,
           "--maximum-line-size",
-          isLatin ? 54 : 62
+          64
         );
 
-        line.style.fontSize = `${maximumSize}px`;
+        /*
+          The font first fills this proportion of the line.
+          Letter spacing supplies the final portion.
+        */
+        const naturalFill = readNumber(
+          title,
+          "--natural-fill",
+          0.94
+        );
+
+        const maximumTrackingEm = readNumber(
+          title,
+          "--maximum-tracking",
+          0.14
+        );
+
+        const desiredNaturalWidth = targetWidth * naturalFill;
+
+        line.style.fontSize = "";
+        line.style.letterSpacing = "0px";
 
         let low = minimumSize;
         let high = maximumSize;
-        let bestSize = minimumSize;
+        let fittedSize = minimumSize;
 
-        for (let iteration = 0; iteration < 24; iteration += 1) {
+        /*
+          Find the largest font size whose untracked text remains
+          within the desired natural-width proportion.
+        */
+        for (let iteration = 0; iteration < 28; iteration += 1) {
           const testSize = (low + high) / 2;
+          const measuredWidth = measureNaturalWidth(line, testSize);
 
-          line.style.fontSize = `${testSize}px`;
-
-          const renderedWidth = line.scrollWidth;
-
-          if (renderedWidth <= availableWidth) {
-            bestSize = testSize;
+          if (measuredWidth <= desiredNaturalWidth) {
+            fittedSize = testSize;
             low = testSize;
           } else {
             high = testSize;
           }
         }
 
-        line.style.fontSize = `${bestSize}px`;
+        line.style.fontSize = `${fittedSize}px`;
+        line.style.letterSpacing = "0px";
+
+        let naturalWidth = line.getBoundingClientRect().width;
+        const text = line.textContent.trim();
+        const characterGaps = countCharacterGaps(text);
+
+        let requiredTracking =
+          (targetWidth - naturalWidth) / characterGaps;
+
+        const maximumTracking =
+          fittedSize * maximumTrackingEm;
+
+        /*
+          If the line reached its maximum size and still needs
+          excessive tracking, allow the font to grow enough to keep
+          the tracking elegant while maintaining the square edge.
+        */
+        if (requiredTracking > maximumTracking) {
+          const widthNeededFromType =
+            targetWidth - maximumTracking * characterGaps;
+
+          const scale =
+            naturalWidth > 0
+              ? widthNeededFromType / naturalWidth
+              : 1;
+
+          fittedSize *= Math.max(scale, 1);
+
+          line.style.fontSize = `${fittedSize}px`;
+          line.style.letterSpacing = "0px";
+
+          naturalWidth = line.getBoundingClientRect().width;
+
+          requiredTracking =
+            (targetWidth - naturalWidth) / characterGaps;
+        }
+
+        line.style.letterSpacing =
+          `${Math.max(requiredTracking, 0)}px`;
       }
 
-      function fitAllWordmarkLines() {
-        document.querySelectorAll(SELECTOR).forEach(fitLineToWidth);
+      function fitWordmark() {
+        document.querySelectorAll(lineSelector).forEach(fitLine);
       }
-
-      let resizeFrame;
 
       function scheduleFit() {
         window.cancelAnimationFrame(resizeFrame);
 
         resizeFrame = window.requestAnimationFrame(() => {
-          fitAllWordmarkLines();
+          fitWordmark();
         });
       }
 
@@ -168,7 +236,8 @@
 
       window.addEventListener("resize", scheduleFit);
 
-      const wordmark = document.querySelector(".bilingual-wordmark");
+      const wordmark =
+        document.querySelector(".bilingual-wordmark");
 
       if ("ResizeObserver" in window && wordmark) {
         const observer = new ResizeObserver(scheduleFit);
