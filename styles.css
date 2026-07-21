@@ -144,7 +144,7 @@ a {
   position: relative;
   width: min(100%, var(--wordmark-width));
   max-width: 100%;
-  margin-bottom: 38px;
+  margin-bottom: 40px;
   padding-left: var(--content-inset);
 }
 
@@ -169,14 +169,10 @@ a {
   text-transform: uppercase;
 }
 
-/* English first */
-
 .formal-english {
   margin-bottom: 17px;
   color: var(--text);
 }
-
-/* Latin second */
 
 .formal-latin {
   margin-bottom: 0;
@@ -200,7 +196,7 @@ a {
   transform-origin: left center;
 }
 
-/* English spacing */
+/* English wordmark */
 
 .formal-english .fit-text {
   --tracking-em: 0.025;
@@ -214,7 +210,7 @@ a {
   word-spacing: normal;
 }
 
-/* Latin spacing */
+/* Latin wordmark */
 
 .formal-latin .fit-text {
   --tracking-em: 0.055;
@@ -229,31 +225,33 @@ a {
   word-spacing: 0.12em;
 }
 
-/* Mission */
-
-.mission {
-  --tracking-em: 0.085;
-  --word-spacing-em: 0;
-  --minimum-group-size: 10;
-  --maximum-group-size: 28;
-
-  width: min(100%, var(--supporting-width));
-  max-width: 100%;
-  margin: 0 0 34px;
-  padding-left: var(--content-inset);
-  color: rgba(247, 246, 240, 0.84);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-weight: 300;
-  letter-spacing: 0.085em;
-  line-height: 1.6;
-  text-transform: uppercase;
-}
+/* Supporting lines */
 
 .equal-size-line {
   display: block;
   width: max-content;
   max-width: 100%;
   white-space: nowrap;
+}
+
+/* Mission statement */
+
+.mission {
+  --tracking-em: 0.025;
+  --word-spacing-em: 0;
+  --minimum-group-size: 10;
+  --maximum-group-size: 18;
+
+  width: min(100%, var(--supporting-width));
+  max-width: 100%;
+  margin: 0 0 30px;
+  padding-left: var(--content-inset);
+  color: rgba(247, 246, 240, 0.78);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  line-height: 1.48;
+  text-transform: none;
 }
 
 /* Scripture */
@@ -270,29 +268,29 @@ a {
   --tracking-em: 0;
   --word-spacing-em: 0;
   --minimum-group-size: 10;
-  --maximum-group-size: 32;
+  --maximum-group-size: 20;
 
   width: 100%;
-  margin: 0 0 12px;
+  margin: 0 0 11px;
   font-family: "Cormorant Garamond", Garamond, serif;
   font-style: italic;
   font-weight: 300;
   letter-spacing: 0;
-  line-height: 1.45;
+  line-height: 1.42;
 }
 
 .scripture cite {
   display: block;
   color: var(--accent-blue-soft);
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-style: normal;
   font-weight: 300;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-/* Small laptop and landscape tablet */
+/* Small laptop */
 
 @media (max-width: 1400px) {
   :root {
@@ -416,7 +414,7 @@ a {
   .bilingual-wordmark {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 32px;
+    margin-bottom: 34px;
   }
 
   .formal-english {
@@ -429,6 +427,7 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.016;
+
     letter-spacing: 0.016em;
   }
 
@@ -441,19 +440,19 @@ a {
   }
 
   .mission {
-    --tracking-em: 0.055;
-    --maximum-group-size: 22;
+    --tracking-em: 0.018;
+    --maximum-group-size: 17;
 
-    margin-bottom: 30px;
-    letter-spacing: 0.055em;
-    line-height: 1.55;
+    margin-bottom: 27px;
+    letter-spacing: 0.018em;
+    line-height: 1.45;
   }
 
   .scripture p {
-    --maximum-group-size: 26;
+    --maximum-group-size: 19;
 
-    margin-bottom: 12px;
-    line-height: 1.45;
+    margin-bottom: 10px;
+    line-height: 1.4;
   }
 
   .scripture cite {
@@ -483,6 +482,7 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.012;
+
     letter-spacing: 0.012em;
   }
 
@@ -495,13 +495,13 @@ a {
   }
 
   .mission {
-    --tracking-em: 0.045;
-    --maximum-group-size: 20;
+    --tracking-em: 0.014;
+    --maximum-group-size: 16;
 
-    letter-spacing: 0.045em;
+    letter-spacing: 0.014em;
   }
 
   .scripture p {
-    --maximum-group-size: 24;
+    --maximum-group-size: 18;
   }
 }
