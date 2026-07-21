@@ -12,8 +12,8 @@
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
 
   /*
-    Shared target width for every one of the six formal-title lines.
-    Change this to make the complete bilingual wordmark wider or narrower.
+    This is the shared width of all six formal-title lines.
+    Every line begins at the left rule and ends at this boundary.
   */
   --wordmark-width: 30rem;
 }
@@ -172,26 +172,34 @@ a {
 }
 
 /*
-  Each line receives its own calculated font size.
-  These variables establish the permitted size range.
+  The script adjusts both font size and tracking independently
+  for each line.
+
+  --natural-fill:
+  Proportion filled by the type itself before tracking is added.
+
+  --maximum-tracking:
+  Maximum preferred tracking, expressed relative to font size.
 */
 
 .formal-latin {
   --minimum-line-size: 18;
-  --maximum-line-size: 48;
+  --maximum-line-size: 58;
+  --natural-fill: 0.92;
+  --maximum-tracking: 0.16;
 
   margin-bottom: 14px;
   color: var(--gold);
-  letter-spacing: 0.063em;
   line-height: 0.88;
 }
 
 .formal-english {
   --minimum-line-size: 20;
-  --maximum-line-size: 56;
+  --maximum-line-size: 64;
+  --natural-fill: 0.94;
+  --maximum-tracking: 0.13;
 
   color: var(--text);
-  letter-spacing: 0.017em;
   line-height: 0.88;
 }
 
@@ -253,12 +261,12 @@ a {
 
   .formal-latin {
     --minimum-line-size: 17;
-    --maximum-line-size: 42;
+    --maximum-line-size: 50;
   }
 
   .formal-english {
     --minimum-line-size: 19;
-    --maximum-line-size: 48;
+    --maximum-line-size: 54;
   }
 }
 
@@ -279,12 +287,14 @@ a {
 
   .formal-latin {
     --minimum-line-size: 16;
-    --maximum-line-size: 38;
+    --maximum-line-size: 44;
+    --natural-fill: 0.92;
   }
 
   .formal-english {
     --minimum-line-size: 18;
-    --maximum-line-size: 42;
+    --maximum-line-size: 48;
+    --natural-fill: 0.94;
   }
 
   .mission {
@@ -325,12 +335,12 @@ a {
 
   .formal-latin {
     --minimum-line-size: 17;
-    --maximum-line-size: 46;
+    --maximum-line-size: 52;
   }
 
   .formal-english {
     --minimum-line-size: 19;
-    --maximum-line-size: 52;
+    --maximum-line-size: 58;
   }
 }
 
@@ -338,10 +348,6 @@ a {
 
 @media (max-width: 640px) {
   :root {
-    /*
-      Mobile target width is the width of the text area.
-      All six lines fit exactly inside this width.
-    */
     --wordmark-width: 100%;
   }
 
@@ -398,18 +404,20 @@ a {
 
   .formal-latin {
     --minimum-line-size: 15;
-    --maximum-line-size: 34;
+    --maximum-line-size: 40;
+    --natural-fill: 0.91;
+    --maximum-tracking: 0.17;
 
     margin-bottom: 12px;
-    letter-spacing: 0.049em;
     line-height: 0.9;
   }
 
   .formal-english {
     --minimum-line-size: 17;
-    --maximum-line-size: 40;
+    --maximum-line-size: 46;
+    --natural-fill: 0.93;
+    --maximum-tracking: 0.14;
 
-    letter-spacing: 0.012em;
     line-height: 0.9;
   }
 
@@ -451,11 +459,11 @@ a {
 
   .formal-latin {
     --minimum-line-size: 14;
-    --maximum-line-size: 31;
+    --maximum-line-size: 36;
   }
 
   .formal-english {
     --minimum-line-size: 16;
-    --maximum-line-size: 36;
+    --maximum-line-size: 41;
   }
 }
