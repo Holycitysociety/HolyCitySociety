@@ -1,22 +1,83 @@
-<div
-  class="bilingual-wordmark"
-  aria-label="Societas et Ordo Equestris Civitatis Sanctae — The Society and Equestrian Order of the Holy City"
->
-  <p class="formal-title formal-latin">
-    <span class="title-line title-line-one">
-      Societas et Ordo Equestris
-    </span>
-    <span class="title-line title-line-two">
-      Civitatis Sanctae
-    </span>
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <h1 class="formal-title formal-english" id="formal-title">
-    <span class="title-line title-line-one">
-      The Society and Equestrian
-    </span>
-    <span class="title-line title-line-two">
-      Order of the Holy City
-    </span>
-  </h1>
-</div>
+  <title>Holy City Society</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="site-header site-shell">
+    <nav class="top-nav" aria-label="Primary">
+      <a href="./index.html" aria-current="page">Praxis</a>
+      <a href="./virtues.html">Energeia</a>
+    </nav>
+
+    <div class="site-name" aria-label="Holy City Society">
+      <span class="site-cross" aria-hidden="true">✠</span>
+      <span>Holy City Society</span>
+      <span class="site-cross" aria-hidden="true">✠</span>
+    </div>
+  </header>
+
+  <main class="site-shell">
+    <section class="hero" aria-labelledby="formal-title">
+      <div
+        class="hero-art"
+        role="img"
+        aria-label="Blue engraved city on a hill with mounted riders"
+      ></div>
+
+      <div class="hero-copy">
+        <div
+          class="bilingual-wordmark"
+          aria-label="Societas et Ordo Equestris Civitatis Sanctae — The Society and Equestrian Order of the Holy City"
+        >
+          <p class="formal-title formal-latin">
+            <span class="title-line title-line-one">
+              Societas et Ordo Equestris
+            </span>
+
+            <span class="title-line title-line-two">
+              Civitatis Sanctae
+            </span>
+          </p>
+
+          <h1 class="formal-title formal-english" id="formal-title">
+            <span class="title-line title-line-one">
+              The Society and Equestrian
+            </span>
+
+            <span class="title-line title-line-two">
+              Order of the Holy City
+            </span>
+          </h1>
+        </div>
+
+        <p class="mission">
+          Continuing the quest to build an illuminated, free, and holy society
+        </p>
+
+        <blockquote class="scripture">
+          <p>
+            “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+          </p>
+
+          <cite>Matthew 5:14</cite>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
