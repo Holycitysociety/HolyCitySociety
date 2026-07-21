@@ -133,12 +133,18 @@ a {
   padding: clamp(54px, 5.4vw, 82px);
 }
 
-/* Caption above the ruled wordmark */
+/*
+  Caption above the ruled wordmark.
+
+  The negative top margin raises SUB NOMINE.
+  The larger bottom margin leaves approximately
+  one caption-line of open space beneath it.
+*/
 
 .institutional-caption {
   width: min(100%, var(--wordmark-width));
   max-width: 100%;
-  margin: 0 0 12px;
+  margin: -22px 0 24px;
   color: var(--gold-soft);
   font-family: "EB Garamond", Garamond, serif;
   font-size: 0.72rem;
@@ -376,6 +382,10 @@ a {
   .hero-copy {
     padding: 50px 44px 58px;
   }
+
+  .institutional-caption {
+    margin-top: -18px;
+  }
 }
 
 /* Mobile */
@@ -432,7 +442,7 @@ a {
   }
 
   .institutional-caption {
-    margin-bottom: 10px;
+    margin: -14px 0 20px;
     font-size: 0.64rem;
     letter-spacing: 0.14em;
   }
@@ -503,7 +513,7 @@ a {
   }
 
   .institutional-caption {
-    margin-bottom: 9px;
+    margin: -12px 0 18px;
     font-size: 0.62rem;
   }
 
