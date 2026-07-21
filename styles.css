@@ -10,6 +10,10 @@
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
+
+  /*
+    Common finished width for each of the six title lines.
+  */
   --wordmark-width: 30rem;
 }
 
@@ -24,6 +28,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: "EB Garamond", Garamond, serif;
@@ -134,9 +139,6 @@ a {
 
 .bilingual-wordmark {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   width: min(100%, var(--wordmark-width));
   max-width: 100%;
   margin-bottom: 42px;
@@ -146,8 +148,8 @@ a {
 .bilingual-wordmark::before {
   content: "";
   position: absolute;
-  top: 0.08em;
-  bottom: 0.08em;
+  top: 0;
+  bottom: 0;
   left: 0;
   width: 1px;
   background: var(--gold);
@@ -164,34 +166,57 @@ a {
   text-transform: uppercase;
 }
 
-.title-line {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  overflow: visible;
-  white-space: nowrap;
-}
-
-.opening-cross {
-  display: inline-block;
-  margin-right: 0.22em;
-  color: var(--gold);
-  font-size: 0.64em;
-  line-height: 1;
-  vertical-align: 0.13em;
-}
-
 .formal-latin {
   margin-bottom: 15px;
   color: var(--gold);
-  letter-spacing: 0.063em;
-  line-height: 0.82;
 }
 
 .formal-english {
   color: var(--text);
+}
+
+.title-line {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.fit-text {
+  display: inline-block;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  line-height: 0.84;
+  transform-origin: left center;
+}
+
+.formal-latin .fit-text {
+  --tracking-em: 0.063;
+  --minimum-fit-size: 10;
+  --maximum-fit-size: 180;
+
+  letter-spacing: 0.063em;
+}
+
+.formal-english .fit-text {
+  --tracking-em: 0.017;
+  --minimum-fit-size: 10;
+  --maximum-fit-size: 180;
+
   letter-spacing: 0.017em;
-  line-height: 0.82;
+}
+
+.opening-cross {
+  display: inline-block;
+  flex: 0 0 auto;
+  margin-right: 0.18em;
+  color: var(--gold);
+  font-size: 2.2rem;
+  line-height: 1;
+  vertical-align: 0.08em;
 }
 
 /* Mission */
@@ -259,6 +284,10 @@ a {
   .hero-copy {
     padding: 48px 42px;
   }
+
+  .opening-cross {
+    font-size: 2rem;
+  }
 }
 
 /* Landscape tablet */
@@ -284,6 +313,10 @@ a {
 
   .scripture p {
     font-size: clamp(1.04rem, 1.3vw, 1.34rem);
+  }
+
+  .opening-cross {
+    font-size: 1.8rem;
   }
 }
 
@@ -312,6 +345,10 @@ a {
 
   .hero-copy {
     padding: 50px 44px 58px;
+  }
+
+  .opening-cross {
+    font-size: 2rem;
   }
 }
 
@@ -364,7 +401,7 @@ a {
   }
 
   .hero-copy {
-    padding: 36px 22px 44px;
+    padding: 36px 24px 44px;
   }
 
   .bilingual-wordmark {
@@ -376,18 +413,25 @@ a {
 
   .formal-latin {
     margin-bottom: 14px;
-    letter-spacing: 0.045em;
-    line-height: 0.84;
   }
 
-  .formal-english {
+  .fit-text {
+    line-height: 0.86;
+  }
+
+  .formal-latin .fit-text {
+    --tracking-em: 0.045;
+    letter-spacing: 0.045em;
+  }
+
+  .formal-english .fit-text {
+    --tracking-em: 0.01;
     letter-spacing: 0.01em;
-    line-height: 0.84;
   }
 
   .opening-cross {
-    margin-right: 0.18em;
-    font-size: 0.58em;
+    margin-right: 0.16em;
+    font-size: 1.55rem;
   }
 
   .mission {
@@ -428,12 +472,18 @@ a {
     padding-left: 14px;
   }
 
-  .formal-latin {
+  .formal-latin .fit-text {
+    --tracking-em: 0.038;
     letter-spacing: 0.038em;
   }
 
-  .formal-english {
+  .formal-english .fit-text {
+    --tracking-em: 0.006;
     letter-spacing: 0.006em;
+  }
+
+  .opening-cross {
+    font-size: 1.4rem;
   }
 
   .mission {
