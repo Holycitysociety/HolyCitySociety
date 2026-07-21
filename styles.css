@@ -133,6 +133,23 @@ a {
   padding: clamp(54px, 5.4vw, 82px);
 }
 
+/* Caption above the ruled wordmark */
+
+.institutional-caption {
+  width: min(100%, var(--wordmark-width));
+  max-width: 100%;
+  margin: 0 0 12px;
+  color: var(--gold-soft);
+  font-family: "EB Garamond", Garamond, serif;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 /* Bilingual formal wordmark */
 
 .bilingual-wordmark {
@@ -162,10 +179,19 @@ a {
   text-transform: uppercase;
 }
 
+/* English-first internal spacing */
+
+.wordmark-english-first .formal-english {
+  margin-bottom: 17px;
+}
+
+.wordmark-english-first .formal-latin {
+  margin-bottom: 0;
+}
+
 /* Latin: Cinzel Regular 400 */
 
 .formal-latin {
-  margin-bottom: 17px;
   color: var(--gold);
   font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
@@ -188,11 +214,6 @@ a {
   white-space: nowrap;
 }
 
-/*
-  Final formal-title leading.
-  Allows the Q tails to clear the line below.
-*/
-
 .fit-text {
   display: inline-block;
   flex: 0 0 auto;
@@ -201,10 +222,7 @@ a {
   transform-origin: left center;
 }
 
-/*
-  Latin spacing:
-  Cinzel 400 with expanded letter and word spacing.
-*/
+/* Latin spacing */
 
 .formal-latin .fit-text {
   --tracking-em: 0.0375;
@@ -218,7 +236,7 @@ a {
   word-spacing: 0.125em;
 }
 
-/* English */
+/* English spacing */
 
 .formal-english .fit-text {
   --tracking-em: 0.017;
@@ -413,6 +431,12 @@ a {
     padding: 36px 24px 44px;
   }
 
+  .institutional-caption {
+    margin-bottom: 10px;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+  }
+
   .bilingual-wordmark {
     width: 100%;
     max-width: 100%;
@@ -420,7 +444,7 @@ a {
     padding-left: 16px;
   }
 
-  .formal-latin {
+  .wordmark-english-first .formal-english {
     margin-bottom: 16px;
   }
 
@@ -476,6 +500,11 @@ a {
 
   .hero-copy {
     padding: 32px 20px 38px;
+  }
+
+  .institutional-caption {
+    margin-bottom: 9px;
+    font-size: 0.62rem;
   }
 
   .bilingual-wordmark {
