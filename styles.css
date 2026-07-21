@@ -162,22 +162,16 @@ a {
   text-transform: uppercase;
 }
 
-/*
-  Latin:
-  full-width EB Garamond with a fine 400 weight.
-*/
+/* Crisp Roman inscriptional Latin */
 
 .formal-latin {
-  margin-bottom: 15px;
+  margin-bottom: 17px;
   color: var(--gold);
-  font-family: "EB Garamond", Garamond, serif;
+  font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
 }
 
-/*
-  English:
-  narrower Cormorant retained at medium weight.
-*/
+/* Condensed contrasting English */
 
 .formal-english {
   color: var(--text);
@@ -194,34 +188,28 @@ a {
   white-space: nowrap;
 }
 
-.title-line-with-cross {
-  align-items: center;
-}
-
 .fit-text {
   display: inline-block;
   flex: 0 0 auto;
   white-space: nowrap;
-  line-height: 0.9;
+  line-height: 0.94;
   transform-origin: left center;
 }
 
 /*
-  Reduced Latin tracking complements the broader Garamond
-  and prevents the capitals from becoming too diffuse.
+  Cinzel already has strong monumental spacing,
+  so the additional tracking remains restrained.
 */
 
 .formal-latin .fit-text {
-  --tracking-em: 0.045;
+  --tracking-em: 0.025;
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
-  font-family: "EB Garamond", Garamond, serif;
+  font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
-  letter-spacing: 0.045em;
+  letter-spacing: 0.025em;
 }
-
-/* English retains the existing condensed treatment */
 
 .formal-english .fit-text {
   --tracking-em: 0.017;
@@ -231,18 +219,6 @@ a {
   font-family: "Cormorant", Garamond, serif;
   font-weight: 500;
   letter-spacing: 0.017em;
-}
-
-/* Retained in case the opening cross is restored later */
-
-.opening-cross {
-  display: inline-block;
-  flex: 0 0 auto;
-  margin-right: 0.18em;
-  color: var(--gold);
-  font-size: 2.2rem;
-  line-height: 1;
-  transform: translateY(-0.12em);
 }
 
 /* Mission */
@@ -321,10 +297,6 @@ a {
   .hero-copy {
     padding: 48px 42px;
   }
-
-  .opening-cross {
-    font-size: 2rem;
-  }
 }
 
 /* Landscape tablet */
@@ -343,10 +315,6 @@ a {
 
   .hero-copy {
     padding: 46px 38px;
-  }
-
-  .opening-cross {
-    font-size: 1.8rem;
   }
 }
 
@@ -376,10 +344,6 @@ a {
 
   .hero-copy {
     padding: 50px 44px 58px;
-  }
-
-  .opening-cross {
-    font-size: 2rem;
   }
 }
 
@@ -444,27 +408,21 @@ a {
   }
 
   .formal-latin {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .fit-text {
-    line-height: 0.92;
+    line-height: 0.96;
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.032;
-    letter-spacing: 0.032em;
+    --tracking-em: 0.018;
+    letter-spacing: 0.018em;
   }
 
   .formal-english .fit-text {
     --tracking-em: 0.01;
     letter-spacing: 0.01em;
-  }
-
-  .opening-cross {
-    margin-right: 0.16em;
-    font-size: 1.55rem;
-    transform: translateY(-0.16em);
   }
 
   .mission {
@@ -509,18 +467,13 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.026;
-    letter-spacing: 0.026em;
+    --tracking-em: 0.014;
+    letter-spacing: 0.014em;
   }
 
   .formal-english .fit-text {
     --tracking-em: 0.006;
     letter-spacing: 0.006em;
-  }
-
-  .opening-cross {
-    font-size: 1.4rem;
-    transform: translateY(-0.18em);
   }
 
   .mission {
