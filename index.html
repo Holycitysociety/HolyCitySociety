@@ -1,399 +1,503 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Holy City Society</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-
-<body>
-  <header class="site-header site-shell">
-    <nav class="top-nav" aria-label="Primary">
-      <a href="./index.html" aria-current="page">Praxis</a>
-      <a href="./virtues.html">Energeia</a>
-    </nav>
-
-    <div class="site-name" aria-label="Holy City Society">
-      <span class="site-cross" aria-hidden="true">✠</span>
-      <span>Holy City Society</span>
-      <span class="site-cross" aria-hidden="true">✠</span>
-    </div>
-  </header>
-
-  <main class="site-shell">
-    <section class="hero" aria-labelledby="formal-title">
-      <div
-        class="hero-art"
-        role="img"
-        aria-label="Blue engraved city on a hill with mounted riders"
-      ></div>
-
-      <div class="hero-copy">
-        <div
-          class="bilingual-wordmark wordmark-english-first"
-          aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
-        >
-          <h1
-            class="formal-title formal-english"
-            id="formal-title"
-          >
-            <span class="title-line">
-              <span class="fit-text">
-                The Society &amp;
-              </span>
-            </span>
-
-            <span class="title-line">
-              <span class="fit-text">
-                Equestrian Order of the Holy City
-              </span>
-            </span>
-          </h1>
-
-          <p class="formal-title formal-latin">
-            <span class="title-line">
-              <span class="fit-text">
-                Societas atque
-              </span>
-            </span>
-
-            <span class="title-line">
-              <span class="fit-text">
-                Ordo Equestris Civitatis Sanctae
-              </span>
-            </span>
-          </p>
-        </div>
-
-        <p class="mission equal-size-group">
-          <span class="equal-size-line">
-            Continuing the quest to build
-          </span>
-
-          <span class="equal-size-line">
-            an illuminated, free, and holy society
-          </span>
-        </p>
-
-        <blockquote class="scripture">
-          <p class="equal-size-group">
-            <span class="equal-size-line">
-              “Ye are the light of the world.
-            </span>
-
-            <span class="equal-size-line">
-              A city that is set on a hill cannot be hid.”
-            </span>
-          </p>
-
-          <cite>Matthew 5:14</cite>
-        </blockquote>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    (() => {
-      const referenceFontSize = 100;
-      const widthSafetyAllowance = 2;
-
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
-
-      function numericCustomProperty(
-        element,
-        propertyName,
-        fallback
-      ) {
-        const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(
-            propertyName
-          )
-        );
-
-        return Number.isFinite(value)
-          ? value
-          : fallback;
-      }
-
-      function transformedText(element) {
-        const text = element.textContent.trim();
-        const transform =
-          getComputedStyle(element).textTransform;
-
-        if (transform === "uppercase") {
-          return text.toUpperCase();
-        }
-
-        if (transform === "lowercase") {
-          return text.toLowerCase();
-        }
-
-        return text;
-      }
-
-      function measureTextAtReferenceSize(element) {
-        const styles = getComputedStyle(element);
-        const text = transformedText(element);
-
-        const fontStyle =
-          styles.fontStyle || "normal";
-
-        const fontVariant =
-          styles.fontVariant || "normal";
-
-        const fontWeight =
-          styles.fontWeight || "400";
-
-        const fontFamily =
-          styles.fontFamily || "serif";
-
-        context.font =
-          `${fontStyle} ${fontVariant} ${fontWeight} ` +
-          `${referenceFontSize}px ${fontFamily}`;
-
-        const glyphWidth =
-          context.measureText(text).width;
-
-        const trackingEm = numericCustomProperty(
-          element,
-          "--tracking-em",
-          0
-        );
-
-        const wordSpacingEm = numericCustomProperty(
-          element,
-          "--word-spacing-em",
-          0
-        );
-
-        const characterGaps =
-          Math.max(text.length - 1, 0);
-
-        const spaces =
-          (text.match(/\s/g) || []).length;
-
-        const trackingWidth =
-          trackingEm *
-          referenceFontSize *
-          characterGaps;
-
-        const additionalWordSpacing =
-          wordSpacingEm *
-          referenceFontSize *
-          spaces;
-
-        return (
-          glyphWidth +
-          trackingWidth +
-          additionalWordSpacing
-        );
-      }
-
-      function calculateLineSize(element) {
-        const line =
-          element.closest(".title-line");
-
-        if (!line) {
-          return 0;
-        }
-
-        const targetWidth = Math.max(
-          line.clientWidth -
-            widthSafetyAllowance,
-          0
-        );
-
-        if (targetWidth <= 0) {
-          return 0;
-        }
-
-        const referenceWidth =
-          measureTextAtReferenceSize(element);
-
-        if (referenceWidth <= 0) {
-          return 0;
-        }
-
-        const minimumSize = numericCustomProperty(
-          element,
-          "--minimum-fit-size",
-          10
-        );
-
-        const maximumSize = numericCustomProperty(
-          element,
-          "--maximum-fit-size",
-          180
-        );
-
-        const calculatedSize =
-          referenceFontSize *
-          (targetWidth / referenceWidth);
-
-        return Math.max(
-          minimumSize,
-          Math.min(
-            calculatedSize,
-            maximumSize
-          )
-        );
-      }
-
-      function fitFormalTitle(title) {
-        const lines = Array.from(
-          title.querySelectorAll(".fit-text")
-        );
-
-        if (!lines.length) {
-          return;
-        }
-
-        const calculatedSizes =
-          lines
-            .map(calculateLineSize)
-            .filter((size) => size > 0);
-
-        if (!calculatedSizes.length) {
-          return;
-        }
-
-        const sharedSize =
-          Math.min(...calculatedSizes);
-
-        lines.forEach((line) => {
-          line.style.fontSize =
-            `${sharedSize}px`;
-        });
-      }
-
-      function fitEqualSizeGroup(group) {
-        const lines = Array.from(
-          group.querySelectorAll(
-            ".equal-size-line"
-          )
-        );
-
-        if (!lines.length) {
-          return;
-        }
-
-        const targetWidth = Math.max(
-          group.clientWidth -
-            widthSafetyAllowance,
-          0
-        );
-
-        if (targetWidth <= 0) {
-          return;
-        }
-
-        const longestReferenceWidth =
-          Math.max(
-            ...lines.map(
-              measureTextAtReferenceSize
-            )
-          );
-
-        if (longestReferenceWidth <= 0) {
-          return;
-        }
-
-        const minimumSize =
-          numericCustomProperty(
-            group,
-            "--minimum-group-size",
-            10
-          );
-
-        const maximumSize =
-          numericCustomProperty(
-            group,
-            "--maximum-group-size",
-            72
-          );
-
-        const calculatedSize =
-          referenceFontSize *
-          (
-            targetWidth /
-            longestReferenceWidth
-          );
-
-        const finalSize = Math.max(
-          minimumSize,
-          Math.min(
-            calculatedSize,
-            maximumSize
-          )
-        );
-
-        lines.forEach((line) => {
-          line.style.fontSize =
-            `${finalSize}px`;
-        });
-      }
-
-      function fitAllTypography() {
-        document
-          .querySelectorAll(".formal-title")
-          .forEach(fitFormalTitle);
-
-        document
-          .querySelectorAll(
-            ".equal-size-group"
-          )
-          .forEach(fitEqualSizeGroup);
-      }
-
-      let resizeFrame;
-
-      function scheduleFit() {
-        window.cancelAnimationFrame(
-          resizeFrame
-        );
-
-        resizeFrame =
-          window.requestAnimationFrame(
-            fitAllTypography
-          );
-      }
-
-      if (
-        document.fonts &&
-        document.fonts.ready
-      ) {
-        document.fonts.ready.then(
-          scheduleFit
-        );
-      } else {
-        window.addEventListener(
-          "load",
-          scheduleFit
-        );
-      }
-
-      window.addEventListener(
-        "resize",
-        scheduleFit
-      );
-
-      window.addEventListener(
-        "orientationchange",
-        scheduleFit
-      );
-    })();
-  </script>
-</body>
-</html>
+:root {
+  --bg: #061426;
+  --panel: #0f1f34;
+  --text: #f7f6f0;
+  --muted: rgba(247, 246, 240, 0.74);
+
+  --gold: #f0c75e;
+  --gold-soft: rgba(240, 199, 94, 0.88);
+  --accent-blue: #a8c2de;
+
+  --shell: 1380px;
+  --radius: 30px;
+  --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
+
+  --wordmark-width: 30rem;
+  --supporting-width: 30rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "EB Garamond", Garamond, serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-shell {
+  width: min(calc(100% - 48px), var(--shell));
+  margin-inline: auto;
+}
+
+/* Header */
+
+.site-header {
+  padding-top: 32px;
+  padding-bottom: 34px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.top-nav a {
+  transition: color 160ms ease;
+}
+
+.top-nav a:hover,
+.top-nav a:focus-visible,
+.top-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.site-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  color: var(--text);
+  font-family: "Cormorant", Garamond, serif;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  line-height: 0.9;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-cross {
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-size: 0.52em;
+}
+
+/* Hero */
+
+.hero {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(430px, 0.92fr);
+  min-height: 720px;
+  margin-bottom: 48px;
+  overflow: hidden;
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-art {
+  min-height: 720px;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(6, 20, 38, 0),
+      rgba(15, 31, 52, 0.05) 72%,
+      rgba(15, 31, 52, 0.46)
+    ),
+    url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(54px, 5.4vw, 82px);
+}
+
+/* Bilingual formal wordmark */
+
+.bilingual-wordmark {
+  position: relative;
+  width: min(100%, var(--wordmark-width));
+  max-width: 100%;
+  margin-bottom: 38px;
+  padding-left: 24px;
+}
+
+.bilingual-wordmark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--accent-blue);
+}
+
+.formal-title {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  font-kerning: normal;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* English first */
+
+.formal-english {
+  margin-bottom: 15px;
+  color: var(--text);
+  font-family: "Cormorant", Garamond, serif;
+  font-weight: 500;
+}
+
+/* Latin second */
+
+.formal-latin {
+  margin-bottom: 0;
+  color: var(--accent-blue);
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.title-line {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.fit-text {
+  display: inline-block;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  line-height: 1.08;
+  transform-origin: left center;
+}
+
+/* English spacing */
+
+.formal-english .fit-text {
+  --tracking-em: 0.017;
+  --word-spacing-em: 0;
+  --minimum-fit-size: 10;
+  --maximum-fit-size: 180;
+
+  font-family: "Cormorant", Garamond, serif;
+  font-weight: 500;
+  letter-spacing: 0.017em;
+  word-spacing: normal;
+}
+
+/* Latin spacing */
+
+.formal-latin .fit-text {
+  --tracking-em: 0.0375;
+  --word-spacing-em: 0.125;
+  --minimum-fit-size: 10;
+  --maximum-fit-size: 180;
+
+  color: var(--accent-blue);
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0.0375em;
+  word-spacing: 0.125em;
+}
+
+/* Mission */
+
+.mission {
+  --tracking-em: 0.11;
+  --word-spacing-em: 0;
+  --minimum-group-size: 10;
+  --maximum-group-size: 28;
+
+  width: min(100%, var(--supporting-width));
+  max-width: 100%;
+  margin: 0 0 34px;
+  color: rgba(247, 246, 240, 0.88);
+  font-family: "EB Garamond", Garamond, serif;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  line-height: 1.75;
+  text-transform: uppercase;
+}
+
+.equal-size-line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+/* Scripture */
+
+.scripture {
+  width: min(100%, var(--supporting-width));
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--gold);
+}
+
+.scripture p {
+  --tracking-em: 0;
+  --word-spacing-em: 0;
+  --minimum-group-size: 10;
+  --maximum-group-size: 32;
+
+  width: 100%;
+  margin: 0 0 12px;
+  font-family: "Cormorant", Garamond, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.scripture cite {
+  display: block;
+  color: var(--gold-soft);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Small laptop and landscape tablet */
+
+@media (max-width: 1400px) {
+  :root {
+    --wordmark-width: 27rem;
+    --supporting-width: 27rem;
+  }
+
+  .hero {
+    grid-template-columns:
+      minmax(0, 1.08fr)
+      minmax(410px, 0.92fr);
+  }
+
+  .hero-copy {
+    padding: 48px 42px;
+  }
+}
+
+/* Landscape tablet */
+
+@media (max-width: 1180px) {
+  :root {
+    --wordmark-width: 25rem;
+    --supporting-width: 25rem;
+  }
+
+  .hero {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(390px, 0.98fr);
+  }
+
+  .hero-copy {
+    padding: 46px 38px;
+  }
+}
+
+/* Portrait tablet */
+
+@media (max-width: 980px) {
+  :root {
+    --wordmark-width: 32rem;
+    --supporting-width: 32rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-art {
+    min-height: 520px;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(6, 20, 38, 0),
+        rgba(15, 31, 52, 0.1)
+      ),
+      url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
+  }
+
+  .hero-copy {
+    padding: 50px 44px 58px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  :root {
+    --wordmark-width: 100%;
+    --supporting-width: 100%;
+  }
+
+  .site-shell {
+    width: min(calc(100% - 24px), var(--shell));
+  }
+
+  .site-header {
+    padding-top: 22px;
+    padding-bottom: 26px;
+  }
+
+  .top-nav {
+    gap: 28px;
+    margin-bottom: 22px;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .site-name {
+    gap: 10px;
+    font-size: 1.78rem;
+    letter-spacing: 0.07em;
+    line-height: 0.9;
+  }
+
+  .site-name > span:nth-child(2) {
+    max-width: 280px;
+  }
+
+  .site-cross {
+    font-size: 0.38em;
+  }
+
+  .hero {
+    margin-bottom: 28px;
+    border-radius: 22px;
+  }
+
+  .hero-art {
+    min-height: 390px;
+    background-position: center top;
+  }
+
+  .hero-copy {
+    padding: 36px 24px 44px;
+  }
+
+  .bilingual-wordmark {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 32px;
+    padding-left: 16px;
+  }
+
+  .formal-english {
+    margin-bottom: 14px;
+  }
+
+  .fit-text {
+    line-height: 1.1;
+  }
+
+  .formal-latin .fit-text {
+    --tracking-em: 0.027;
+    --word-spacing-em: 0.1;
+
+    letter-spacing: 0.027em;
+    word-spacing: 0.1em;
+  }
+
+  .formal-english .fit-text {
+    --tracking-em: 0.01;
+    letter-spacing: 0.01em;
+  }
+
+  .mission {
+    --tracking-em: 0.065;
+    --maximum-group-size: 22;
+
+    margin-bottom: 30px;
+    letter-spacing: 0.065em;
+    line-height: 1.65;
+  }
+
+  .scripture p {
+    --maximum-group-size: 26;
+
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .scripture cite {
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+/* Narrow mobile */
+
+@media (max-width: 390px) {
+  .site-name {
+    font-size: 1.58rem;
+  }
+
+  .hero-art {
+    min-height: 360px;
+  }
+
+  .hero-copy {
+    padding: 32px 20px 38px;
+  }
+
+  .bilingual-wordmark {
+    padding-left: 14px;
+  }
+
+  .formal-latin .fit-text {
+    --tracking-em: 0.021;
+    --word-spacing-em: 0.09;
+
+    letter-spacing: 0.021em;
+    word-spacing: 0.09em;
+  }
+
+  .formal-english .fit-text {
+    --tracking-em: 0.006;
+    letter-spacing: 0.006em;
+  }
+
+  .mission {
+    --tracking-em: 0.055;
+    --maximum-group-size: 20;
+
+    letter-spacing: 0.055em;
+  }
+
+  .scripture p {
+    --maximum-group-size: 24;
+  }
+}
