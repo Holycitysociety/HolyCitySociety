@@ -106,17 +106,26 @@
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
 
-      function numericCustomProperty(element, propertyName, fallback) {
+      function numericCustomProperty(
+        element,
+        propertyName,
+        fallback
+      ) {
         const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(propertyName)
+          getComputedStyle(element).getPropertyValue(
+            propertyName
+          )
         );
 
-        return Number.isFinite(value) ? value : fallback;
+        return Number.isFinite(value)
+          ? value
+          : fallback;
       }
 
       function transformedText(element) {
         const text = element.textContent.trim();
-        const transform = getComputedStyle(element).textTransform;
+        const transform =
+          getComputedStyle(element).textTransform;
 
         if (transform === "uppercase") {
           return text.toUpperCase();
@@ -133,16 +142,24 @@
         const styles = getComputedStyle(element);
         const text = transformedText(element);
 
-        const fontStyle = styles.fontStyle || "normal";
-        const fontVariant = styles.fontVariant || "normal";
-        const fontWeight = styles.fontWeight || "400";
-        const fontFamily = styles.fontFamily || "serif";
+        const fontStyle =
+          styles.fontStyle || "normal";
+
+        const fontVariant =
+          styles.fontVariant || "normal";
+
+        const fontWeight =
+          styles.fontWeight || "400";
+
+        const fontFamily =
+          styles.fontFamily || "serif";
 
         context.font =
           `${fontStyle} ${fontVariant} ${fontWeight} ` +
           `${referenceFontSize}px ${fontFamily}`;
 
-        const glyphWidth = context.measureText(text).width;
+        const glyphWidth =
+          context.measureText(text).width;
 
         const trackingEm = numericCustomProperty(
           element,
@@ -156,14 +173,21 @@
           0
         );
 
-        const characterGaps = Math.max(text.length - 1, 0);
-        const spaces = (text.match(/\s/g) || []).length;
+        const characterGaps =
+          Math.max(text.length - 1, 0);
+
+        const spaces =
+          (text.match(/\s/g) || []).length;
 
         const trackingWidth =
-          trackingEm * referenceFontSize * characterGaps;
+          trackingEm *
+          referenceFontSize *
+          characterGaps;
 
         const additionalWordSpacing =
-          wordSpacingEm * referenceFontSize * spaces;
+          wordSpacingEm *
+          referenceFontSize *
+          spaces;
 
         return (
           glyphWidth +
@@ -172,18 +196,24 @@
         );
       }
 
-      function fitFormalLine(element) {
-        const line = element.closest(".title-line");
-        const targetWidth = Math.max(line.clientWidth - 2, 0);
+      function calculateFormalLineSize(element) {
+        const line =
+          element.closest(".title-line");
+
+        const targetWidth = Math.max(
+          line.clientWidth - 2,
+          0
+        );
 
         if (targetWidth <= 0) {
-          return;
+          return 0;
         }
 
-        const referenceWidth = measureTextAtReferenceSize(element);
+        const referenceWidth =
+          measureTextAtReferenceSize(element);
 
         if (referenceWidth <= 0) {
-          return;
+          return 0;
         }
 
         const minimumSize = numericCustomProperty(
@@ -199,33 +229,85 @@
         );
 
         const calculatedSize =
-          referenceFontSize * (targetWidth / referenceWidth);
+          referenceFontSize *
+          (targetWidth / referenceWidth);
 
-        const finalSize = Math.max(
+        return Math.max(
           minimumSize,
           Math.min(calculatedSize, maximumSize)
         );
-
-        element.style.fontSize = `${finalSize}px`;
       }
 
-      function fitEqualSizeGroup(group) {
+      /*
+        Lines two and three fit normally.
+
+        Line one may grow only as large as the larger
+        font size used by lines two and three.
+      */
+
+      function fitFormalTitle(title) {
         const lines = Array.from(
-          group.querySelectorAll(".equal-size-line")
+          title.querySelectorAll(".fit-text")
         );
 
         if (!lines.length) {
           return;
         }
 
-        const targetWidth = Math.max(group.clientWidth - 2, 0);
+        const calculatedSizes =
+          lines.map(calculateFormalLineSize);
+
+        if (lines.length >= 3) {
+          const secondLineSize =
+            calculatedSizes[1];
+
+          const thirdLineSize =
+            calculatedSizes[2];
+
+          const firstLineMaximum = Math.max(
+            secondLineSize,
+            thirdLineSize
+          );
+
+          calculatedSizes[0] = Math.min(
+            calculatedSizes[0],
+            firstLineMaximum
+          );
+        }
+
+        lines.forEach((line, index) => {
+          const size = calculatedSizes[index];
+
+          if (size > 0) {
+            line.style.fontSize = `${size}px`;
+          }
+        });
+      }
+
+      function fitEqualSizeGroup(group) {
+        const lines = Array.from(
+          group.querySelectorAll(
+            ".equal-size-line"
+          )
+        );
+
+        if (!lines.length) {
+          return;
+        }
+
+        const targetWidth = Math.max(
+          group.clientWidth - 2,
+          0
+        );
 
         if (targetWidth <= 0) {
           return;
         }
 
         const longestReferenceWidth = Math.max(
-          ...lines.map(measureTextAtReferenceSize)
+          ...lines.map(
+            measureTextAtReferenceSize
+          )
         );
 
         if (longestReferenceWidth <= 0) {
@@ -246,45 +328,71 @@
 
         const calculatedSize =
           referenceFontSize *
-          (targetWidth / longestReferenceWidth);
+          (targetWidth /
+            longestReferenceWidth);
 
         const finalSize = Math.max(
           minimumSize,
-          Math.min(calculatedSize, maximumSize)
+          Math.min(
+            calculatedSize,
+            maximumSize
+          )
         );
 
         lines.forEach((line) => {
-          line.style.fontSize = `${finalSize}px`;
+          line.style.fontSize =
+            `${finalSize}px`;
         });
       }
 
       function fitAllTypography() {
         document
-          .querySelectorAll(".fit-text")
-          .forEach(fitFormalLine);
+          .querySelectorAll(".formal-title")
+          .forEach(fitFormalTitle);
 
         document
-          .querySelectorAll(".equal-size-group")
+          .querySelectorAll(
+            ".equal-size-group"
+          )
           .forEach(fitEqualSizeGroup);
       }
 
       let resizeFrame;
 
       function scheduleFit() {
-        window.cancelAnimationFrame(resizeFrame);
+        window.cancelAnimationFrame(
+          resizeFrame
+        );
 
         resizeFrame =
-          window.requestAnimationFrame(fitAllTypography);
+          window.requestAnimationFrame(
+            fitAllTypography
+          );
       }
 
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(scheduleFit);
+      if (
+        document.fonts &&
+        document.fonts.ready
+      ) {
+        document.fonts.ready.then(
+          scheduleFit
+        );
       } else {
-        window.addEventListener("load", scheduleFit);
+        window.addEventListener(
+          "load",
+          scheduleFit
+        );
       }
 
-      window.addEventListener("resize", scheduleFit);
-      window.addEventListener("orientationchange", scheduleFit);
+      window.addEventListener(
+        "resize",
+        scheduleFit
+      );
+
+      window.addEventListener(
+        "orientationchange",
+        scheduleFit
+      );
     })();
   </script>
 </body>
