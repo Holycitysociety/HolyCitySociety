@@ -1,16 +1,15 @@
 :root {
-  --bg: #071427;
-  --panel: #101f33;
-  --text: #eef2f7;
-  --muted: rgba(238, 242, 247, 0.7);
-  --gold: #b6975a;
-  --line: rgba(255, 255, 255, 0.16);
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-  --radius: 34px;
-  --shell: 1280px;
+  --bg: #061426;
+  --panel: #0d1e32;
+  --text: #f4f1e9;
+  --muted: rgba(244, 241, 233, 0.78);
+  --gold: #c69a4b;
+  --gold-soft: rgba(198, 154, 75, 0.62);
+  --line: rgba(198, 154, 75, 0.52);
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+  --radius: 28px;
+  --shell: 1440px;
 }
-
-/* Reset */
 
 * {
   box-sizing: border-box;
@@ -23,7 +22,13 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--bg);
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(28, 55, 84, 0.24),
+      transparent 44%
+    ),
+    var(--bg);
   color: var(--text);
   font-family: "EB Garamond", Garamond, serif;
   font-size: 18px;
@@ -36,95 +41,166 @@ a {
   text-decoration: none;
 }
 
-/* Shared page width */
-
 .site-shell {
-  width: min(calc(100% - 44px), var(--shell));
+  width: min(calc(100% - 68px), var(--shell));
   margin-inline: auto;
 }
 
-/* Header */
+/* Masthead */
 
 .site-header {
-  padding-top: 32px;
-  padding-bottom: 30px;
+  padding-top: 42px;
 }
+
+.wordmark {
+  text-align: center;
+}
+
+.wordmark-primary {
+  display: grid;
+  grid-template-columns: minmax(40px, 1fr) auto auto auto minmax(40px, 1fr);
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 34px);
+}
+
+.wordmark-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-soft)
+  );
+}
+
+.wordmark-line:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--gold-soft),
+    transparent
+  );
+}
+
+.wordmark-name {
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(2.5rem, 5vw, 5.7rem);
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cross {
+  color: var(--gold);
+  font-size: clamp(1.45rem, 2.8vw, 3.4rem);
+  line-height: 1;
+}
+
+.wordmark-latin {
+  margin: 24px 0 12px;
+  color: var(--gold);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.1rem, 2vw, 2rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.wordmark-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px auto 14px;
+  width: min(470px, 74%);
+  color: var(--gold);
+}
+
+.wordmark-divider span {
+  flex: 1;
+  height: 1px;
+  background: var(--gold-soft);
+}
+
+.wordmark-divider b {
+  font-size: 0.48rem;
+  font-weight: 400;
+}
+
+.wordmark-english {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(0.78rem, 1.25vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.header-rule {
+  height: 1px;
+  margin-top: 34px;
+  background: var(--line);
+}
+
+/* Navigation */
 
 .top-nav {
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 42px;
-  margin-bottom: 26px;
+  padding-top: 20px;
+  padding-bottom: 22px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: 0.19em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .top-nav a {
-  transition: color 160ms ease;
+  transition:
+    color 160ms ease,
+    opacity 160ms ease;
 }
 
 .top-nav a:hover,
 .top-nav a:focus-visible,
 .top-nav a[aria-current="page"] {
-  color: var(--text);
-}
-
-/* Main title */
-
-.wordmark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  color: #f6f7f4;
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.964rem, 3.234vw, 3.273rem);
-  font-weight: 500;
-  letter-spacing: 0.055em;
-  line-height: 0.88;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.wordmark-name {
-  display: block;
-}
-
-.cross {
-  flex: 0 0 auto;
   color: var(--gold);
-  font-size: 0.48em;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 22px;
+  background: var(--line);
 }
 
 /* Hero */
 
 .hero-panel {
-  margin-top: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
   overflow: hidden;
   background: var(--panel);
-  border: 1px solid var(--line);
+  border: 1px solid var(--gold);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(420px, 1.1fr) minmax(340px, 0.9fr);
-  min-height: 680px;
+  grid-template-columns: 1.02fr 0.98fr;
+  min-height: 610px;
 }
 
 .hero-art {
-  min-height: 680px;
+  min-height: 610px;
   background-image:
     linear-gradient(
       90deg,
-      rgba(7, 20, 39, 0),
-      rgba(7, 20, 39, 0.08) 72%,
-      rgba(16, 31, 51, 0.72)
+      rgba(6, 20, 38, 0.06),
+      rgba(6, 20, 38, 0.12)
     ),
     url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
   background-position: center;
@@ -133,79 +209,125 @@ a {
 }
 
 .hero-copy {
-  align-self: center;
-  padding: clamp(42px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(46px, 5.5vw, 84px);
+  text-align: center;
 }
 
-.hero-kicker {
-  margin: 0 0 22px;
+.hero-emblem {
+  display: flex;
+  align-items: center;
+  width: min(430px, 88%);
+  gap: 14px;
+  margin-bottom: 34px;
   color: var(--gold);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  line-height: 1.5;
-  text-transform: uppercase;
 }
 
-/* Society and Equestrian Order title */
+.hero-emblem span {
+  flex: 1;
+  height: 1px;
+  background: var(--gold-soft);
+}
+
+.hero-emblem b {
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
 
 .hero-title {
-  max-width: 620px;
-  margin: 0 0 26px;
-  color: #f6f7f4;
+  max-width: 650px;
+  margin: 0;
+  color: var(--text);
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.904rem, 2.688vw, 3.136rem);
+  font-size: clamp(2rem, 3.15vw, 3.65rem);
   font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 0.94;
+  letter-spacing: 0.07em;
+  line-height: 1.32;
+  text-transform: uppercase;
 }
 
-.hero-text {
-  max-width: 520px;
-  margin: 0 0 26px;
-  color: var(--muted);
-  font-size: 0.96rem;
-  font-weight: 500;
-  letter-spacing: 0.085em;
-  line-height: 1.7;
-  text-transform: uppercase;
+.hero-divider {
+  display: flex;
+  align-items: center;
+  width: min(430px, 88%);
+  gap: 10px;
+  margin: 32px 0 28px;
+  color: var(--gold);
+}
+
+.hero-divider span {
+  flex: 1;
+  height: 1px;
+  background: var(--gold-soft);
+}
+
+.hero-divider b {
+  font-size: 0.55rem;
+  font-weight: 400;
 }
 
 .hero-quote {
-  max-width: 520px;
   margin: 0;
-  color: rgba(238, 242, 247, 0.88);
-  font-size: 1.12rem;
+  color: var(--gold);
+}
+
+.hero-quote p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.35rem, 2.15vw, 2.35rem);
   font-style: italic;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.35;
+}
+
+.hero-quote cite {
+  display: block;
+  margin-top: 24px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero-quote cite::before {
+  content: "— ";
 }
 
 /* Tablet */
 
 @media (max-width: 980px) {
+  .site-shell {
+    width: min(calc(100% - 40px), var(--shell));
+  }
+
+  .wordmark-primary {
+    grid-template-columns: auto auto auto;
+  }
+
+  .wordmark-line {
+    display: none;
+  }
+
+  .wordmark-name {
+    white-space: normal;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
-    min-height: auto;
   }
 
   .hero-art {
-    min-height: 500px;
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(7, 20, 39, 0),
-        rgba(16, 31, 51, 0.18)
-      ),
-      url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
+    min-height: 540px;
   }
 
   .hero-copy {
-    padding: 42px 38px 48px;
-  }
-
-  .hero-title {
-    max-width: 700px;
+    padding: 54px 44px 60px;
   }
 }
 
@@ -217,92 +339,134 @@ a {
   }
 
   .site-header {
-    padding-top: 22px;
-    padding-bottom: 24px;
+    padding-top: 26px;
+  }
+
+  .wordmark-primary {
+    gap: 10px;
+  }
+
+  .wordmark-name {
+    max-width: 290px;
+    font-size: 2.1rem;
+    letter-spacing: 0.075em;
+    line-height: 0.9;
+  }
+
+  .cross {
+    font-size: 1rem;
+  }
+
+  .wordmark-latin {
+    max-width: 340px;
+    margin: 18px auto 10px;
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .wordmark-divider {
+    width: 68%;
+    margin-block: 10px 12px;
+  }
+
+  .wordmark-english {
+    max-width: 350px;
+    margin-inline: auto;
+    font-size: 0.67rem;
+    letter-spacing: 0.15em;
+    line-height: 1.55;
+  }
+
+  .header-rule {
+    margin-top: 24px;
   }
 
   .top-nav {
-    gap: 28px;
-    margin-bottom: 22px;
+    gap: 26px;
+    padding-top: 17px;
+    padding-bottom: 18px;
     font-size: 0.72rem;
     letter-spacing: 0.16em;
   }
 
-  .wordmark {
-    gap: 8px;
-    font-size: 1.656rem;
-    letter-spacing: 0.025em;
-    line-height: 0.84;
-  }
-
-  .wordmark-name {
-    max-width: 280px;
-  }
-
-  .cross {
-    font-size: 0.36em;
+  .nav-divider {
+    height: 18px;
   }
 
   .hero-panel {
-    margin-top: 2px;
     border-radius: 22px;
   }
 
   .hero-art {
-    min-height: 390px;
+    min-height: 410px;
     background-position: center top;
   }
 
   .hero-copy {
-    padding: 28px 24px 34px;
+    padding: 36px 24px 42px;
   }
 
-  .hero-kicker {
-    margin-bottom: 17px;
-    font-size: 0.61rem;
-    letter-spacing: 0.095em;
-    line-height: 1.45;
+  .hero-emblem {
+    width: 82%;
+    margin-bottom: 25px;
+  }
+
+  .hero-emblem b {
+    font-size: 1.55rem;
   }
 
   .hero-title {
-    max-width: 100%;
-    margin-bottom: 20px;
-    font-size: clamp(1.4rem, 6.048vw, 1.68rem);
-    letter-spacing: -0.025em;
-    line-height: 0.96;
+    font-size: 1.65rem;
+    letter-spacing: 0.055em;
+    line-height: 1.28;
   }
 
-  .hero-text {
-    max-width: 100%;
-    margin-bottom: 21px;
-    font-size: 0.78rem;
-    letter-spacing: 0.045em;
-    line-height: 1.62;
+  .hero-divider {
+    width: 82%;
+    margin: 26px 0 22px;
   }
 
-  .hero-quote {
-    max-width: 100%;
-    font-size: 0.94rem;
-    line-height: 1.48;
+  .hero-quote p {
+    font-size: 1.28rem;
+    line-height: 1.4;
+  }
+
+  .hero-quote cite {
+    margin-top: 18px;
+    font-size: 0.69rem;
+    letter-spacing: 0.17em;
   }
 }
 
-/* Very narrow phones */
+/* Narrow phones */
 
 @media (max-width: 390px) {
-  .wordmark {
-    font-size: 1.502rem;
+  .wordmark-name {
+    max-width: 245px;
+    font-size: 1.78rem;
+  }
+
+  .wordmark-latin {
+    font-size: 0.88rem;
+  }
+
+  .wordmark-english {
+    font-size: 0.61rem;
   }
 
   .hero-art {
-    min-height: 360px;
+    min-height: 370px;
   }
 
   .hero-copy {
-    padding: 26px 22px 32px;
+    padding-inline: 20px;
   }
 
   .hero-title {
-    font-size: 1.316rem;
+    font-size: 1.48rem;
+  }
+
+  .hero-quote p {
+    font-size: 1.16rem;
   }
 }
