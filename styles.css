@@ -1,11 +1,10 @@
 :root {
   --bg: #061426;
   --panel: #0f1f34;
-  --panel-soft: #132540;
   --text: #f2f2ed;
   --muted: rgba(242, 242, 237, 0.74);
-  --soft: rgba(242, 242, 237, 0.82);
-  --inscription: rgba(244, 240, 231, 0.9);
+  --soft: rgba(242, 242, 237, 0.84);
+  --line: rgba(242, 242, 237, 0.56);
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
@@ -43,15 +42,14 @@ a {
 /* Header */
 
 .site-header {
-  padding-top: 32px;
-  padding-bottom: 34px;
+  padding-top: 30px;
+  padding-bottom: 24px;
 }
 
 .top-nav {
   display: flex;
   justify-content: center;
   gap: 44px;
-  margin-bottom: 28px;
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 500;
@@ -67,27 +65,6 @@ a {
 .top-nav a:focus-visible,
 .top-nav a[aria-current="page"] {
   color: var(--text);
-}
-
-.site-name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  color: var(--text);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  line-height: 0.9;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.site-cross {
-  flex: 0 0 auto;
-  color: var(--text);
-  font-size: 0.52em;
 }
 
 /* Hero */
@@ -109,7 +86,7 @@ a {
     linear-gradient(
       90deg,
       rgba(6, 20, 38, 0),
-      rgba(15, 31, 52, 0.05) 72%,
+      rgba(15, 31, 52, 0.04) 72%,
       rgba(15, 31, 52, 0.42)
     ),
     url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
@@ -123,61 +100,97 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(54px, 5.4vw, 84px);
+  padding: clamp(48px, 5vw, 78px);
   text-align: center;
 }
 
-/* Formal lockup */
+/* Formal identity lockup */
 
-.formal-lockup {
-  width: min(100%, 34rem);
-  margin-bottom: 42px;
+.identity-lockup {
+  width: min(100%, 38rem);
+  margin-bottom: 46px;
 }
 
-.latin-inscription {
-  margin: 0 auto 26px;
-  padding: 18px 22px 16px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.03),
-      rgba(0, 0, 0, 0.08)
-    ),
-    var(--panel-soft);
-  border-radius: 12px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.28);
-}
-
-.latin-line {
-  display: block;
-  color: var(--inscription);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.1rem, 1.45vw, 1.65rem);
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  line-height: 1.06;
-  text-transform: uppercase;
-  text-align: center;
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.05),
-    0 -1px 0 rgba(0, 0, 0, 0.32);
-}
-
-.formal-english {
+.card-site-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 1.6vw, 22px);
   margin: 0;
   color: var(--text);
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.75rem, 2.4vw, 2.95rem);
+  font-size: clamp(2rem, 3.1vw, 3.7rem);
   font-weight: 500;
-  letter-spacing: 0.015em;
-  line-height: 0.95;
-  text-transform: none;
+  letter-spacing: 0.105em;
+  line-height: 0.92;
+  text-transform: uppercase;
 }
 
-.english-line {
+.card-site-name {
   display: block;
+}
+
+.title-cross {
+  flex: 0 0 auto;
+  font-size: 0.5em;
+  line-height: 1;
+}
+
+.ornamental-divider {
+  display: grid;
+  grid-template-columns: minmax(30px, 1fr) auto minmax(30px, 1fr);
+  align-items: center;
+  gap: 14px;
+  width: min(100%, 33rem);
+  margin: 27px auto 28px;
+}
+
+.divider-line {
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line)
+  );
+}
+
+.divider-line:last-child {
+  background: linear-gradient(
+    90deg,
+    var(--line),
+    transparent
+  );
+}
+
+.divider-ornament {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.formal-english {
+  max-width: 38rem;
+  margin: 0 auto 25px;
+  color: var(--text);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.38rem, 1.9vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: 0.012em;
+  line-height: 1.08;
+}
+
+.formal-latin {
+  max-width: 38rem;
+  margin: 0 auto;
+  color: var(--soft);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(0.82rem, 1.02vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.225em;
+  line-height: 1.45;
+  text-transform: uppercase;
 }
 
 /* Mission */
@@ -230,20 +243,20 @@ a {
   }
 
   .hero-copy {
-    padding: 48px 36px;
+    padding: 46px 34px;
   }
 
-  .formal-lockup {
-    width: 100%;
-  }
-
-  .latin-line {
-    font-size: clamp(1rem, 1.45vw, 1.38rem);
-    letter-spacing: 0.16em;
+  .card-site-title {
+    font-size: clamp(1.7rem, 2.7vw, 2.7rem);
   }
 
   .formal-english {
-    font-size: clamp(1.5rem, 2vw, 2.25rem);
+    font-size: clamp(1.25rem, 1.8vw, 1.8rem);
+  }
+
+  .formal-latin {
+    font-size: clamp(0.72rem, 0.95vw, 0.9rem);
+    letter-spacing: 0.19em;
   }
 }
 
@@ -265,23 +278,23 @@ a {
   }
 
   .hero-copy {
-    padding: 52px 44px 60px;
+    padding: 54px 44px 62px;
   }
 
-  .formal-lockup {
-    width: min(100%, 38rem);
+  .identity-lockup {
+    width: min(100%, 44rem);
   }
 
-  .latin-inscription {
-    margin-bottom: 24px;
-  }
-
-  .latin-line {
-    font-size: clamp(1.05rem, 2.1vw, 1.5rem);
+  .card-site-title {
+    font-size: clamp(2rem, 5vw, 3.3rem);
   }
 
   .formal-english {
-    font-size: clamp(1.7rem, 3.3vw, 2.55rem);
+    font-size: clamp(1.45rem, 3.3vw, 2.2rem);
+  }
+
+  .formal-latin {
+    font-size: clamp(0.78rem, 1.8vw, 1rem);
   }
 }
 
@@ -294,29 +307,13 @@ a {
 
   .site-header {
     padding-top: 22px;
-    padding-bottom: 26px;
+    padding-bottom: 20px;
   }
 
   .top-nav {
     gap: 28px;
-    margin-bottom: 22px;
     font-size: 0.72rem;
     letter-spacing: 0.16em;
-  }
-
-  .site-name {
-    gap: 10px;
-    font-size: 1.78rem;
-    letter-spacing: 0.07em;
-    line-height: 0.9;
-  }
-
-  .site-name > span:nth-child(2) {
-    max-width: 280px;
-  }
-
-  .site-cross {
-    font-size: 0.38em;
   }
 
   .hero {
@@ -330,33 +327,51 @@ a {
   }
 
   .hero-copy {
-    padding: 38px 24px 44px;
+    padding: 40px 24px 46px;
   }
 
-  .formal-lockup {
+  .identity-lockup {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 36px;
   }
 
-  .latin-inscription {
-    margin-bottom: 20px;
-    padding: 15px 16px 14px;
-    border-radius: 10px;
+  .card-site-title {
+    gap: 9px;
+    font-size: clamp(1.55rem, 7vw, 2rem);
+    letter-spacing: 0.065em;
+    line-height: 0.94;
   }
 
-  .latin-line {
-    font-size: clamp(0.92rem, 4.2vw, 1.12rem);
-    letter-spacing: 0.12em;
-    line-height: 1.08;
+  .title-cross {
+    font-size: 0.4em;
+  }
+
+  .ornamental-divider {
+    gap: 10px;
+    width: min(100%, 29rem);
+    margin: 21px auto 23px;
+  }
+
+  .divider-ornament {
+    font-size: 1.2rem;
   }
 
   .formal-english {
-    font-size: clamp(1.38rem, 6vw, 1.85rem);
-    line-height: 0.98;
+    max-width: 100%;
+    margin-bottom: 20px;
+    font-size: clamp(1.18rem, 5.4vw, 1.55rem);
+    line-height: 1.08;
+  }
+
+  .formal-latin {
+    max-width: 100%;
+    font-size: clamp(0.67rem, 3vw, 0.82rem);
+    letter-spacing: 0.16em;
+    line-height: 1.5;
   }
 
   .mission {
-    margin-bottom: 26px;
+    margin-bottom: 27px;
     font-size: 0.8rem;
     letter-spacing: 0.075em;
     line-height: 1.68;
@@ -375,24 +390,26 @@ a {
 }
 
 @media (max-width: 390px) {
-  .site-name {
-    font-size: 1.58rem;
-  }
-
   .hero-art {
     min-height: 360px;
   }
 
   .hero-copy {
-    padding: 34px 20px 38px;
+    padding: 36px 20px 40px;
   }
 
-  .latin-line {
-    font-size: 0.86rem;
-    letter-spacing: 0.1em;
+  .card-site-title {
+    gap: 7px;
+    font-size: 1.42rem;
+    letter-spacing: 0.045em;
   }
 
   .formal-english {
-    font-size: 1.25rem;
+    font-size: 1.12rem;
+  }
+
+  .formal-latin {
+    font-size: 0.64rem;
+    letter-spacing: 0.135em;
   }
 }
