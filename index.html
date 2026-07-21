@@ -45,29 +45,29 @@
           aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
         >
           <p class="formal-title formal-latin">
-            <span class="title-line">
+            <span class="title-line fitted-title-line">
               Societas et
             </span>
 
-            <span class="title-line">
+            <span class="title-line fitted-title-line">
               Ordo Equestris
             </span>
 
-            <span class="title-line">
+            <span class="title-line fitted-title-line">
               Civitatis Sanctae
             </span>
           </p>
 
           <h1 class="formal-title formal-english" id="formal-title">
-            <span class="title-line">
+            <span class="title-line fitted-title-line">
               The Society &amp;
             </span>
 
-            <span class="title-line">
+            <span class="title-line fitted-title-line">
               Equestrian Order of
             </span>
 
-            <span class="title-line">
+            <span class="title-line fitted-title-line">
               The Holy City
             </span>
           </h1>
@@ -87,5 +87,94 @@
       </div>
     </section>
   </main>
+
+  <script>
+    (() => {
+      const SELECTOR = ".fitted-title-line";
+
+      function getNumericStyle(element, propertyName, fallback) {
+        const value = Number.parseFloat(
+          getComputedStyle(element).getPropertyValue(propertyName)
+        );
+
+        return Number.isFinite(value) ? value : fallback;
+      }
+
+      function fitLineToWidth(line) {
+        const availableWidth = line.clientWidth;
+
+        if (availableWidth <= 0) {
+          return;
+        }
+
+        const parentTitle = line.closest(".formal-title");
+        const isLatin = parentTitle.classList.contains("formal-latin");
+
+        const minimumSize = getNumericStyle(
+          parentTitle,
+          "--minimum-line-size",
+          isLatin ? 14 : 16
+        );
+
+        const maximumSize = getNumericStyle(
+          parentTitle,
+          "--maximum-line-size",
+          isLatin ? 54 : 62
+        );
+
+        line.style.fontSize = `${maximumSize}px`;
+
+        let low = minimumSize;
+        let high = maximumSize;
+        let bestSize = minimumSize;
+
+        for (let iteration = 0; iteration < 24; iteration += 1) {
+          const testSize = (low + high) / 2;
+
+          line.style.fontSize = `${testSize}px`;
+
+          const renderedWidth = line.scrollWidth;
+
+          if (renderedWidth <= availableWidth) {
+            bestSize = testSize;
+            low = testSize;
+          } else {
+            high = testSize;
+          }
+        }
+
+        line.style.fontSize = `${bestSize}px`;
+      }
+
+      function fitAllWordmarkLines() {
+        document.querySelectorAll(SELECTOR).forEach(fitLineToWidth);
+      }
+
+      let resizeFrame;
+
+      function scheduleFit() {
+        window.cancelAnimationFrame(resizeFrame);
+
+        resizeFrame = window.requestAnimationFrame(() => {
+          fitAllWordmarkLines();
+        });
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(scheduleFit);
+      } else {
+        window.addEventListener("load", scheduleFit);
+      }
+
+      window.addEventListener("resize", scheduleFit);
+
+      const wordmark = document.querySelector(".bilingual-wordmark");
+
+      if ("ResizeObserver" in window && wordmark) {
+        const observer = new ResizeObserver(scheduleFit);
+        observer.observe(wordmark);
+      }
+    })();
+  </script>
 </body>
 </html>
