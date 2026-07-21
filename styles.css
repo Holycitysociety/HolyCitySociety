@@ -210,7 +210,17 @@ a {
   letter-spacing: 0.017em;
 }
 
-/* Opening cross raised and optically centered */
+/*
+  Italic first line distinguishes the Society
+  from the two-line Equestrian Order portion.
+*/
+
+.formal-latin .title-line:first-child .fit-text,
+.formal-english .title-line:first-child .fit-text {
+  font-style: italic;
+}
+
+/* Opening cross, retained in case it is used elsewhere */
 
 .opening-cross {
   display: inline-block;
