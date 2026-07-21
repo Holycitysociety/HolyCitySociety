@@ -103,6 +103,8 @@
   <script>
     (() => {
       const referenceFontSize = 100;
+      const firstLineScale = 0.8;
+
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
 
@@ -239,10 +241,10 @@
       }
 
       /*
-        Lines two and three fit normally.
+        Lines two and three fit to the full available width.
 
-        Line one may grow only as large as the larger
-        font size used by lines two and three.
+        Line one is set to 80% of the smaller font size
+        calculated for lines two and three.
       */
 
       function fitFormalTitle(title) {
@@ -264,15 +266,13 @@
           const thirdLineSize =
             calculatedSizes[2];
 
-          const firstLineMaximum = Math.max(
+          const smallerSupportingSize = Math.min(
             secondLineSize,
             thirdLineSize
           );
 
-          calculatedSizes[0] = Math.min(
-            calculatedSizes[0],
-            firstLineMaximum
-          );
+          calculatedSizes[0] =
+            smallerSupportingSize * firstLineScale;
         }
 
         lines.forEach((line, index) => {
