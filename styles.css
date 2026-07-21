@@ -4,9 +4,8 @@
   --text: #f7f6f0;
   --muted: rgba(247, 246, 240, 0.74);
 
-  --gold: #f0c75e;
-  --gold-soft: rgba(240, 199, 94, 0.88);
   --accent-blue: #a8c2de;
+  --accent-blue-soft: rgba(168, 194, 222, 0.88);
 
   --shell: 1380px;
   --radius: 30px;
@@ -92,8 +91,8 @@ a {
 
 .site-cross {
   flex: 0 0 auto;
-  color: var(--gold);
-  font-size: 0.52em;
+  color: var(--accent-blue);
+  font-size: 0.78em; /* 50% larger than 0.52em */
 }
 
 /* Hero */
@@ -260,7 +259,7 @@ a {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  color: var(--gold);
+  color: var(--accent-blue);
 }
 
 .scripture p {
@@ -280,7 +279,7 @@ a {
 
 .scripture cite {
   display: block;
-  color: var(--gold-soft);
+  color: var(--accent-blue-soft);
   font-size: 0.72rem;
   font-style: normal;
   font-weight: 500;
@@ -391,7 +390,7 @@ a {
   }
 
   .site-cross {
-    font-size: 0.38em;
+    font-size: 0.57em; /* 50% larger than 0.38em */
   }
 
   .hero {
