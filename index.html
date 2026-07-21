@@ -18,11 +18,7 @@
 
   <style>
     /*
-      Temporary English-first arrangement.
-
-      The English block now supplies the internal gap,
-      while the Latin block sits flush above the larger
-      wordmark-to-mission spacing.
+      English-first arrangement.
     */
 
     .wordmark-english-first .formal-english {
@@ -33,9 +29,33 @@
       margin-bottom: 0;
     }
 
+    /*
+      Fine institutional caption above the formal name.
+      Sized to match the Matthew 5:14 citation.
+    */
+
+    .wordmark-caption {
+      display: block;
+      margin: 0 0 18px;
+      color: var(--gold-soft);
+      font-family: "EB Garamond", Garamond, serif;
+      font-size: 0.72rem;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 640px) {
       .wordmark-english-first .formal-english {
         margin-bottom: 16px;
+      }
+
+      .wordmark-caption {
+        margin-bottom: 16px;
+        font-size: 0.64rem;
+        letter-spacing: 0.14em;
       }
     }
   </style>
@@ -66,8 +86,10 @@
       <div class="hero-copy">
         <div
           class="bilingual-wordmark wordmark-english-first"
-          aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
+          aria-label="Under the name: The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
         >
+          <span class="wordmark-caption">Sub Nomine</span>
+
           <h1
             class="formal-title formal-english"
             id="formal-title"
@@ -348,13 +370,6 @@
           return;
         }
 
-        /*
-          Latin lines two and three fill the width.
-
-          The first Latin line is 80% of the smaller
-          font size used by its two supporting lines.
-        */
-
         const latinSecondSize =
           calculateFormalLineSize(latinLines[1]);
 
@@ -367,21 +382,11 @@
             latinThirdSize
           ) * firstLineScale;
 
-        /*
-          English lines two and three fill the width
-          independently.
-        */
-
         const englishSecondSize =
           calculateFormalLineSize(englishLines[1]);
 
         const englishThirdSize =
           calculateFormalLineSize(englishLines[2]);
-
-        /*
-          The first English line matches the actual
-          rendered width of the first Latin line.
-        */
 
         const latinFirstWidth =
           renderedWidthAtSize(
