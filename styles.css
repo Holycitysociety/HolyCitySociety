@@ -4,8 +4,6 @@
   --text: #f4f1e9;
   --muted: rgba(244, 241, 233, 0.78);
   --gold: #c69a4b;
-  --gold-soft: rgba(198, 154, 75, 0.62);
-  --line: rgba(198, 154, 75, 0.52);
   --shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
   --radius: 28px;
   --shell: 1440px;
@@ -57,27 +55,10 @@ a {
 }
 
 .wordmark-primary {
-  display: grid;
-  grid-template-columns: minmax(40px, 1fr) auto auto auto minmax(40px, 1fr);
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: clamp(16px, 2.4vw, 34px);
-}
-
-.wordmark-line {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold-soft)
-  );
-}
-
-.wordmark-line:last-child {
-  background: linear-gradient(
-    90deg,
-    var(--gold-soft),
-    transparent
-  );
 }
 
 .wordmark-name {
@@ -106,27 +87,6 @@ a {
   letter-spacing: 0.05em;
 }
 
-.wordmark-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px auto 14px;
-  width: min(470px, 74%);
-  color: var(--gold);
-}
-
-.wordmark-divider span {
-  flex: 1;
-  height: 1px;
-  background: var(--gold-soft);
-}
-
-.wordmark-divider b {
-  font-size: 0.48rem;
-  font-weight: 400;
-}
-
 .wordmark-english {
   margin: 0;
   color: var(--text);
@@ -137,21 +97,15 @@ a {
   text-transform: uppercase;
 }
 
-.header-rule {
-  height: 1px;
-  margin-top: 34px;
-  background: var(--line);
-}
-
 /* Navigation */
 
 .top-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 42px;
-  padding-top: 20px;
-  padding-bottom: 22px;
+  gap: 52px;
+  padding-top: 30px;
+  padding-bottom: 24px;
   color: var(--muted);
   font-size: 0.92rem;
   font-weight: 500;
@@ -171,19 +125,13 @@ a {
   color: var(--gold);
 }
 
-.nav-divider {
-  width: 1px;
-  height: 22px;
-  background: var(--line);
-}
-
 /* Hero */
 
 .hero-panel {
   margin-bottom: 42px;
   overflow: hidden;
   background: var(--panel);
-  border: 1px solid var(--gold);
+  border: 1px solid rgba(198, 154, 75, 0.48);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
@@ -218,29 +166,15 @@ a {
 }
 
 .hero-emblem {
-  display: flex;
-  align-items: center;
-  width: min(430px, 88%);
-  gap: 14px;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
   color: var(--gold);
-}
-
-.hero-emblem span {
-  flex: 1;
-  height: 1px;
-  background: var(--gold-soft);
-}
-
-.hero-emblem b {
   font-size: 2.2rem;
-  font-weight: 400;
   line-height: 1;
 }
 
 .hero-title {
   max-width: 650px;
-  margin: 0;
+  margin: 0 0 32px;
   color: var(--text);
   font-family: "Cormorant Garamond", Garamond, serif;
   font-size: clamp(2rem, 3.15vw, 3.65rem);
@@ -248,26 +182,6 @@ a {
   letter-spacing: 0.07em;
   line-height: 1.32;
   text-transform: uppercase;
-}
-
-.hero-divider {
-  display: flex;
-  align-items: center;
-  width: min(430px, 88%);
-  gap: 10px;
-  margin: 32px 0 28px;
-  color: var(--gold);
-}
-
-.hero-divider span {
-  flex: 1;
-  height: 1px;
-  background: var(--gold-soft);
-}
-
-.hero-divider b {
-  font-size: 0.55rem;
-  font-weight: 400;
 }
 
 .hero-quote {
@@ -304,14 +218,6 @@ a {
 @media (max-width: 980px) {
   .site-shell {
     width: min(calc(100% - 40px), var(--shell));
-  }
-
-  .wordmark-primary {
-    grid-template-columns: auto auto auto;
-  }
-
-  .wordmark-line {
-    display: none;
   }
 
   .wordmark-name {
@@ -364,11 +270,6 @@ a {
     line-height: 1.35;
   }
 
-  .wordmark-divider {
-    width: 68%;
-    margin-block: 10px 12px;
-  }
-
   .wordmark-english {
     max-width: 350px;
     margin-inline: auto;
@@ -377,20 +278,12 @@ a {
     line-height: 1.55;
   }
 
-  .header-rule {
-    margin-top: 24px;
-  }
-
   .top-nav {
-    gap: 26px;
-    padding-top: 17px;
+    gap: 32px;
+    padding-top: 24px;
     padding-bottom: 18px;
     font-size: 0.72rem;
     letter-spacing: 0.16em;
-  }
-
-  .nav-divider {
-    height: 18px;
   }
 
   .hero-panel {
@@ -407,23 +300,15 @@ a {
   }
 
   .hero-emblem {
-    width: 82%;
-    margin-bottom: 25px;
-  }
-
-  .hero-emblem b {
+    margin-bottom: 24px;
     font-size: 1.55rem;
   }
 
   .hero-title {
+    margin-bottom: 27px;
     font-size: 1.65rem;
     letter-spacing: 0.055em;
     line-height: 1.28;
-  }
-
-  .hero-divider {
-    width: 82%;
-    margin: 26px 0 22px;
   }
 
   .hero-quote p {
