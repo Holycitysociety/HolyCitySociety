@@ -42,12 +42,11 @@
       <div class="hero-copy">
         <div
           class="bilingual-wordmark"
-          aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
+          aria-label="Societas atque Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
         >
           <p class="formal-title formal-latin">
-            <span class="title-line title-line-with-cross">
-        
-              <span class="fit-text">Societas et</span>
+            <span class="title-line">
+              <span class="fit-text">Societas atque</span>
             </span>
 
             <span class="title-line">
@@ -128,7 +127,8 @@
         const fontStyle = styles.fontStyle || "normal";
         const fontVariant = styles.fontVariant || "normal";
         const fontWeight = styles.fontWeight || "500";
-        const fontFamily = styles.fontFamily || "Cormorant, Garamond, serif";
+        const fontFamily =
+          styles.fontFamily || "Cormorant, Garamond, serif";
 
         context.font =
           `${fontStyle} ${fontVariant} ${fontWeight} ` +
@@ -143,6 +143,7 @@
         );
 
         const numberOfGaps = Math.max(text.length - 1, 0);
+
         const trackingWidth =
           trackingEm * referenceFontSize * numberOfGaps;
 
@@ -151,25 +152,12 @@
 
       function availableWidthFor(element) {
         const line = element.closest(".title-line");
-        let availableWidth = line.clientWidth;
-
-        const cross = line.querySelector(".opening-cross");
-
-        if (cross) {
-          const crossStyles = getComputedStyle(cross);
-          const crossMarginRight =
-            Number.parseFloat(crossStyles.marginRight) || 0;
-
-          availableWidth -=
-            cross.getBoundingClientRect().width +
-            crossMarginRight;
-        }
 
         /*
-          A small safety allowance prevents fractional-pixel clipping
-          at the right edge in mobile Safari.
+          Two-pixel safety allowance prevents fractional-pixel
+          clipping at the right edge in mobile Safari.
         */
-        return Math.max(availableWidth - 2, 0);
+        return Math.max(line.clientWidth - 2, 0);
       }
 
       function fitElement(element) {
@@ -179,7 +167,8 @@
           return;
         }
 
-        const referenceWidth = measureTextAtReferenceSize(element);
+        const referenceWidth =
+          measureTextAtReferenceSize(element);
 
         if (referenceWidth <= 0) {
           return;
@@ -219,7 +208,8 @@
       function scheduleFit() {
         window.cancelAnimationFrame(resizeFrame);
 
-        resizeFrame = window.requestAnimationFrame(fitAllLines);
+        resizeFrame =
+          window.requestAnimationFrame(fitAllLines);
       }
 
       if (document.fonts && document.fonts.ready) {
@@ -229,7 +219,10 @@
       }
 
       window.addEventListener("resize", scheduleFit);
-      window.addEventListener("orientationchange", scheduleFit);
+      window.addEventListener(
+        "orientationchange",
+        scheduleFit
+      );
     })();
   </script>
 </body>
