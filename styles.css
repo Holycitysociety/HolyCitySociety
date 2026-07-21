@@ -157,20 +157,32 @@ a {
   width: 100%;
   min-width: 0;
   margin: 0;
-  font-family: "Cormorant", Garamond, serif;
-  font-weight: 500;
   font-kerning: normal;
   text-align: left;
   text-transform: uppercase;
 }
 
+/*
+  Latin:
+  full-width EB Garamond with a fine 400 weight.
+*/
+
 .formal-latin {
   margin-bottom: 15px;
   color: var(--gold);
+  font-family: "EB Garamond", Garamond, serif;
+  font-weight: 400;
 }
+
+/*
+  English:
+  narrower Cormorant retained at medium weight.
+*/
 
 .formal-english {
   color: var(--text);
+  font-family: "Cormorant", Garamond, serif;
+  font-weight: 500;
 }
 
 .title-line {
@@ -194,23 +206,34 @@ a {
   transform-origin: left center;
 }
 
+/*
+  Reduced Latin tracking complements the broader Garamond
+  and prevents the capitals from becoming too diffuse.
+*/
+
 .formal-latin .fit-text {
-  --tracking-em: 0.063;
+  --tracking-em: 0.045;
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
-  letter-spacing: 0.063em;
+  font-family: "EB Garamond", Garamond, serif;
+  font-weight: 400;
+  letter-spacing: 0.045em;
 }
+
+/* English retains the existing condensed treatment */
 
 .formal-english .fit-text {
   --tracking-em: 0.017;
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
+  font-family: "Cormorant", Garamond, serif;
+  font-weight: 500;
   letter-spacing: 0.017em;
 }
 
-/* Opening cross raised and optically centered */
+/* Retained in case the opening cross is restored later */
 
 .opening-cross {
   display: inline-block;
@@ -429,8 +452,8 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.045;
-    letter-spacing: 0.045em;
+    --tracking-em: 0.032;
+    letter-spacing: 0.032em;
   }
 
   .formal-english .fit-text {
@@ -486,8 +509,8 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.038;
-    letter-spacing: 0.038em;
+    --tracking-em: 0.026;
+    letter-spacing: 0.026em;
   }
 
   .formal-english .fit-text {
