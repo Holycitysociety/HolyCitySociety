@@ -123,7 +123,7 @@ a {
   padding: clamp(44px, 5.2vw, 78px);
 }
 
-/* Equal bilingual wordmark */
+/* Bilingual wordmark */
 
 .bilingual-wordmark {
   display: flex;
@@ -145,13 +145,16 @@ a {
   white-space: nowrap;
 }
 
-/* Latin is exactly 15% smaller than the English */
+/* Latin is 15% smaller than English */
 
 .formal-latin {
   color: var(--gold);
   font-size: clamp(1.87rem, 2.72vw, 3.23rem);
-  letter-spacing: 0.015em;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
+
+/* English remains in normal title case */
 
 .formal-english {
   color: var(--text);
