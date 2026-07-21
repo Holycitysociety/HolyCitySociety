@@ -4,14 +4,14 @@
   --text: #f7f6f0;
   --muted: rgba(247, 246, 240, 0.74);
 
-  /* Bright gold intended to stand visually beside the white */
+  /* Bright gold with visual strength comparable to the white */
   --gold: #f0c75e;
   --gold-soft: rgba(240, 199, 94, 0.88);
 
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
-  --wordmark-width: 36rem;
+  --wordmark-width: 34rem;
 }
 
 * {
@@ -140,13 +140,15 @@ a {
   padding-left: 24px;
 }
 
+/* Shared one-pixel rule joins the two official language forms */
+
 .bilingual-wordmark::before {
   content: "";
   position: absolute;
   top: 0.08em;
   bottom: 0.08em;
   left: 0;
-  width: 2px;
+  width: 1px;
   background: var(--gold);
 }
 
@@ -166,23 +168,23 @@ a {
   white-space: nowrap;
 }
 
-/* Latin remains 15% smaller than the English */
+/* Latin */
 
 .formal-latin {
   margin-bottom: 14px;
   color: var(--gold);
   font-size: clamp(1.632rem, 2.34vw, 2.808rem);
   letter-spacing: 0.045em;
-  line-height: 0.9;
+  line-height: 0.88;
 }
 
-/* English now also appears in full capitals */
+/* English */
 
 .formal-english {
   color: var(--text);
   font-size: clamp(2.08rem, 2.99vw, 3.575rem);
   letter-spacing: 0.012em;
-  line-height: 0.9;
+  line-height: 0.88;
 }
 
 /* Mission */
@@ -338,21 +340,17 @@ a {
     padding-left: 18px;
   }
 
-  .bilingual-wordmark::before {
-    width: 1.5px;
-  }
-
   .formal-latin {
     margin-bottom: 11px;
     font-size: clamp(1.2rem, 5.2vw, 1.54rem);
     letter-spacing: 0.035em;
-    line-height: 0.92;
+    line-height: 0.9;
   }
 
   .formal-english {
     font-size: clamp(1.48rem, 6.5vw, 1.92rem);
     letter-spacing: 0.006em;
-    line-height: 0.92;
+    line-height: 0.9;
   }
 
   .mission {
