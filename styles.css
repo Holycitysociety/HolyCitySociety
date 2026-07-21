@@ -4,7 +4,7 @@
   --text: #f7f6f0;
   --muted: rgba(247, 246, 240, 0.74);
 
-  /* Brighter, clearer gold with luminosity close to the white */
+  /* Bright gold intended to stand visually beside the white */
   --gold: #f0c75e;
   --gold-soft: rgba(240, 199, 94, 0.88);
 
@@ -78,7 +78,7 @@ a {
   justify-content: center;
   gap: 22px;
   color: var(--text);
-  font-family: "Cormorant", "Cormorant Garamond", Garamond, serif;
+  font-family: "Cormorant", Garamond, serif;
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 500;
   letter-spacing: 0.11em;
@@ -140,8 +140,6 @@ a {
   padding-left: 24px;
 }
 
-/* One shared rule joins the Latin and English as coequal forms */
-
 .bilingual-wordmark::before {
   content: "";
   position: absolute;
@@ -150,16 +148,16 @@ a {
   left: 0;
   width: 2px;
   background: var(--gold);
-  opacity: 1;
 }
 
 .formal-title {
   width: 100%;
   margin: 0;
-  font-family: "Cormorant", "Cormorant Garamond", Garamond, serif;
+  font-family: "Cormorant", Garamond, serif;
   font-weight: 500;
   font-kerning: normal;
   text-align: left;
+  text-transform: uppercase;
 }
 
 .title-line {
@@ -168,25 +166,23 @@ a {
   white-space: nowrap;
 }
 
-/* Latin increased 20% */
+/* Latin remains 15% smaller than the English */
 
 .formal-latin {
   margin-bottom: 14px;
   color: var(--gold);
   font-size: clamp(1.632rem, 2.34vw, 2.808rem);
-  letter-spacing: 0.035em;
+  letter-spacing: 0.045em;
   line-height: 0.9;
-  text-transform: uppercase;
 }
 
-/* English increased 30% */
+/* English now also appears in full capitals */
 
 .formal-english {
   color: var(--text);
   font-size: clamp(2.08rem, 2.99vw, 3.575rem);
-  letter-spacing: -0.018em;
+  letter-spacing: 0.012em;
   line-height: 0.9;
-  text-transform: none;
 }
 
 /* Mission */
@@ -213,7 +209,7 @@ a {
 
 .scripture p {
   margin: 0 0 12px;
-  font-family: "Cormorant", "Cormorant Garamond", Garamond, serif;
+  font-family: "Cormorant", Garamond, serif;
   font-size: clamp(1.12rem, 1.4vw, 1.46rem);
   font-style: italic;
   font-weight: 500;
@@ -349,13 +345,13 @@ a {
   .formal-latin {
     margin-bottom: 11px;
     font-size: clamp(1.2rem, 5.2vw, 1.54rem);
-    letter-spacing: 0.025em;
+    letter-spacing: 0.035em;
     line-height: 0.92;
   }
 
   .formal-english {
     font-size: clamp(1.48rem, 6.5vw, 1.92rem);
-    letter-spacing: -0.015em;
+    letter-spacing: 0.006em;
     line-height: 0.92;
   }
 
