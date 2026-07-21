@@ -12,9 +12,9 @@
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
 
   /*
-    This is the shared width of all six formal-title lines.
-    Every line begins at the left rule and ends at this boundary.
+    This is the common finished width of all six lines.
   */
+
   --wordmark-width: 30rem;
 }
 
@@ -167,40 +167,25 @@ a {
 .title-line {
   display: block;
   width: 100%;
-  overflow: visible;
   white-space: nowrap;
 }
 
 /*
-  The script adjusts both font size and tracking independently
-  for each line.
-
-  --natural-fill:
-  Proportion filled by the type itself before tracking is added.
-
-  --maximum-tracking:
-  Maximum preferred tracking, expressed relative to font size.
+  The JavaScript assigns an individual font size to each line.
+  Letter spacing remains consistent within each language.
 */
 
 .formal-latin {
-  --minimum-line-size: 18;
-  --maximum-line-size: 58;
-  --natural-fill: 0.92;
-  --maximum-tracking: 0.16;
-
-  margin-bottom: 14px;
+  margin-bottom: 15px;
   color: var(--gold);
-  line-height: 0.88;
+  letter-spacing: 0.063em;
+  line-height: 0.82;
 }
 
 .formal-english {
-  --minimum-line-size: 20;
-  --maximum-line-size: 64;
-  --natural-fill: 0.94;
-  --maximum-tracking: 0.13;
-
   color: var(--text);
-  line-height: 0.88;
+  letter-spacing: 0.017em;
+  line-height: 0.82;
 }
 
 /* Mission */
@@ -258,16 +243,6 @@ a {
   .hero-copy {
     padding: 48px 42px;
   }
-
-  .formal-latin {
-    --minimum-line-size: 17;
-    --maximum-line-size: 50;
-  }
-
-  .formal-english {
-    --minimum-line-size: 19;
-    --maximum-line-size: 54;
-  }
 }
 
 /* Standard tablet */
@@ -283,18 +258,6 @@ a {
 
   .hero-copy {
     padding: 46px 38px;
-  }
-
-  .formal-latin {
-    --minimum-line-size: 16;
-    --maximum-line-size: 44;
-    --natural-fill: 0.92;
-  }
-
-  .formal-english {
-    --minimum-line-size: 18;
-    --maximum-line-size: 48;
-    --natural-fill: 0.94;
   }
 
   .mission {
@@ -331,16 +294,6 @@ a {
 
   .hero-copy {
     padding: 50px 44px 58px;
-  }
-
-  .formal-latin {
-    --minimum-line-size: 17;
-    --maximum-line-size: 52;
-  }
-
-  .formal-english {
-    --minimum-line-size: 19;
-    --maximum-line-size: 58;
   }
 }
 
@@ -403,22 +356,14 @@ a {
   }
 
   .formal-latin {
-    --minimum-line-size: 15;
-    --maximum-line-size: 40;
-    --natural-fill: 0.91;
-    --maximum-tracking: 0.17;
-
-    margin-bottom: 12px;
-    line-height: 0.9;
+    margin-bottom: 13px;
+    letter-spacing: 0.049em;
+    line-height: 0.82;
   }
 
   .formal-english {
-    --minimum-line-size: 17;
-    --maximum-line-size: 46;
-    --natural-fill: 0.93;
-    --maximum-tracking: 0.14;
-
-    line-height: 0.9;
+    letter-spacing: 0.012em;
+    line-height: 0.82;
   }
 
   .mission {
@@ -455,15 +400,5 @@ a {
 
   .bilingual-wordmark {
     padding-left: 16px;
-  }
-
-  .formal-latin {
-    --minimum-line-size: 14;
-    --maximum-line-size: 36;
-  }
-
-  .formal-english {
-    --minimum-line-size: 16;
-    --maximum-line-size: 41;
   }
 }
