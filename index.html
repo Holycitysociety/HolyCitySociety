@@ -40,27 +40,42 @@
       ></div>
 
       <div class="hero-copy">
+        <p class="institutional-caption">
+          Sub Nomine
+        </p>
+
         <div
-          class="bilingual-wordmark"
+          class="bilingual-wordmark wordmark-english-first"
           aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
         >
-          <h1 class="formal-title formal-english" id="formal-title">
+          <h1
+            class="formal-title formal-english"
+            id="formal-title"
+          >
             <span class="title-line">
-              <span class="fit-text">The Society &amp;</span>
+              <span class="fit-text">
+                The Society &amp;
+              </span>
             </span>
 
             <span class="title-line">
-              <span class="fit-text">Equestrian Order of the Holy City</span>
+              <span class="fit-text">
+                Equestrian Order of the Holy City
+              </span>
             </span>
           </h1>
 
           <p class="formal-title formal-latin">
             <span class="title-line">
-              <span class="fit-text">Societas atque</span>
+              <span class="fit-text">
+                Societas atque
+              </span>
             </span>
 
             <span class="title-line">
-              <span class="fit-text">Ordo Equestris Civitatis Sanctae</span>
+              <span class="fit-text">
+                Ordo Equestris Civitatis Sanctae
+              </span>
             </span>
           </p>
         </div>
@@ -95,22 +110,31 @@
   <script>
     (() => {
       const referenceFontSize = 100;
-      const firstLineScale = 0.8;
+      const widthSafetyAllowance = 2;
 
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
 
-      function numericCustomProperty(element, propertyName, fallback) {
+      function numericCustomProperty(
+        element,
+        propertyName,
+        fallback
+      ) {
         const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(propertyName)
+          getComputedStyle(element).getPropertyValue(
+            propertyName
+          )
         );
 
-        return Number.isFinite(value) ? value : fallback;
+        return Number.isFinite(value)
+          ? value
+          : fallback;
       }
 
       function transformedText(element) {
         const text = element.textContent.trim();
-        const transform = getComputedStyle(element).textTransform;
+        const transform =
+          getComputedStyle(element).textTransform;
 
         if (transform === "uppercase") {
           return text.toUpperCase();
@@ -127,16 +151,24 @@
         const styles = getComputedStyle(element);
         const text = transformedText(element);
 
-        const fontStyle = styles.fontStyle || "normal";
-        const fontVariant = styles.fontVariant || "normal";
-        const fontWeight = styles.fontWeight || "400";
-        const fontFamily = styles.fontFamily || "serif";
+        const fontStyle =
+          styles.fontStyle || "normal";
+
+        const fontVariant =
+          styles.fontVariant || "normal";
+
+        const fontWeight =
+          styles.fontWeight || "400";
+
+        const fontFamily =
+          styles.fontFamily || "serif";
 
         context.font =
           `${fontStyle} ${fontVariant} ${fontWeight} ` +
           `${referenceFontSize}px ${fontFamily}`;
 
-        const glyphWidth = context.measureText(text).width;
+        const glyphWidth =
+          context.measureText(text).width;
 
         const trackingEm = numericCustomProperty(
           element,
@@ -150,27 +182,49 @@
           0
         );
 
-        const characterGaps = Math.max(text.length - 1, 0);
-        const spaces = (text.match(/\s/g) || []).length;
+        const characterGaps =
+          Math.max(text.length - 1, 0);
+
+        const spaces =
+          (text.match(/\s/g) || []).length;
 
         const trackingWidth =
-          trackingEm * referenceFontSize * characterGaps;
+          trackingEm *
+          referenceFontSize *
+          characterGaps;
 
         const additionalWordSpacing =
-          wordSpacingEm * referenceFontSize * spaces;
+          wordSpacingEm *
+          referenceFontSize *
+          spaces;
 
-        return glyphWidth + trackingWidth + additionalWordSpacing;
+        return (
+          glyphWidth +
+          trackingWidth +
+          additionalWordSpacing
+        );
       }
 
-      function calculateFormalLineSize(element) {
-        const line = element.closest(".title-line");
-        const targetWidth = Math.max(line.clientWidth - 2, 0);
+      function calculateLineSize(element) {
+        const line =
+          element.closest(".title-line");
+
+        if (!line) {
+          return 0;
+        }
+
+        const targetWidth = Math.max(
+          line.clientWidth -
+            widthSafetyAllowance,
+          0
+        );
 
         if (targetWidth <= 0) {
           return 0;
         }
 
-        const referenceWidth = measureTextAtReferenceSize(element);
+        const referenceWidth =
+          measureTextAtReferenceSize(element);
 
         if (referenceWidth <= 0) {
           return 0;
@@ -189,173 +243,168 @@
         );
 
         const calculatedSize =
-          referenceFontSize * (targetWidth / referenceWidth);
+          referenceFontSize *
+          (targetWidth / referenceWidth);
 
         return Math.max(
           minimumSize,
-          Math.min(calculatedSize, maximumSize)
+          Math.min(
+            calculatedSize,
+            maximumSize
+          )
         );
       }
 
-      function renderedWidthAtSize(element, fontSize) {
-        const referenceWidth = measureTextAtReferenceSize(element);
+      /*
+        Both lines within each language receive the
+        same font size.
 
-        return referenceWidth * (fontSize / referenceFontSize);
-      }
+        The smaller calculated size is used so that
+        the longer line fits within the available width.
+      */
 
-      function fontSizeForTargetWidth(element, targetWidth) {
-        const referenceWidth = measureTextAtReferenceSize(element);
-
-        if (referenceWidth <= 0 || targetWidth <= 0) {
-          return 0;
-        }
-
-        const minimumSize = numericCustomProperty(
-          element,
-          "--minimum-fit-size",
-          10
-        );
-
-        const maximumSize = numericCustomProperty(
-          element,
-          "--maximum-fit-size",
-          180
-        );
-
-        const calculatedSize =
-          referenceFontSize * (targetWidth / referenceWidth);
-
-        return Math.max(
-          minimumSize,
-          Math.min(calculatedSize, maximumSize)
-        );
-      }
-
-      function fitFormalWordmark() {
-        const latinTitle = document.querySelector(".formal-latin");
-        const englishTitle = document.querySelector(".formal-english");
-
-        if (!latinTitle || !englishTitle) {
-          return;
-        }
-
-        const latinLines = Array.from(
-          latinTitle.querySelectorAll(".fit-text")
-        );
-
-        const englishLines = Array.from(
-          englishTitle.querySelectorAll(".fit-text")
-        );
-
-        if (latinLines.length < 2 || englishLines.length < 2) {
-          return;
-        }
-
-        /*
-          Second lines fill the available width.
-          First lines are 80% of their second-line size.
-        */
-
-        const latinSecondSize =
-          calculateFormalLineSize(latinLines[1]);
-
-        const latinFirstSize =
-          latinSecondSize * firstLineScale;
-
-        const englishSecondSize =
-          calculateFormalLineSize(englishLines[1]);
-
-        /*
-          Match the first English line to the actual
-          rendered width of the first Latin line.
-        */
-
-        const latinFirstWidth =
-          renderedWidthAtSize(latinLines[0], latinFirstSize);
-
-        const englishFirstSize =
-          fontSizeForTargetWidth(englishLines[0], latinFirstWidth);
-
-        latinLines[0].style.fontSize = `${latinFirstSize}px`;
-        latinLines[1].style.fontSize = `${latinSecondSize}px`;
-
-        englishLines[0].style.fontSize = `${englishFirstSize}px`;
-        englishLines[1].style.fontSize = `${englishSecondSize}px`;
-      }
-
-      function fitEqualSizeGroup(group) {
+      function fitFormalTitle(title) {
         const lines = Array.from(
-          group.querySelectorAll(".equal-size-line")
+          title.querySelectorAll(".fit-text")
         );
 
         if (!lines.length) {
           return;
         }
 
-        const targetWidth = Math.max(group.clientWidth - 2, 0);
+        const calculatedSizes =
+          lines
+            .map(calculateLineSize)
+            .filter((size) => size > 0);
+
+        if (!calculatedSizes.length) {
+          return;
+        }
+
+        const sharedSize =
+          Math.min(...calculatedSizes);
+
+        lines.forEach((line) => {
+          line.style.fontSize =
+            `${sharedSize}px`;
+        });
+      }
+
+      function fitEqualSizeGroup(group) {
+        const lines = Array.from(
+          group.querySelectorAll(
+            ".equal-size-line"
+          )
+        );
+
+        if (!lines.length) {
+          return;
+        }
+
+        const targetWidth = Math.max(
+          group.clientWidth -
+            widthSafetyAllowance,
+          0
+        );
 
         if (targetWidth <= 0) {
           return;
         }
 
-        const longestReferenceWidth = Math.max(
-          ...lines.map(measureTextAtReferenceSize)
-        );
+        const longestReferenceWidth =
+          Math.max(
+            ...lines.map(
+              measureTextAtReferenceSize
+            )
+          );
 
         if (longestReferenceWidth <= 0) {
           return;
         }
 
-        const minimumSize = numericCustomProperty(
-          group,
-          "--minimum-group-size",
-          10
-        );
+        const minimumSize =
+          numericCustomProperty(
+            group,
+            "--minimum-group-size",
+            10
+          );
 
-        const maximumSize = numericCustomProperty(
-          group,
-          "--maximum-group-size",
-          72
-        );
+        const maximumSize =
+          numericCustomProperty(
+            group,
+            "--maximum-group-size",
+            72
+          );
 
         const calculatedSize =
-          referenceFontSize * (targetWidth / longestReferenceWidth);
+          referenceFontSize *
+          (
+            targetWidth /
+            longestReferenceWidth
+          );
 
         const finalSize = Math.max(
           minimumSize,
-          Math.min(calculatedSize, maximumSize)
+          Math.min(
+            calculatedSize,
+            maximumSize
+          )
         );
 
         lines.forEach((line) => {
-          line.style.fontSize = `${finalSize}px`;
+          line.style.fontSize =
+            `${finalSize}px`;
         });
       }
 
       function fitAllTypography() {
-        fitFormalWordmark();
+        document
+          .querySelectorAll(".formal-title")
+          .forEach(fitFormalTitle);
 
         document
-          .querySelectorAll(".equal-size-group")
+          .querySelectorAll(
+            ".equal-size-group"
+          )
           .forEach(fitEqualSizeGroup);
       }
 
       let resizeFrame;
 
       function scheduleFit() {
-        window.cancelAnimationFrame(resizeFrame);
+        window.cancelAnimationFrame(
+          resizeFrame
+        );
 
         resizeFrame =
-          window.requestAnimationFrame(fitAllTypography);
+          window.requestAnimationFrame(
+            fitAllTypography
+          );
       }
 
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(scheduleFit);
+      if (
+        document.fonts &&
+        document.fonts.ready
+      ) {
+        document.fonts.ready.then(
+          scheduleFit
+        );
       } else {
-        window.addEventListener("load", scheduleFit);
+        window.addEventListener(
+          "load",
+          scheduleFit
+        );
       }
 
-      window.addEventListener("resize", scheduleFit);
-      window.addEventListener("orientationchange", scheduleFit);
+      window.addEventListener(
+        "resize",
+        scheduleFit
+      );
+
+      window.addEventListener(
+        "orientationchange",
+        scheduleFit
+      );
     })();
   </script>
 </body>
