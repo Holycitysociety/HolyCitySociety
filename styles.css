@@ -171,7 +171,7 @@ a {
   font-weight: 400;
 }
 
-/* English remains Cormorant */
+/* English: Cormorant medium */
 
 .formal-english {
   color: var(--text);
@@ -188,18 +188,22 @@ a {
   white-space: nowrap;
 }
 
+/*
+  Final formal-title leading.
+  Allows the Q tails to clear the line below.
+*/
+
 .fit-text {
   display: inline-block;
   flex: 0 0 auto;
   white-space: nowrap;
-  line-height: 0.94;
+  line-height: 1.02;
   transform-origin: left center;
 }
 
 /*
   Latin spacing:
-  1.5 × the previous letter tracking.
-  Additional word space approximates 1.5 × normal.
+  Cinzel 400 with expanded letter and word spacing.
 */
 
 .formal-latin .fit-text {
@@ -421,7 +425,7 @@ a {
   }
 
   .fit-text {
-    line-height: 0.96;
+    line-height: 1.04;
   }
 
   .formal-latin .fit-text {
