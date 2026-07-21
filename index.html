@@ -46,6 +46,7 @@
         >
           <p class="formal-title formal-latin">
             <span class="title-line fitted-title-line">
+              <span class="opening-cross" aria-hidden="true">✠</span>
               Societas et
             </span>
 
@@ -93,19 +94,7 @@
       const lineSelector = ".fitted-title-line";
       const measurementSize = 100;
       const minimumSize = 12;
-      const maximumSize = 160;
-
-      function measureNaturalWidth(line) {
-        const originalSize = line.style.fontSize;
-
-        line.style.fontSize = `${measurementSize}px`;
-
-        const width = line.getBoundingClientRect().width;
-
-        line.style.fontSize = originalSize;
-
-        return width;
-      }
+      const maximumSize = 180;
 
       function fitLine(line) {
         const targetWidth = line.parentElement.clientWidth;
@@ -133,11 +122,11 @@
         line.style.fontSize = `${calculatedSize}px`;
 
         /*
-          One refinement pass compensates for browser rounding,
-          kerning, and subpixel rendering.
+          Refinement pass for kerning, word spacing,
+          subpixel rendering, and browser rounding.
         */
 
-        const renderedWidth = line.getBoundingClientRect().width;
+        const renderedWidth = line.scrollWidth;
 
         if (renderedWidth > 0) {
           const correction = targetWidth / renderedWidth;
