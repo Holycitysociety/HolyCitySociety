@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet"
   />
 
@@ -63,12 +63,12 @@
               <span class="fit-text">The Society &amp;</span>
             </span>
 
-            <span class="title-line english-emphasis">
-              <span class="fit-text">Equestrian Order</span>
+            <span class="title-line">
+              <span class="fit-text">Equestrian Order of</span>
             </span>
 
-            <span class="title-line english-emphasis">
-              <span class="fit-text">of The Holy City</span>
+            <span class="title-line">
+              <span class="fit-text">The Holy City</span>
             </span>
           </h1>
         </div>
@@ -180,8 +180,7 @@
           return;
         }
 
-        const referenceWidth =
-          measureTextAtReferenceSize(element);
+        const referenceWidth = measureTextAtReferenceSize(element);
 
         if (referenceWidth <= 0) {
           return;
@@ -285,10 +284,7 @@
       }
 
       window.addEventListener("resize", scheduleFit);
-      window.addEventListener(
-        "orientationchange",
-        scheduleFit
-      );
+      window.addEventListener("orientationchange", scheduleFit);
     })();
   </script>
 </body>
