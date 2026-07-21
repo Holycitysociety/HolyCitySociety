@@ -142,33 +142,32 @@ a {
 }
 
 .formal-title {
-  --base-tracking: 1.6;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
   margin: 0;
   color: var(--text);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.12rem, 1.52vw, 1.82rem);
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: clamp(1.2rem, 1.62vw, 1.95rem);
   font-weight: 500;
   font-kerning: normal;
-  line-height: 1.12;
+  letter-spacing: 0.117em;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
 .title-line {
   display: block;
-  width: 100%;
   white-space: nowrap;
 }
 
 .formal-latin {
-  text-align: left;
+  padding-right: 0.08em;
+  text-align: right;
 }
 
 .formal-english {
+  padding-left: 0.08em;
   text-align: left;
 }
 
@@ -237,9 +236,8 @@ a {
   }
 
   .formal-title {
-    --base-tracking: 1.35;
-
-    font-size: clamp(0.96rem, 1.45vw, 1.4rem);
+    font-size: clamp(1rem, 1.55vw, 1.48rem);
+    letter-spacing: 0.098em;
   }
 }
 
@@ -270,9 +268,8 @@ a {
   }
 
   .formal-title {
-    --base-tracking: 1.6;
-
-    font-size: clamp(1.08rem, 2.35vw, 1.55rem);
+    font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+    letter-spacing: 0.117em;
   }
 }
 
@@ -335,10 +332,9 @@ a {
   }
 
   .formal-title {
-    --base-tracking: 0.9;
-
-    font-size: clamp(0.66rem, 3vw, 0.88rem);
-    line-height: 1.16;
+    font-size: clamp(0.72rem, 3.25vw, 0.96rem);
+    letter-spacing: 0.085em;
+    line-height: 1.14;
   }
 
   .mission {
@@ -366,9 +362,12 @@ a {
   }
 
   .formal-title {
-    --base-tracking: 0.65;
+    font-size: 0.71rem;
+    letter-spacing: 0.065em;
+  }
 
-    font-size: 0.66rem;
+  .title-line {
+    white-space: normal;
   }
 }
 
@@ -386,8 +385,7 @@ a {
   }
 
   .formal-title {
-    --base-tracking: 0.5;
-
-    font-size: 0.61rem;
+    font-size: 0.67rem;
+    letter-spacing: 0.055em;
   }
 }
