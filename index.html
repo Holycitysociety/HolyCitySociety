@@ -46,7 +46,9 @@
         >
           <p class="formal-title formal-latin">
             <span class="title-line">
-              <span class="fit-text">S o c i e t a s  &nbsp;&nbsp; e t </span>
+              <span class="fit-text">
+                S o c i e t a s&nbsp;&nbsp;e t
+              </span>
             </span>
 
             <span class="title-line">
@@ -60,15 +62,21 @@
 
           <h1 class="formal-title formal-english" id="formal-title">
             <span class="title-line">
-              <span class="fit-text">The Society &amp;</span>
+              <span class="fit-text">
+                T h e&nbsp;&nbsp;S o c i e t y&nbsp;&nbsp;&amp;
+              </span>
             </span>
 
             <span class="title-line">
-              <span class="fit-text">Equestrian Order of</span>
+              <span class="fit-text">
+                Equestrian Order
+              </span>
             </span>
 
             <span class="title-line">
-              <span class="fit-text">The Holy City</span>
+              <span class="fit-text">
+                Of The Holy City
+              </span>
             </span>
           </h1>
         </div>
@@ -153,10 +161,6 @@
       function availableWidthFor(element) {
         const line = element.closest(".title-line");
 
-        /*
-          Two-pixel safety allowance prevents fractional-pixel
-          clipping at the right edge in mobile Safari.
-        */
         return Math.max(line.clientWidth - 2, 0);
       }
 
