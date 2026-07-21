@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet"
   />
 
@@ -18,60 +18,48 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="site-shell">
-      <div class="wordmark" aria-label="Holy City Society">
-        <div class="wordmark-primary">
-          <span class="cross" aria-hidden="true">✠</span>
-          <span class="wordmark-name">Holy City Society</span>
-          <span class="cross" aria-hidden="true">✠</span>
-        </div>
-
-        <div class="wordmark-bilingual">
-          <p class="wordmark-latin" lang="la">
-            Societas et Ordo Equestris<br />
-            Civitatis Sanctae
-          </p>
-
-          <p class="wordmark-english">
-            Society and Equestrian<br />
-            Order of the Holy City
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <nav class="top-nav site-shell" aria-label="Primary">
+  <header class="site-header site-shell">
+    <nav class="top-nav" aria-label="Primary">
       <a href="./index.html" aria-current="page">Praxis</a>
       <a href="./virtues.html">Energeia</a>
     </nav>
+
+    <div class="site-name" aria-label="Holy City Society">
+      <span class="site-cross" aria-hidden="true">✠</span>
+      <span>Holy City Society</span>
+      <span class="site-cross" aria-hidden="true">✠</span>
+    </div>
   </header>
 
   <main class="site-shell">
-    <section class="hero-panel" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div
-          class="hero-art"
-          role="img"
-          aria-label="Blue engraved city on a hill with mounted riders">
-        </div>
+    <section class="hero" aria-labelledby="formal-title">
+      <div
+        class="hero-art"
+        role="img"
+        aria-label="Blue engraved city on a hill with mounted riders">
+      </div>
 
-        <div class="hero-copy">
-          <div class="hero-emblem" aria-hidden="true">✠</div>
+      <div class="hero-copy">
+        <div class="formal-wordmark">
+          <p class="formal-latin">
+            Societas et Ordo Equestris Civitatis Sanctae
+          </p>
 
-          <h1 class="hero-title" id="hero-title">
-            Continuing the quest to build an illuminated, free, and holy society
+          <h1 class="formal-english" id="formal-title">
+            The Society and Equestrian Order of the Holy City
           </h1>
-
-          <blockquote class="hero-quote">
-            <p>
-              “Ye are the light of the world.<br />
-              A city that is set on a hill cannot be hid.”
-            </p>
-
-            <cite>Matthew 5:14</cite>
-          </blockquote>
         </div>
+
+        <p class="mission">
+          Continuing the quest to build an illuminated, free, and holy society
+        </p>
+
+        <blockquote class="scripture">
+          <p>
+            “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+          </p>
+          <cite>Matthew 5:14</cite>
+        </blockquote>
       </div>
     </section>
   </main>
