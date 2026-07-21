@@ -45,19 +45,21 @@
           aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
         >
           <p class="formal-title formal-latin">
-            <span class="fitted-title-line">
+            <span class="title-line">
               Societas et Ordo Equestris
             </span>
-            <span class="fitted-title-line">
+
+            <span class="title-line">
               Civitatis Sanctae
             </span>
           </p>
 
           <h1 class="formal-title formal-english" id="formal-title">
-            <span class="fitted-title-line">
+            <span class="title-line">
               The Society and Equestrian
             </span>
-            <span class="fitted-title-line">
+
+            <span class="title-line">
               Order of the Holy City
             </span>
           </h1>
@@ -77,45 +79,5 @@
       </div>
     </section>
   </main>
-
-  <script>
-    function fitWordmarkLines() {
-      const lines = document.querySelectorAll(".fitted-title-line");
-
-      lines.forEach((line) => {
-        line.style.letterSpacing = "0px";
-
-        const availableWidth = line.clientWidth;
-        const naturalWidth = line.scrollWidth;
-        const text = line.textContent.trim();
-        const characterGaps = Math.max(text.length - 1, 1);
-
-        if (naturalWidth >= availableWidth) {
-          return;
-        }
-
-        const requiredSpacing =
-          (availableWidth - naturalWidth) / characterGaps;
-
-        const isLatin = Boolean(line.closest(".formal-latin"));
-        const maximumSpacing = isLatin ? 2.8 : 2.2;
-
-        line.style.letterSpacing =
-          `${Math.min(requiredSpacing, maximumSpacing)}px`;
-      });
-    }
-
-    function scheduleWordmarkFit() {
-      window.requestAnimationFrame(fitWordmarkLines);
-    }
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(scheduleWordmarkFit);
-    } else {
-      window.addEventListener("load", scheduleWordmarkFit);
-    }
-
-    window.addEventListener("resize", scheduleWordmarkFit);
-  </script>
 </body>
 </html>
