@@ -211,22 +211,13 @@ a {
 }
 
 /*
-  The first line in each language represents the Society.
-  It is italic and receives twice the normal tracking.
+  Italic first line distinguishes the Society
+  from the two-line Equestrian Order portion.
 */
 
-.formal-latin .title-line:first-child .fit-text {
-  --tracking-em: 0.126;
-
-  font-style: italic;
-  letter-spacing: 0.126em;
-}
-
+.formal-latin .title-line:first-child .fit-text,
 .formal-english .title-line:first-child .fit-text {
-  --tracking-em: 0.034;
-
   font-style: italic;
-  letter-spacing: 0.034em;
 }
 
 /* Opening cross, retained in case it is used elsewhere */
@@ -449,30 +440,12 @@ a {
 
   .formal-latin .fit-text {
     --tracking-em: 0.045;
-
     letter-spacing: 0.045em;
   }
 
   .formal-english .fit-text {
     --tracking-em: 0.01;
-
     letter-spacing: 0.01em;
-  }
-
-  /*
-    Twice the mobile tracking on the italic Society lines.
-  */
-
-  .formal-latin .title-line:first-child .fit-text {
-    --tracking-em: 0.09;
-
-    letter-spacing: 0.09em;
-  }
-
-  .formal-english .title-line:first-child .fit-text {
-    --tracking-em: 0.02;
-
-    letter-spacing: 0.02em;
   }
 
   .opening-cross {
@@ -524,30 +497,12 @@ a {
 
   .formal-latin .fit-text {
     --tracking-em: 0.038;
-
     letter-spacing: 0.038em;
   }
 
   .formal-english .fit-text {
     --tracking-em: 0.006;
-
     letter-spacing: 0.006em;
-  }
-
-  /*
-    Twice the narrow-mobile tracking on the Society lines.
-  */
-
-  .formal-latin .title-line:first-child .fit-text {
-    --tracking-em: 0.076;
-
-    letter-spacing: 0.076em;
-  }
-
-  .formal-english .title-line:first-child .fit-text {
-    --tracking-em: 0.012;
-
-    letter-spacing: 0.012em;
   }
 
   .opening-cross {
