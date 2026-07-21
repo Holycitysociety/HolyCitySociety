@@ -7,7 +7,7 @@
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
-  --wordmark-width: 31rem;
+  --wordmark-width: 38rem;
 }
 
 * {
@@ -93,7 +93,7 @@ a {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(400px, 0.92fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.92fr);
   min-height: 720px;
   margin-bottom: 48px;
   overflow: hidden;
@@ -122,49 +122,48 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(54px, 5.8vw, 88px);
+  padding: clamp(50px, 5.4vw, 82px);
   text-align: center;
 }
 
-/* Centered bilingual wordmark */
+/* Side-by-side bilingual wordmark */
 
 .bilingual-wordmark {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   align-items: center;
+  column-gap: clamp(28px, 3vw, 48px);
   width: min(100%, var(--wordmark-width));
   margin-bottom: 42px;
 }
 
 .formal-title {
-  width: 100%;
   margin: 0;
   font-family: "Cormorant Garamond", Garamond, serif;
   font-weight: 500;
   font-kerning: normal;
-  text-align: center;
 }
 
 .title-line {
   display: block;
-  width: auto;
   white-space: nowrap;
 }
 
 .formal-latin {
-  margin-bottom: 14px;
   color: var(--gold);
-  font-size: clamp(1.36rem, 1.95vw, 2.34rem);
-  letter-spacing: 0.035em;
-  line-height: 0.94;
+  font-size: clamp(1.15rem, 1.55vw, 1.9rem);
+  letter-spacing: 0.045em;
+  line-height: 1.02;
+  text-align: right;
   text-transform: uppercase;
 }
 
 .formal-english {
   color: var(--text);
-  font-size: clamp(1.6rem, 2.3vw, 2.75rem);
-  letter-spacing: -0.018em;
-  line-height: 0.94;
+  font-size: clamp(1.35rem, 1.82vw, 2.24rem);
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  text-align: left;
   text-transform: none;
 }
 
@@ -214,19 +213,24 @@ a {
 
 @media (max-width: 1100px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.95fr);
+    grid-template-columns: minmax(0, 1fr) minmax(400px, 0.95fr);
   }
 
   .hero-copy {
-    padding: 52px 44px;
+    padding: 48px 38px;
   }
 
   .bilingual-wordmark {
+    column-gap: 24px;
     width: 100%;
   }
 
-  .title-line {
-    white-space: normal;
+  .formal-latin {
+    font-size: clamp(1rem, 1.65vw, 1.55rem);
+  }
+
+  .formal-english {
+    font-size: clamp(1.18rem, 1.94vw, 1.82rem);
   }
 }
 
@@ -252,21 +256,22 @@ a {
   }
 
   .bilingual-wordmark {
-    width: min(100%, 36rem);
+    width: min(100%, 42rem);
+    column-gap: 40px;
   }
 
-  .title-line {
-    white-space: nowrap;
+  .formal-latin {
+    font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  }
+
+  .formal-english {
+    font-size: clamp(1.35rem, 2.95vw, 1.94rem);
   }
 }
 
 /* Mobile */
 
 @media (max-width: 640px) {
-  :root {
-    --wordmark-width: 100%;
-  }
-
   .site-shell {
     width: min(calc(100% - 24px), var(--shell));
   }
@@ -309,25 +314,26 @@ a {
   }
 
   .hero-copy {
-    padding: 38px 30px 44px;
+    padding: 38px 24px 44px;
   }
 
   .bilingual-wordmark {
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    column-gap: 18px;
     width: 100%;
     margin-bottom: 30px;
   }
 
   .formal-latin {
-    margin-bottom: 11px;
-    font-size: clamp(1rem, 4.5vw, 1.28rem);
+    font-size: clamp(0.76rem, 3.45vw, 1rem);
     letter-spacing: 0.025em;
-    line-height: 0.96;
+    line-height: 1.06;
   }
 
   .formal-english {
-    font-size: clamp(1.18rem, 5.3vw, 1.5rem);
-    letter-spacing: -0.015em;
-    line-height: 0.96;
+    font-size: clamp(0.9rem, 4.05vw, 1.18rem);
+    letter-spacing: -0.01em;
+    line-height: 1.06;
   }
 
   .mission {
@@ -350,8 +356,20 @@ a {
 }
 
 @media (max-width: 430px) {
+  .bilingual-wordmark {
+    column-gap: 14px;
+  }
+
   .title-line {
     white-space: normal;
+  }
+
+  .formal-latin {
+    font-size: 0.78rem;
+  }
+
+  .formal-english {
+    font-size: 0.92rem;
   }
 }
 
@@ -365,14 +383,14 @@ a {
   }
 
   .hero-copy {
-    padding: 34px 24px 38px;
+    padding: 34px 20px 38px;
   }
 
   .formal-latin {
-    font-size: 0.96rem;
+    font-size: 0.72rem;
   }
 
   .formal-english {
-    font-size: 1.13rem;
+    font-size: 0.85rem;
   }
 }
