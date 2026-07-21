@@ -45,31 +45,31 @@
           aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
         >
           <p class="formal-title formal-latin">
-            <span class="title-line fitted-title-line">
+            <span class="title-line title-line-with-cross">
               <span class="opening-cross" aria-hidden="true">✠</span>
-              Societas et
+              <span class="fit-text">Societas et</span>
             </span>
 
-            <span class="title-line fitted-title-line">
-              Ordo Equestris
+            <span class="title-line">
+              <span class="fit-text">Ordo Equestris</span>
             </span>
 
-            <span class="title-line fitted-title-line">
-              Civitatis Sanctae
+            <span class="title-line">
+              <span class="fit-text">Civitatis Sanctae</span>
             </span>
           </p>
 
           <h1 class="formal-title formal-english" id="formal-title">
-            <span class="title-line fitted-title-line">
-              The Society &amp;
+            <span class="title-line">
+              <span class="fit-text">The Society &amp;</span>
             </span>
 
-            <span class="title-line fitted-title-line">
-              Equestrian Order of
+            <span class="title-line">
+              <span class="fit-text">Equestrian Order of</span>
             </span>
 
-            <span class="title-line fitted-title-line">
-              The Holy City
+            <span class="title-line">
+              <span class="fit-text">The Holy City</span>
             </span>
           </h1>
         </div>
@@ -93,52 +93,125 @@
 
   <script>
     (() => {
-      const lineSelector = ".fitted-title-line";
-      const measurementSize = 100;
-      const minimumSize = 12;
-      const maximumSize = 180;
+      const fittedTextSelector = ".fit-text";
+      const referenceFontSize = 100;
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
 
-      function fitLine(line) {
-        const targetWidth = line.parentElement.clientWidth;
+      function transformedText(element) {
+        const text = element.textContent.trim();
+        const transform = getComputedStyle(element).textTransform;
+
+        if (transform === "uppercase") {
+          return text.toUpperCase();
+        }
+
+        if (transform === "lowercase") {
+          return text.toLowerCase();
+        }
+
+        return text;
+      }
+
+      function numericCustomProperty(element, propertyName, fallback) {
+        const value = Number.parseFloat(
+          getComputedStyle(element).getPropertyValue(propertyName)
+        );
+
+        return Number.isFinite(value) ? value : fallback;
+      }
+
+      function measureTextAtReferenceSize(element) {
+        const styles = getComputedStyle(element);
+        const text = transformedText(element);
+
+        const fontStyle = styles.fontStyle || "normal";
+        const fontVariant = styles.fontVariant || "normal";
+        const fontWeight = styles.fontWeight || "500";
+        const fontFamily = styles.fontFamily || "Cormorant, Garamond, serif";
+
+        context.font =
+          `${fontStyle} ${fontVariant} ${fontWeight} ` +
+          `${referenceFontSize}px ${fontFamily}`;
+
+        const glyphWidth = context.measureText(text).width;
+
+        const trackingEm = numericCustomProperty(
+          element,
+          "--tracking-em",
+          0
+        );
+
+        const numberOfGaps = Math.max(text.length - 1, 0);
+        const trackingWidth =
+          trackingEm * referenceFontSize * numberOfGaps;
+
+        return glyphWidth + trackingWidth;
+      }
+
+      function availableWidthFor(element) {
+        const line = element.closest(".title-line");
+        let availableWidth = line.clientWidth;
+
+        const cross = line.querySelector(".opening-cross");
+
+        if (cross) {
+          const crossStyles = getComputedStyle(cross);
+          const crossMarginRight =
+            Number.parseFloat(crossStyles.marginRight) || 0;
+
+          availableWidth -=
+            cross.getBoundingClientRect().width +
+            crossMarginRight;
+        }
+
+        /*
+          A small safety allowance prevents fractional-pixel clipping
+          at the right edge in mobile Safari.
+        */
+        return Math.max(availableWidth - 2, 0);
+      }
+
+      function fitElement(element) {
+        const targetWidth = availableWidthFor(element);
 
         if (targetWidth <= 0) {
           return;
         }
 
-        line.style.fontSize = `${measurementSize}px`;
+        const referenceWidth = measureTextAtReferenceSize(element);
 
-        const naturalWidth = line.scrollWidth;
-
-        if (naturalWidth <= 0) {
+        if (referenceWidth <= 0) {
           return;
         }
 
-        let calculatedSize =
-          measurementSize * (targetWidth / naturalWidth);
+        const calculatedSize =
+          referenceFontSize * (targetWidth / referenceWidth);
 
-        calculatedSize = Math.max(
+        const minimumSize = numericCustomProperty(
+          element,
+          "--minimum-fit-size",
+          10
+        );
+
+        const maximumSize = numericCustomProperty(
+          element,
+          "--maximum-fit-size",
+          180
+        );
+
+        const finalSize = Math.max(
           minimumSize,
           Math.min(calculatedSize, maximumSize)
         );
 
-        line.style.fontSize = `${calculatedSize}px`;
-
-        const renderedWidth = line.scrollWidth;
-
-        if (renderedWidth > 0) {
-          const correction = targetWidth / renderedWidth;
-          const correctedSize = calculatedSize * correction;
-
-          line.style.fontSize =
-            `${Math.max(
-              minimumSize,
-              Math.min(correctedSize, maximumSize)
-            )}px`;
-        }
+        element.style.fontSize = `${finalSize}px`;
       }
 
       function fitAllLines() {
-        document.querySelectorAll(lineSelector).forEach(fitLine);
+        document
+          .querySelectorAll(fittedTextSelector)
+          .forEach(fitElement);
       }
 
       let resizeFrame;
@@ -146,9 +219,7 @@
       function scheduleFit() {
         window.cancelAnimationFrame(resizeFrame);
 
-        resizeFrame = window.requestAnimationFrame(() => {
-          fitAllLines();
-        });
+        resizeFrame = window.requestAnimationFrame(fitAllLines);
       }
 
       if (document.fonts && document.fonts.ready) {
@@ -158,13 +229,7 @@
       }
 
       window.addEventListener("resize", scheduleFit);
-
-      const wordmark = document.querySelector(".bilingual-wordmark");
-
-      if ("ResizeObserver" in window && wordmark) {
-        const observer = new ResizeObserver(scheduleFit);
-        observer.observe(wordmark);
-      }
+      window.addEventListener("orientationchange", scheduleFit);
     })();
   </script>
 </body>
