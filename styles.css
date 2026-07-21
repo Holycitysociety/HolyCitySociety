@@ -151,8 +151,7 @@ a {
   font-size: clamp(1.2rem, 1.62vw, 1.95rem);
   font-weight: 500;
   font-kerning: normal;
-  letter-spacing: 0.025em;
-  line-height: 1.02;
+  line-height: 1.08;
   text-transform: uppercase;
 }
 
@@ -162,10 +161,14 @@ a {
 }
 
 .formal-latin {
+  padding-right: 0.08em;
+  letter-spacing: 0.09em;
   text-align: right;
 }
 
 .formal-english {
+  padding-left: 0.08em;
+  letter-spacing: 0.09em;
   text-align: left;
 }
 
@@ -236,6 +239,11 @@ a {
   .formal-title {
     font-size: clamp(1rem, 1.55vw, 1.48rem);
   }
+
+  .formal-latin,
+  .formal-english {
+    letter-spacing: 0.075em;
+  }
 }
 
 @media (max-width: 980px) {
@@ -266,6 +274,11 @@ a {
 
   .formal-title {
     font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  }
+
+  .formal-latin,
+  .formal-english {
+    letter-spacing: 0.09em;
   }
 }
 
@@ -328,9 +341,13 @@ a {
   }
 
   .formal-title {
-    font-size: clamp(0.76rem, 3.45vw, 1rem);
-    letter-spacing: 0.015em;
-    line-height: 1.07;
+    font-size: clamp(0.72rem, 3.25vw, 0.96rem);
+    line-height: 1.12;
+  }
+
+  .formal-latin,
+  .formal-english {
+    letter-spacing: 0.065em;
   }
 
   .mission {
@@ -358,7 +375,12 @@ a {
   }
 
   .formal-title {
-    font-size: 0.76rem;
+    font-size: 0.71rem;
+  }
+
+  .formal-latin,
+  .formal-english {
+    letter-spacing: 0.045em;
   }
 
   .title-line {
@@ -380,6 +402,11 @@ a {
   }
 
   .formal-title {
-    font-size: 0.7rem;
+    font-size: 0.67rem;
+  }
+
+  .formal-latin,
+  .formal-english {
+    letter-spacing: 0.035em;
   }
 }
