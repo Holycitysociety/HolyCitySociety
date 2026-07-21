@@ -240,48 +240,140 @@
         );
       }
 
-      /*
-        Lines two and three fit to the full available width.
+      function renderedWidthAtSize(element, fontSize) {
+        const referenceWidth =
+          measureTextAtReferenceSize(element);
 
-        Line one is set to 80% of the smaller font size
-        calculated for lines two and three.
-      */
+        return (
+          referenceWidth *
+          (fontSize / referenceFontSize)
+        );
+      }
 
-      function fitFormalTitle(title) {
-        const lines = Array.from(
-          title.querySelectorAll(".fit-text")
+      function fontSizeForTargetWidth(
+        element,
+        targetWidth
+      ) {
+        const referenceWidth =
+          measureTextAtReferenceSize(element);
+
+        if (
+          referenceWidth <= 0 ||
+          targetWidth <= 0
+        ) {
+          return 0;
+        }
+
+        const minimumSize = numericCustomProperty(
+          element,
+          "--minimum-fit-size",
+          10
         );
 
-        if (!lines.length) {
+        const maximumSize = numericCustomProperty(
+          element,
+          "--maximum-fit-size",
+          180
+        );
+
+        const calculatedSize =
+          referenceFontSize *
+          (targetWidth / referenceWidth);
+
+        return Math.max(
+          minimumSize,
+          Math.min(calculatedSize, maximumSize)
+        );
+      }
+
+      function fitFormalWordmark() {
+        const latinTitle =
+          document.querySelector(".formal-latin");
+
+        const englishTitle =
+          document.querySelector(".formal-english");
+
+        if (!latinTitle || !englishTitle) {
           return;
         }
 
-        const calculatedSizes =
-          lines.map(calculateFormalLineSize);
+        const latinLines = Array.from(
+          latinTitle.querySelectorAll(".fit-text")
+        );
 
-        if (lines.length >= 3) {
-          const secondLineSize =
-            calculatedSizes[1];
+        const englishLines = Array.from(
+          englishTitle.querySelectorAll(".fit-text")
+        );
 
-          const thirdLineSize =
-            calculatedSizes[2];
-
-          const smallerSupportingSize = Math.min(
-            secondLineSize,
-            thirdLineSize
-          );
-
-          calculatedSizes[0] =
-            smallerSupportingSize * firstLineScale;
+        if (
+          latinLines.length < 3 ||
+          englishLines.length < 3
+        ) {
+          return;
         }
 
-        lines.forEach((line, index) => {
-          const size = calculatedSizes[index];
+        /*
+          Latin lines two and three fill the available width.
+          Latin line one is 80% of the smaller of those sizes.
+        */
 
-          if (size > 0) {
-            line.style.fontSize = `${size}px`;
-          }
-        });
+        const latinSecondSize =
+          calculateFormalLineSize(latinLines[1]);
+
+        const latinThirdSize =
+          calculateFormalLineSize(latinLines[2]);
+
+        const latinFirstSize =
+          Math.min(
+            latinSecondSize,
+            latinThirdSize
+          ) * firstLineScale;
+
+        /*
+          English lines two and three continue to fill
+          the available width independently.
+        */
+
+        const englishSecondSize =
+          calculateFormalLineSize(englishLines[1]);
+
+        const englishThirdSize =
+          calculateFormalLineSize(englishLines[2]);
+
+        /*
+          Find the actual width of the first Latin line,
+          then size the first English line to that width.
+        */
+
+        const latinFirstWidth =
+          renderedWidthAtSize(
+            latinLines[0],
+            latinFirstSize
+          );
+
+        const englishFirstSize =
+          fontSizeForTargetWidth(
+            englishLines[0],
+            latinFirstWidth
+          );
+
+        latinLines[0].style.fontSize =
+          `${latinFirstSize}px`;
+
+        latinLines[1].style.fontSize =
+          `${latinSecondSize}px`;
+
+        latinLines[2].style.fontSize =
+          `${latinThirdSize}px`;
+
+        englishLines[0].style.fontSize =
+          `${englishFirstSize}px`;
+
+        englishLines[1].style.fontSize =
+          `${englishSecondSize}px`;
+
+        englishLines[2].style.fontSize =
+          `${englishThirdSize}px`;
       }
 
       function fitEqualSizeGroup(group) {
@@ -346,9 +438,7 @@
       }
 
       function fitAllTypography() {
-        document
-          .querySelectorAll(".formal-title")
-          .forEach(fitFormalTitle);
+        fitFormalWordmark();
 
         document
           .querySelectorAll(
