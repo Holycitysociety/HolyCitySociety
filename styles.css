@@ -171,7 +171,7 @@ a {
   font-weight: 400;
 }
 
-/* English remains Cormorant */
+/* English */
 
 .formal-english {
   color: var(--text);
@@ -196,11 +196,7 @@ a {
   transform-origin: left center;
 }
 
-/*
-  Latin spacing:
-  1.5 × the previous letter tracking.
-  Additional word space approximates 1.5 × normal.
-*/
+/* Latin spacing */
 
 .formal-latin .fit-text {
   --tracking-em: 0.0375;
@@ -214,7 +210,7 @@ a {
   word-spacing: 0.125em;
 }
 
-/* English */
+/* English first line remains medium */
 
 .formal-english .fit-text {
   --tracking-em: 0.017;
@@ -226,6 +222,12 @@ a {
   font-weight: 500;
   letter-spacing: 0.017em;
   word-spacing: normal;
+}
+
+/* English second and third lines are bold */
+
+.formal-english .english-emphasis .fit-text {
+  font-weight: 700;
 }
 
 /* Mission */
