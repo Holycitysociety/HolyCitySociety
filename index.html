@@ -91,140 +91,77 @@
   <script>
     (() => {
       const lineSelector = ".fitted-title-line";
-      let resizeFrame;
+      const measurementSize = 100;
+      const minimumSize = 12;
+      const maximumSize = 160;
 
-      function readNumber(element, property, fallback) {
-        const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(property)
-        );
+      function measureNaturalWidth(line) {
+        const originalSize = line.style.fontSize;
 
-        return Number.isFinite(value) ? value : fallback;
-      }
+        line.style.fontSize = `${measurementSize}px`;
 
-      function countCharacterGaps(text) {
-        const characters = Array.from(text.trim());
-        return Math.max(characters.length - 1, 1);
-      }
+        const width = line.getBoundingClientRect().width;
 
-      function measureNaturalWidth(line, fontSize) {
-        line.style.fontSize = `${fontSize}px`;
-        line.style.letterSpacing = "0px";
+        line.style.fontSize = originalSize;
 
-        return line.getBoundingClientRect().width;
+        return width;
       }
 
       function fitLine(line) {
-        const title = line.closest(".formal-title");
-        const targetWidth = line.clientWidth;
+        const targetWidth = line.parentElement.clientWidth;
 
-        if (!title || targetWidth <= 0) {
+        if (targetWidth <= 0) {
           return;
         }
 
-        const minimumSize = readNumber(
-          title,
-          "--minimum-line-size",
-          16
-        );
+        line.style.fontSize = `${measurementSize}px`;
 
-        const maximumSize = readNumber(
-          title,
-          "--maximum-line-size",
-          64
-        );
+        const naturalWidth = line.scrollWidth;
 
-        /*
-          The font first fills this proportion of the line.
-          Letter spacing supplies the final portion.
-        */
-        const naturalFill = readNumber(
-          title,
-          "--natural-fill",
-          0.94
-        );
-
-        const maximumTrackingEm = readNumber(
-          title,
-          "--maximum-tracking",
-          0.14
-        );
-
-        const desiredNaturalWidth = targetWidth * naturalFill;
-
-        line.style.fontSize = "";
-        line.style.letterSpacing = "0px";
-
-        let low = minimumSize;
-        let high = maximumSize;
-        let fittedSize = minimumSize;
-
-        /*
-          Find the largest font size whose untracked text remains
-          within the desired natural-width proportion.
-        */
-        for (let iteration = 0; iteration < 28; iteration += 1) {
-          const testSize = (low + high) / 2;
-          const measuredWidth = measureNaturalWidth(line, testSize);
-
-          if (measuredWidth <= desiredNaturalWidth) {
-            fittedSize = testSize;
-            low = testSize;
-          } else {
-            high = testSize;
-          }
+        if (naturalWidth <= 0) {
+          return;
         }
 
-        line.style.fontSize = `${fittedSize}px`;
-        line.style.letterSpacing = "0px";
+        let calculatedSize =
+          measurementSize * (targetWidth / naturalWidth);
 
-        let naturalWidth = line.getBoundingClientRect().width;
-        const text = line.textContent.trim();
-        const characterGaps = countCharacterGaps(text);
+        calculatedSize = Math.max(
+          minimumSize,
+          Math.min(calculatedSize, maximumSize)
+        );
 
-        let requiredTracking =
-          (targetWidth - naturalWidth) / characterGaps;
-
-        const maximumTracking =
-          fittedSize * maximumTrackingEm;
+        line.style.fontSize = `${calculatedSize}px`;
 
         /*
-          If the line reached its maximum size and still needs
-          excessive tracking, allow the font to grow enough to keep
-          the tracking elegant while maintaining the square edge.
+          One refinement pass compensates for browser rounding,
+          kerning, and subpixel rendering.
         */
-        if (requiredTracking > maximumTracking) {
-          const widthNeededFromType =
-            targetWidth - maximumTracking * characterGaps;
 
-          const scale =
-            naturalWidth > 0
-              ? widthNeededFromType / naturalWidth
-              : 1;
+        const renderedWidth = line.getBoundingClientRect().width;
 
-          fittedSize *= Math.max(scale, 1);
+        if (renderedWidth > 0) {
+          const correction = targetWidth / renderedWidth;
+          const correctedSize = calculatedSize * correction;
 
-          line.style.fontSize = `${fittedSize}px`;
-          line.style.letterSpacing = "0px";
-
-          naturalWidth = line.getBoundingClientRect().width;
-
-          requiredTracking =
-            (targetWidth - naturalWidth) / characterGaps;
+          line.style.fontSize =
+            `${Math.max(
+              minimumSize,
+              Math.min(correctedSize, maximumSize)
+            )}px`;
         }
-
-        line.style.letterSpacing =
-          `${Math.max(requiredTracking, 0)}px`;
       }
 
-      function fitWordmark() {
+      function fitAllLines() {
         document.querySelectorAll(lineSelector).forEach(fitLine);
       }
+
+      let resizeFrame;
 
       function scheduleFit() {
         window.cancelAnimationFrame(resizeFrame);
 
         resizeFrame = window.requestAnimationFrame(() => {
-          fitWordmark();
+          fitAllLines();
         });
       }
 
@@ -236,8 +173,7 @@
 
       window.addEventListener("resize", scheduleFit);
 
-      const wordmark =
-        document.querySelector(".bilingual-wordmark");
+      const wordmark = document.querySelector(".bilingual-wordmark");
 
       if ("ResizeObserver" in window && wordmark) {
         const observer = new ResizeObserver(scheduleFit);
