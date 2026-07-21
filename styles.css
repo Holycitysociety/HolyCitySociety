@@ -190,7 +190,7 @@ a {
   display: inline-block;
   flex: 0 0 auto;
   white-space: nowrap;
-  line-height: 0.84;
+  line-height: 0.9;
   transform-origin: left center;
 }
 
@@ -425,7 +425,7 @@ a {
   }
 
   .fit-text {
-    line-height: 0.86;
+    line-height: 0.92;
   }
 
   .formal-latin .fit-text {
