@@ -182,16 +182,8 @@ a {
   white-space: nowrap;
 }
 
-/*
-  First Latin line:
-  70% maximum width, aligned to the common right edge.
-  This creates a 30% left indent.
-*/
-
-.formal-latin .title-line:first-child {
-  width: 70%;
-  margin-left: auto;
-  justify-content: flex-end;
+.title-line-with-cross {
+  align-items: center;
 }
 
 .fit-text {
@@ -216,6 +208,18 @@ a {
   --maximum-fit-size: 180;
 
   letter-spacing: 0.017em;
+}
+
+/* Opening cross raised and optically centered */
+
+.opening-cross {
+  display: inline-block;
+  flex: 0 0 auto;
+  margin-right: 0.18em;
+  color: var(--gold);
+  font-size: 2.2rem;
+  line-height: 1;
+  transform: translateY(-0.12em);
 }
 
 /* Mission */
@@ -294,6 +298,10 @@ a {
   .hero-copy {
     padding: 48px 42px;
   }
+
+  .opening-cross {
+    font-size: 2rem;
+  }
 }
 
 /* Landscape tablet */
@@ -312,6 +320,10 @@ a {
 
   .hero-copy {
     padding: 46px 38px;
+  }
+
+  .opening-cross {
+    font-size: 1.8rem;
   }
 }
 
@@ -341,6 +353,10 @@ a {
 
   .hero-copy {
     padding: 50px 44px 58px;
+  }
+
+  .opening-cross {
+    font-size: 2rem;
   }
 }
 
@@ -422,6 +438,12 @@ a {
     letter-spacing: 0.01em;
   }
 
+  .opening-cross {
+    margin-right: 0.16em;
+    font-size: 1.55rem;
+    transform: translateY(-0.16em);
+  }
+
   .mission {
     --tracking-em: 0.065;
     --maximum-group-size: 22;
@@ -471,6 +493,11 @@ a {
   .formal-english .fit-text {
     --tracking-em: 0.006;
     letter-spacing: 0.006em;
+  }
+
+  .opening-cross {
+    font-size: 1.4rem;
+    transform: translateY(-0.18em);
   }
 
   .mission {
