@@ -95,58 +95,26 @@
     (() => {
       const lineSelector = ".fitted-title-line";
       const measurementSize = 100;
-      const minimumSize = 10;
+      const minimumSize = 12;
       const maximumSize = 180;
 
-      function createMeasurementClone(line) {
-        const clone = line.cloneNode(true);
-
-        clone.classList.add("measurement-clone");
-        clone.style.position = "fixed";
-        clone.style.left = "-10000px";
-        clone.style.top = "-10000px";
-        clone.style.display = "inline-block";
-        clone.style.width = "auto";
-        clone.style.maxWidth = "none";
-        clone.style.minWidth = "0";
-        clone.style.overflow = "visible";
-        clone.style.whiteSpace = "nowrap";
-        clone.style.fontSize = `${measurementSize}px`;
-        clone.style.visibility = "hidden";
-        clone.style.pointerEvents = "none";
-
-        document.body.appendChild(clone);
-
-        return clone;
-      }
-
-      function measureLineAtReferenceSize(line) {
-        const clone = createMeasurementClone(line);
-        const width = clone.getBoundingClientRect().width;
-
-        clone.remove();
-
-        return width;
-      }
-
       function fitLine(line) {
-        const parentTitle = line.closest(".formal-title");
-        const targetWidth = parentTitle.clientWidth;
+        const targetWidth = line.parentElement.clientWidth;
 
         if (targetWidth <= 0) {
           return;
         }
 
-        line.style.fontSize = "";
+        line.style.fontSize = `${measurementSize}px`;
 
-        const measuredWidth = measureLineAtReferenceSize(line);
+        const naturalWidth = line.scrollWidth;
 
-        if (measuredWidth <= 0) {
+        if (naturalWidth <= 0) {
           return;
         }
 
         let calculatedSize =
-          measurementSize * (targetWidth / measuredWidth);
+          measurementSize * (targetWidth / naturalWidth);
 
         calculatedSize = Math.max(
           minimumSize,
@@ -155,39 +123,22 @@
 
         line.style.fontSize = `${calculatedSize}px`;
 
-        /*
-          Final correction pass using the actual rendered text width.
-          The temporary clone prevents the element's 100% block width
-          from corrupting the measurement.
-        */
+        const renderedWidth = line.scrollWidth;
 
-        const correctionClone = createMeasurementClone(line);
-        correctionClone.style.fontSize = `${calculatedSize}px`;
+        if (renderedWidth > 0) {
+          const correction = targetWidth / renderedWidth;
+          const correctedSize = calculatedSize * correction;
 
-        const renderedTextWidth =
-          correctionClone.getBoundingClientRect().width;
-
-        correctionClone.remove();
-
-        if (renderedTextWidth > 0) {
-          const correctionRatio = targetWidth / renderedTextWidth;
-
-          const correctedSize = Math.max(
-            minimumSize,
-            Math.min(
-              calculatedSize * correctionRatio,
-              maximumSize
-            )
-          );
-
-          line.style.fontSize = `${correctedSize}px`;
+          line.style.fontSize =
+            `${Math.max(
+              minimumSize,
+              Math.min(correctedSize, maximumSize)
+            )}px`;
         }
       }
 
       function fitAllLines() {
-        document
-          .querySelectorAll(lineSelector)
-          .forEach(fitLine);
+        document.querySelectorAll(lineSelector).forEach(fitLine);
       }
 
       let resizeFrame;
@@ -207,10 +158,8 @@
       }
 
       window.addEventListener("resize", scheduleFit);
-      window.addEventListener("orientationchange", scheduleFit);
 
-      const wordmark =
-        document.querySelector(".bilingual-wordmark");
+      const wordmark = document.querySelector(".bilingual-wordmark");
 
       if ("ResizeObserver" in window && wordmark) {
         const observer = new ResizeObserver(scheduleFit);
