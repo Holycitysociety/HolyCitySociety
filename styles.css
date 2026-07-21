@@ -142,33 +142,33 @@ a {
 }
 
 .formal-title {
+  --base-tracking: 1.6;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   margin: 0;
   color: var(--text);
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.2rem, 1.62vw, 1.95rem);
+  font-size: clamp(1.12rem, 1.52vw, 1.82rem);
   font-weight: 500;
   font-kerning: normal;
-  line-height: 1.08;
+  line-height: 1.12;
   text-transform: uppercase;
 }
 
 .title-line {
   display: block;
+  width: 100%;
   white-space: nowrap;
 }
 
 .formal-latin {
-  padding-right: 0.08em;
-  letter-spacing: 0.09em;
-  text-align: right;
+  text-align: left;
 }
 
 .formal-english {
-  padding-left: 0.08em;
-  letter-spacing: 0.09em;
   text-align: left;
 }
 
@@ -237,12 +237,9 @@ a {
   }
 
   .formal-title {
-    font-size: clamp(1rem, 1.55vw, 1.48rem);
-  }
+    --base-tracking: 1.35;
 
-  .formal-latin,
-  .formal-english {
-    letter-spacing: 0.075em;
+    font-size: clamp(0.96rem, 1.45vw, 1.4rem);
   }
 }
 
@@ -273,12 +270,9 @@ a {
   }
 
   .formal-title {
-    font-size: clamp(1.15rem, 2.5vw, 1.65rem);
-  }
+    --base-tracking: 1.6;
 
-  .formal-latin,
-  .formal-english {
-    letter-spacing: 0.09em;
+    font-size: clamp(1.08rem, 2.35vw, 1.55rem);
   }
 }
 
@@ -341,13 +335,10 @@ a {
   }
 
   .formal-title {
-    font-size: clamp(0.72rem, 3.25vw, 0.96rem);
-    line-height: 1.12;
-  }
+    --base-tracking: 0.9;
 
-  .formal-latin,
-  .formal-english {
-    letter-spacing: 0.065em;
+    font-size: clamp(0.66rem, 3vw, 0.88rem);
+    line-height: 1.16;
   }
 
   .mission {
@@ -375,16 +366,9 @@ a {
   }
 
   .formal-title {
-    font-size: 0.71rem;
-  }
+    --base-tracking: 0.65;
 
-  .formal-latin,
-  .formal-english {
-    letter-spacing: 0.045em;
-  }
-
-  .title-line {
-    white-space: normal;
+    font-size: 0.66rem;
   }
 }
 
@@ -402,11 +386,8 @@ a {
   }
 
   .formal-title {
-    font-size: 0.67rem;
-  }
+    --base-tracking: 0.5;
 
-  .formal-latin,
-  .formal-english {
-    letter-spacing: 0.035em;
+    font-size: 0.61rem;
   }
 }
