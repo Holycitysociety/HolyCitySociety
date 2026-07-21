@@ -45,17 +45,17 @@
           aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
         >
           <p class="formal-title formal-latin">
-            <span class="title-line">Societas et</span>
-            <span class="title-line">Ordo Equestris</span>
-            <span class="title-line">Civitatis Sanctae</span>
+            <span class="title-line fitted-line">Societas et</span>
+            <span class="title-line fitted-line">Ordo Equestris</span>
+            <span class="title-line fitted-line">Civitatis Sanctae</span>
           </p>
 
           <div class="wordmark-divider" aria-hidden="true"></div>
 
           <h1 class="formal-title formal-english" id="formal-title">
-            <span class="title-line">The Society and</span>
-            <span class="title-line">Equestrian Order</span>
-            <span class="title-line">of the Holy City</span>
+            <span class="title-line fitted-line">The Society and</span>
+            <span class="title-line fitted-line">Equestrian Order</span>
+            <span class="title-line fitted-line">of the Holy City</span>
           </h1>
         </div>
 
@@ -73,5 +73,54 @@
       </div>
     </section>
   </main>
+
+  <script>
+    function fitWordmarkColumns() {
+      const columns = document.querySelectorAll(".formal-title");
+
+      columns.forEach((column) => {
+        const lines = column.querySelectorAll(".fitted-line");
+
+        lines.forEach((line) => {
+          line.style.letterSpacing = "";
+
+          const availableWidth = column.clientWidth;
+          const naturalWidth = line.scrollWidth;
+          const text = line.textContent.trim();
+          const characterGaps = Math.max(text.length - 1, 1);
+
+          const baseSpacing = parseFloat(
+            getComputedStyle(column).getPropertyValue("--base-tracking")
+          ) || 0;
+
+          const extraWidth = availableWidth - naturalWidth;
+          const calculatedSpacing =
+            baseSpacing + extraWidth / characterGaps;
+
+          const minimumSpacing = baseSpacing;
+          const maximumSpacing = 5.5;
+
+          const finalSpacing = Math.max(
+            minimumSpacing,
+            Math.min(calculatedSpacing, maximumSpacing)
+          );
+
+          line.style.letterSpacing = `${finalSpacing}px`;
+        });
+      });
+    }
+
+    function scheduleWordmarkFit() {
+      window.requestAnimationFrame(fitWordmarkColumns);
+    }
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(scheduleWordmarkFit);
+    } else {
+      window.addEventListener("load", scheduleWordmarkFit);
+    }
+
+    window.addEventListener("resize", scheduleWordmarkFit);
+  </script>
 </body>
 </html>
