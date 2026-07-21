@@ -121,15 +121,17 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: clamp(54px, 5.8vw, 88px);
+  text-align: center;
 }
 
-/* Bilingual wordmark */
+/* Centered bilingual wordmark */
 
 .bilingual-wordmark {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: min(100%, var(--wordmark-width));
   margin-bottom: 42px;
 }
@@ -140,7 +142,7 @@ a {
   font-family: "Cormorant Garamond", Garamond, serif;
   font-weight: 500;
   font-kerning: normal;
-  text-align: left;
+  text-align: center;
 }
 
 .title-line {
@@ -176,6 +178,7 @@ a {
   font-weight: 500;
   letter-spacing: 0.11em;
   line-height: 1.75;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -186,6 +189,7 @@ a {
   margin: 0;
   padding: 0;
   color: var(--gold);
+  text-align: center;
 }
 
 .scripture p {
