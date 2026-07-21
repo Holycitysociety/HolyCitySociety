@@ -75,12 +75,14 @@
         </div>
 
         <p class="mission">
-          Continuing the quest to build an illuminated, free, and holy society
+          <span>Continuing the quest to build</span>
+          <span>an illuminated, free, and holy society</span>
         </p>
 
         <blockquote class="scripture">
           <p>
-            “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+            <span>“Ye are the light of the world.</span>
+            <span>A city that is set on a hill cannot be hid.”</span>
           </p>
 
           <cite>Matthew 5:14</cite>
@@ -120,11 +122,6 @@
         );
 
         line.style.fontSize = `${calculatedSize}px`;
-
-        /*
-          Refinement pass for kerning, word spacing,
-          subpixel rendering, and browser rounding.
-        */
 
         const renderedWidth = line.scrollWidth;
 
