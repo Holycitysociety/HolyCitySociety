@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"
     rel="stylesheet"
   />
 
@@ -18,17 +18,40 @@
 </head>
 
 <body>
-  <header class="site-header site-shell">
-    <nav class="top-nav" aria-label="Primary">
+  <header class="site-header">
+    <div class="site-shell">
+      <div class="wordmark" aria-label="Holy City Society">
+        <div class="wordmark-primary">
+          <span class="wordmark-line" aria-hidden="true"></span>
+          <span class="cross" aria-hidden="true">✠</span>
+          <span class="wordmark-name">Holy City Society</span>
+          <span class="cross" aria-hidden="true">✠</span>
+          <span class="wordmark-line" aria-hidden="true"></span>
+        </div>
+
+        <p class="wordmark-latin">
+          Societas et Ordo Equestris Civitatis Sanctae
+        </p>
+
+        <div class="wordmark-divider" aria-hidden="true">
+          <span></span>
+          <b>◆</b>
+          <span></span>
+        </div>
+
+        <p class="wordmark-english">
+          Society and Equestrian Order of the Holy City
+        </p>
+      </div>
+    </div>
+
+    <div class="header-rule" aria-hidden="true"></div>
+
+    <nav class="top-nav site-shell" aria-label="Primary">
       <a href="./index.html" aria-current="page">Praxis</a>
+      <span class="nav-divider" aria-hidden="true"></span>
       <a href="./virtues.html">Energeia</a>
     </nav>
-
-    <div class="wordmark" aria-label="Holy City Society">
-      <span class="cross" aria-hidden="true">✠</span>
-      <span class="wordmark-name">Holy City Society</span>
-      <span class="cross" aria-hidden="true">✠</span>
-    </div>
   </header>
 
   <main class="site-shell">
@@ -41,21 +64,29 @@
         </div>
 
         <div class="hero-copy">
-          <p class="hero-kicker">
-            ✠ Societas et Ordo Equestris Civitatis Sanctae ✠
-          </p>
+          <div class="hero-emblem" aria-hidden="true">
+            <span></span>
+            <b>✠</b>
+            <span></span>
+          </div>
 
           <h1 class="hero-title" id="hero-title">
-            The Society and Equestrian Order of the Holy City
+            Continuing the quest to build an illuminated, free, and holy society
           </h1>
 
-          <p class="hero-text">
-            Continuing the quest to build an illuminated, free, and holy society
-          </p>
+          <div class="hero-divider" aria-hidden="true">
+            <span></span>
+            <b>◆</b>
+            <span></span>
+          </div>
 
-          <p class="hero-quote">
-            “Ye are the light of the world. A city that is set on a hill cannot be hid.”
-          </p>
+          <blockquote class="hero-quote">
+            <p>
+              “Ye are the light of the world.<br />
+              A city that is set on a hill cannot be hid.”
+            </p>
+            <cite>Matthew 5:14</cite>
+          </blockquote>
         </div>
       </div>
     </section>
