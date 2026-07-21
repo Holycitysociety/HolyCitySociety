@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Marcellus&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet"
   />
 
@@ -150,12 +150,26 @@
           0
         );
 
+        const wordSpacingEm = numericCustomProperty(
+          element,
+          "--word-spacing-em",
+          0
+        );
+
         const characterGaps = Math.max(text.length - 1, 0);
+        const spaces = (text.match(/\s/g) || []).length;
 
         const trackingWidth =
           trackingEm * referenceFontSize * characterGaps;
 
-        return glyphWidth + trackingWidth;
+        const additionalWordSpacing =
+          wordSpacingEm * referenceFontSize * spaces;
+
+        return (
+          glyphWidth +
+          trackingWidth +
+          additionalWordSpacing
+        );
       }
 
       function fitFormalLine(element) {
