@@ -15,6 +15,30 @@
   />
 
   <link rel="stylesheet" href="./styles.css" />
+
+  <style>
+    /*
+      Temporary English-first arrangement.
+
+      The English block now supplies the internal gap,
+      while the Latin block sits flush above the larger
+      wordmark-to-mission spacing.
+    */
+
+    .wordmark-english-first .formal-english {
+      margin-bottom: 17px;
+    }
+
+    .wordmark-english-first .formal-latin {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 640px) {
+      .wordmark-english-first .formal-english {
+        margin-bottom: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -41,9 +65,26 @@
 
       <div class="hero-copy">
         <div
-          class="bilingual-wordmark"
-          aria-label="Societas atque Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
+          class="bilingual-wordmark wordmark-english-first"
+          aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
         >
+          <h1
+            class="formal-title formal-english"
+            id="formal-title"
+          >
+            <span class="title-line">
+              <span class="fit-text">The Society &amp;</span>
+            </span>
+
+            <span class="title-line">
+              <span class="fit-text">Equestrian Order</span>
+            </span>
+
+            <span class="title-line">
+              <span class="fit-text">of the Holy City</span>
+            </span>
+          </h1>
+
           <p class="formal-title formal-latin">
             <span class="title-line">
               <span class="fit-text">Societas atque</span>
@@ -57,20 +98,6 @@
               <span class="fit-text">Civitatis Sanctae</span>
             </span>
           </p>
-
-          <h1 class="formal-title formal-english" id="formal-title">
-            <span class="title-line">
-              <span class="fit-text">The Society &amp;</span>
-            </span>
-
-            <span class="title-line">
-              <span class="fit-text">Equestrian Order</span>
-            </span>
-
-            <span class="title-line">
-              <span class="fit-text">of the Holy City</span>
-            </span>
-          </h1>
         </div>
 
         <p class="mission equal-size-group">
@@ -236,11 +263,17 @@
 
         return Math.max(
           minimumSize,
-          Math.min(calculatedSize, maximumSize)
+          Math.min(
+            calculatedSize,
+            maximumSize
+          )
         );
       }
 
-      function renderedWidthAtSize(element, fontSize) {
+      function renderedWidthAtSize(
+        element,
+        fontSize
+      ) {
         const referenceWidth =
           measureTextAtReferenceSize(element);
 
@@ -282,7 +315,10 @@
 
         return Math.max(
           minimumSize,
-          Math.min(calculatedSize, maximumSize)
+          Math.min(
+            calculatedSize,
+            maximumSize
+          )
         );
       }
 
@@ -313,8 +349,10 @@
         }
 
         /*
-          Latin lines two and three fill the available width.
-          Latin line one is 80% of the smaller of those sizes.
+          Latin lines two and three fill the width.
+
+          The first Latin line is 80% of the smaller
+          font size used by its two supporting lines.
         */
 
         const latinSecondSize =
@@ -330,8 +368,8 @@
           ) * firstLineScale;
 
         /*
-          English lines two and three continue to fill
-          the available width independently.
+          English lines two and three fill the width
+          independently.
         */
 
         const englishSecondSize =
@@ -341,8 +379,8 @@
           calculateFormalLineSize(englishLines[2]);
 
         /*
-          Find the actual width of the first Latin line,
-          then size the first English line to that width.
+          The first English line matches the actual
+          rendered width of the first Latin line.
         */
 
         const latinFirstWidth =
