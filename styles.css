@@ -162,16 +162,16 @@ a {
   text-transform: uppercase;
 }
 
-/* Crisp Roman inscriptional Latin */
+/* Broad classical Roman Latin */
 
 .formal-latin {
   margin-bottom: 17px;
   color: var(--gold);
-  font-family: "Cinzel", "Times New Roman", serif;
+  font-family: "Marcellus", "Times New Roman", serif;
   font-weight: 400;
 }
 
-/* Condensed contrasting English */
+/* Narrower contrasting English */
 
 .formal-english {
   color: var(--text);
@@ -196,19 +196,14 @@ a {
   transform-origin: left center;
 }
 
-/*
-  Cinzel already has strong monumental spacing,
-  so the additional tracking remains restrained.
-*/
-
 .formal-latin .fit-text {
-  --tracking-em: 0.025;
+  --tracking-em: 0.02;
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
-  font-family: "Cinzel", "Times New Roman", serif;
+  font-family: "Marcellus", "Times New Roman", serif;
   font-weight: 400;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.02em;
 }
 
 .formal-english .fit-text {
@@ -416,8 +411,8 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.018;
-    letter-spacing: 0.018em;
+    --tracking-em: 0.016;
+    letter-spacing: 0.016em;
   }
 
   .formal-english .fit-text {
@@ -467,8 +462,8 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.014;
-    letter-spacing: 0.014em;
+    --tracking-em: 0.012;
+    letter-spacing: 0.012em;
   }
 
   .formal-english .fit-text {
