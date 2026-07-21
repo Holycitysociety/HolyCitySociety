@@ -13,6 +13,10 @@
 
   --wordmark-width: 30rem;
   --supporting-width: 30rem;
+
+  /* First line treatment */
+  --first-line-width: 70%;
+  --first-line-indent: 1.5rem;
 }
 
 * {
@@ -182,8 +186,16 @@ a {
   white-space: nowrap;
 }
 
-.title-line-with-cross {
-  align-items: center;
+/*
+  The first line of each language block:
+  - occupies only 70% of the normal measure
+  - begins with a paragraph-style indent
+  - still receives its own calculated font size
+*/
+
+.formal-title > .title-line:first-child {
+  width: var(--first-line-width);
+  margin-left: var(--first-line-indent);
 }
 
 .fit-text {
@@ -210,17 +222,11 @@ a {
   letter-spacing: 0.017em;
 }
 
-/*
-  Italic first line distinguishes the Society
-  from the two-line Equestrian Order portion.
-*/
+/* Retained harmlessly in case a cross is restored later */
 
-.formal-latin .title-line:first-child .fit-text,
-.formal-english .title-line:first-child .fit-text {
-  font-style: italic;
+.title-line-with-cross {
+  align-items: center;
 }
-
-/* Opening cross, retained in case it is used elsewhere */
 
 .opening-cross {
   display: inline-block;
@@ -297,6 +303,7 @@ a {
   :root {
     --wordmark-width: 27rem;
     --supporting-width: 27rem;
+    --first-line-indent: 1.35rem;
   }
 
   .hero {
@@ -320,6 +327,7 @@ a {
   :root {
     --wordmark-width: 25rem;
     --supporting-width: 25rem;
+    --first-line-indent: 1.2rem;
   }
 
   .hero {
@@ -343,6 +351,7 @@ a {
   :root {
     --wordmark-width: 32rem;
     --supporting-width: 32rem;
+    --first-line-indent: 1.4rem;
   }
 
   .hero {
@@ -376,6 +385,8 @@ a {
   :root {
     --wordmark-width: 100%;
     --supporting-width: 100%;
+    --first-line-width: 70%;
+    --first-line-indent: 1rem;
   }
 
   .site-shell {
@@ -479,6 +490,10 @@ a {
 /* Narrow mobile */
 
 @media (max-width: 390px) {
+  :root {
+    --first-line-indent: 0.85rem;
+  }
+
   .site-name {
     font-size: 1.58rem;
   }
