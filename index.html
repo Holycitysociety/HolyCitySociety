@@ -74,25 +74,15 @@
           </h1>
         </div>
 
-        <p class="mission equal-size-group">
-          <span class="equal-size-line">
-            Continuing the quest to build
-          </span>
-
-          <span class="equal-size-line">
-            an illuminated, free, and holy society
-          </span>
+        <p class="mission">
+          <span>Continuing the quest to build</span>
+          <span>an illuminated, free, and holy society</span>
         </p>
 
         <blockquote class="scripture">
-          <p class="equal-size-group">
-            <span class="equal-size-line">
-              “Ye are the light of the world.
-            </span>
-
-            <span class="equal-size-line">
-              A city that is set on a hill cannot be hid.”
-            </span>
+          <p>
+            <span>“Ye are the light of the world.</span>
+            <span>A city that is set on a hill cannot be hid.”</span>
           </p>
 
           <cite>Matthew 5:14</cite>
@@ -103,17 +93,10 @@
 
   <script>
     (() => {
+      const fittedTextSelector = ".fit-text";
       const referenceFontSize = 100;
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
-
-      function numericCustomProperty(element, propertyName, fallback) {
-        const value = Number.parseFloat(
-          getComputedStyle(element).getPropertyValue(propertyName)
-        );
-
-        return Number.isFinite(value) ? value : fallback;
-      }
 
       function transformedText(element) {
         const text = element.textContent.trim();
@@ -130,14 +113,22 @@
         return text;
       }
 
+      function numericCustomProperty(element, propertyName, fallback) {
+        const value = Number.parseFloat(
+          getComputedStyle(element).getPropertyValue(propertyName)
+        );
+
+        return Number.isFinite(value) ? value : fallback;
+      }
+
       function measureTextAtReferenceSize(element) {
         const styles = getComputedStyle(element);
         const text = transformedText(element);
 
         const fontStyle = styles.fontStyle || "normal";
         const fontVariant = styles.fontVariant || "normal";
-        const fontWeight = styles.fontWeight || "400";
-        const fontFamily = styles.fontFamily || "serif";
+        const fontWeight = styles.fontWeight || "500";
+        const fontFamily = styles.fontFamily || "Cormorant, Garamond, serif";
 
         context.font =
           `${fontStyle} ${fontVariant} ${fontWeight} ` +
@@ -151,14 +142,14 @@
           0
         );
 
-        const characterGaps = Math.max(text.length - 1, 0);
+        const numberOfGaps = Math.max(text.length - 1, 0);
         const trackingWidth =
-          trackingEm * referenceFontSize * characterGaps;
+          trackingEm * referenceFontSize * numberOfGaps;
 
         return glyphWidth + trackingWidth;
       }
 
-      function availableTitleWidth(element) {
+      function availableWidthFor(element) {
         const line = element.closest(".title-line");
         let availableWidth = line.clientWidth;
 
@@ -174,16 +165,15 @@
             crossMarginRight;
         }
 
+        /*
+          A small safety allowance prevents fractional-pixel clipping
+          at the right edge in mobile Safari.
+        */
         return Math.max(availableWidth - 2, 0);
       }
 
-      /*
-        Formal bilingual wordmark:
-        every line receives its own font size and fills the width.
-      */
-
-      function fitFormalLine(element) {
-        const targetWidth = availableTitleWidth(element);
+      function fitElement(element) {
+        const targetWidth = availableWidthFor(element);
 
         if (targetWidth <= 0) {
           return;
@@ -194,6 +184,9 @@
         if (referenceWidth <= 0) {
           return;
         }
+
+        const calculatedSize =
+          referenceFontSize * (targetWidth / referenceWidth);
 
         const minimumSize = numericCustomProperty(
           element,
@@ -207,9 +200,6 @@
           180
         );
 
-        const calculatedSize =
-          referenceFontSize * (targetWidth / referenceWidth);
-
         const finalSize = Math.max(
           minimumSize,
           Math.min(calculatedSize, maximumSize)
@@ -218,77 +208,18 @@
         element.style.fontSize = `${finalSize}px`;
       }
 
-      /*
-        Mission and quotation:
-        all lines in each group receive one equal font size.
-        The longest line determines the size and fills the width.
-      */
-
-      function fitEqualSizeGroup(group) {
-        const lines = Array.from(
-          group.querySelectorAll(".equal-size-line")
-        );
-
-        if (!lines.length) {
-          return;
-        }
-
-        const targetWidth = group.clientWidth - 2;
-
-        if (targetWidth <= 0) {
-          return;
-        }
-
-        const longestReferenceWidth = Math.max(
-          ...lines.map(measureTextAtReferenceSize)
-        );
-
-        if (longestReferenceWidth <= 0) {
-          return;
-        }
-
-        const minimumSize = numericCustomProperty(
-          group,
-          "--minimum-group-size",
-          10
-        );
-
-        const maximumSize = numericCustomProperty(
-          group,
-          "--maximum-group-size",
-          72
-        );
-
-        const calculatedSize =
-          referenceFontSize *
-          (targetWidth / longestReferenceWidth);
-
-        const finalSize = Math.max(
-          minimumSize,
-          Math.min(calculatedSize, maximumSize)
-        );
-
-        lines.forEach((line) => {
-          line.style.fontSize = `${finalSize}px`;
-        });
-      }
-
-      function fitAllTypography() {
+      function fitAllLines() {
         document
-          .querySelectorAll(".fit-text")
-          .forEach(fitFormalLine);
-
-        document
-          .querySelectorAll(".equal-size-group")
-          .forEach(fitEqualSizeGroup);
+          .querySelectorAll(fittedTextSelector)
+          .forEach(fitElement);
       }
 
       let resizeFrame;
 
       function scheduleFit() {
         window.cancelAnimationFrame(resizeFrame);
-        resizeFrame =
-          window.requestAnimationFrame(fitAllTypography);
+
+        resizeFrame = window.requestAnimationFrame(fitAllLines);
       }
 
       if (document.fonts && document.fonts.ready) {
@@ -300,4 +231,6 @@
       window.addEventListener("resize", scheduleFit);
       window.addEventListener("orientationchange", scheduleFit);
     })();
-  </script
+  </script>
+</body>
+</html>
