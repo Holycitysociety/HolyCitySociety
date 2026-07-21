@@ -144,7 +144,7 @@ a {
   position: relative;
   width: min(100%, var(--wordmark-width));
   max-width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 38px;
   padding-left: var(--content-inset);
 }
 
@@ -169,10 +169,14 @@ a {
   text-transform: uppercase;
 }
 
+/* English first */
+
 .formal-english {
   margin-bottom: 17px;
   color: var(--text);
 }
+
+/* Latin second */
 
 .formal-latin {
   margin-bottom: 0;
@@ -196,7 +200,7 @@ a {
   transform-origin: left center;
 }
 
-/* English wordmark */
+/* English spacing */
 
 .formal-english .fit-text {
   --tracking-em: 0.025;
@@ -210,7 +214,7 @@ a {
   word-spacing: normal;
 }
 
-/* Latin wordmark */
+/* Latin spacing */
 
 .formal-latin .fit-text {
   --tracking-em: 0.055;
@@ -225,33 +229,32 @@ a {
   word-spacing: 0.12em;
 }
 
-/* Supporting lines */
+/* Mission */
+
+.mission {
+  --tracking-em: 0.075;
+  --word-spacing-em: 0;
+  --minimum-group-size: 10;
+  --maximum-group-size: 20;
+
+  width: min(100%, var(--supporting-width));
+  max-width: 100%;
+  margin: 0 0 32px;
+  padding-left: var(--content-inset);
+  color: rgba(247, 246, 240, 0.78);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-variant-caps: small-caps;
+  font-weight: 300;
+  letter-spacing: 0.075em;
+  line-height: 1.5;
+  text-transform: none;
+}
 
 .equal-size-line {
   display: block;
   width: max-content;
   max-width: 100%;
   white-space: nowrap;
-}
-
-/* Mission statement */
-
-.mission {
-  --tracking-em: 0.025;
-  --word-spacing-em: 0;
-  --minimum-group-size: 10;
-  --maximum-group-size: 18;
-
-  width: min(100%, var(--supporting-width));
-  max-width: 100%;
-  margin: 0 0 30px;
-  padding-left: var(--content-inset);
-  color: rgba(247, 246, 240, 0.78);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-  line-height: 1.48;
-  text-transform: none;
 }
 
 /* Scripture */
@@ -268,15 +271,15 @@ a {
   --tracking-em: 0;
   --word-spacing-em: 0;
   --minimum-group-size: 10;
-  --maximum-group-size: 20;
+  --maximum-group-size: 22;
 
   width: 100%;
-  margin: 0 0 11px;
+  margin: 0 0 10px;
   font-family: "Cormorant Garamond", Garamond, serif;
   font-style: italic;
   font-weight: 300;
   letter-spacing: 0;
-  line-height: 1.42;
+  line-height: 1.4;
 }
 
 .scripture cite {
@@ -286,11 +289,11 @@ a {
   font-size: 0.72rem;
   font-style: normal;
   font-weight: 300;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-/* Small laptop */
+/* Small laptop and landscape tablet */
 
 @media (max-width: 1400px) {
   :root {
@@ -414,7 +417,7 @@ a {
   .bilingual-wordmark {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 34px;
+    margin-bottom: 32px;
   }
 
   .formal-english {
@@ -440,11 +443,11 @@ a {
   }
 
   .mission {
-    --tracking-em: 0.018;
+    --tracking-em: 0.055;
     --maximum-group-size: 17;
 
-    margin-bottom: 27px;
-    letter-spacing: 0.018em;
+    margin-bottom: 28px;
+    letter-spacing: 0.055em;
     line-height: 1.45;
   }
 
@@ -456,7 +459,7 @@ a {
   }
 
   .scripture cite {
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     letter-spacing: 0.14em;
   }
 }
@@ -495,10 +498,10 @@ a {
   }
 
   .mission {
-    --tracking-em: 0.014;
+    --tracking-em: 0.045;
     --maximum-group-size: 16;
 
-    letter-spacing: 0.014em;
+    letter-spacing: 0.045em;
   }
 
   .scripture p {
