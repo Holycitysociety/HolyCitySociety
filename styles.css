@@ -1,16 +1,14 @@
 :root {
   --bg: #061426;
   --panel: #0f1f34;
-  --panel-soft: #11213a;
+  --panel-soft: #132540;
   --text: #f2f2ed;
   --muted: rgba(242, 242, 237, 0.74);
-  --soft: rgba(242, 242, 237, 0.84);
-  --line: rgba(242, 242, 237, 0.5);
+  --soft: rgba(242, 242, 237, 0.82);
+  --inscription: rgba(244, 240, 231, 0.9);
   --shell: 1380px;
   --radius: 30px;
-  --radius-card: 24px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
-  --shadow-soft: 0 18px 42px rgba(0, 0, 0, 0.22);
 }
 
 * {
@@ -42,30 +40,18 @@ a {
   margin-inline: auto;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 /* Header */
 
 .site-header {
-  padding-top: 28px;
-  padding-bottom: 28px;
+  padding-top: 32px;
+  padding-bottom: 34px;
 }
 
 .top-nav {
   display: flex;
   justify-content: center;
   gap: 44px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 500;
@@ -83,71 +69,33 @@ a {
   color: var(--text);
 }
 
-.header-lockup {
-  width: 100%;
-  text-align: center;
-}
-
-.header-latin {
-  margin: 0;
-  color: var(--soft);
+.site-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  color: var(--text);
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1rem, 1.55vw, 1.55rem);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 500;
-  letter-spacing: 0.17em;
-  line-height: 1.03;
+  letter-spacing: 0.12em;
+  line-height: 0.9;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.latin-line {
-  display: block;
-}
-
-.formal-divider {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 18px;
-  width: min(100%, 64rem);
-  margin: 18px auto 18px;
-}
-
-.divider-cross {
+.site-cross {
+  flex: 0 0 auto;
   color: var(--text);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.35rem, 2vw, 1.95rem);
-  line-height: 1;
-}
-
-.divider-line {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--line) 10%,
-    var(--line) 90%,
-    transparent 100%
-  );
-}
-
-.header-english {
-  margin: 0;
-  color: var(--text);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1rem, 2.35vw, 2.4rem);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  text-transform: none;
-  white-space: nowrap;
+  font-size: 0.52em;
 }
 
 /* Hero */
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
-  min-height: 680px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(430px, 0.92fr);
+  min-height: 720px;
   margin-bottom: 48px;
   overflow: hidden;
   background: var(--panel);
@@ -156,13 +104,13 @@ a {
 }
 
 .hero-art {
-  min-height: 680px;
+  min-height: 720px;
   background-image:
     linear-gradient(
       90deg,
       rgba(6, 20, 38, 0),
-      rgba(15, 31, 52, 0.04) 72%,
-      rgba(15, 31, 52, 0.34)
+      rgba(15, 31, 52, 0.05) 72%,
+      rgba(15, 31, 52, 0.42)
     ),
     url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
   background-position: center;
@@ -172,24 +120,73 @@ a {
 
 .hero-copy {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: clamp(34px, 4vw, 54px);
+  align-items: center;
+  padding: clamp(54px, 5.4vw, 84px);
+  text-align: center;
 }
 
-.mission-panel {
-  width: 100%;
-  max-width: 36rem;
-  padding: clamp(30px, 3vw, 42px);
-  background: rgba(17, 33, 58, 0.88);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-soft);
+/* Formal lockup */
+
+.formal-lockup {
+  width: min(100%, 34rem);
+  margin-bottom: 42px;
 }
+
+.latin-inscription {
+  margin: 0 auto 26px;
+  padding: 18px 22px 16px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(0, 0, 0, 0.08)
+    ),
+    var(--panel-soft);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+}
+
+.latin-line {
+  display: block;
+  color: var(--inscription);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.1rem, 1.45vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1.06;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05),
+    0 -1px 0 rgba(0, 0, 0, 0.32);
+}
+
+.formal-english {
+  margin: 0;
+  color: var(--text);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: clamp(1.75rem, 2.4vw, 2.95rem);
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  line-height: 0.95;
+  text-transform: none;
+}
+
+.english-line {
+  display: block;
+}
+
+/* Mission */
 
 .mission {
-  margin: 0 0 28px;
+  max-width: 540px;
+  margin: 0 0 34px;
   color: var(--soft);
-  font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+  font-size: clamp(0.9rem, 1.05vw, 1.04rem);
   font-weight: 500;
   letter-spacing: 0.11em;
   line-height: 1.75;
@@ -197,7 +194,10 @@ a {
   text-transform: uppercase;
 }
 
+/* Scripture */
+
 .scripture {
+  max-width: 540px;
   margin: 0;
   padding: 0;
   color: var(--text);
@@ -205,57 +205,49 @@ a {
 }
 
 .scripture p {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(1.18rem, 1.55vw, 1.58rem);
+  font-size: clamp(1.12rem, 1.4vw, 1.46rem);
   font-style: italic;
-  line-height: 1.48;
+  line-height: 1.5;
 }
 
 .scripture cite {
   display: block;
   color: var(--soft);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-style: normal;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 /* Tablet */
 
 @media (max-width: 1100px) {
-  .header-latin {
-    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
-    letter-spacing: 0.145em;
-  }
-
-  .header-english {
-    font-size: clamp(0.96rem, 2.15vw, 1.85rem);
-  }
-
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.92fr);
+    grid-template-columns: minmax(0, 1fr) minmax(410px, 0.95fr);
+  }
+
+  .hero-copy {
+    padding: 48px 36px;
+  }
+
+  .formal-lockup {
+    width: 100%;
+  }
+
+  .latin-line {
+    font-size: clamp(1rem, 1.45vw, 1.38rem);
+    letter-spacing: 0.16em;
+  }
+
+  .formal-english {
+    font-size: clamp(1.5rem, 2vw, 2.25rem);
   }
 }
 
 @media (max-width: 980px) {
-  .site-header {
-    padding-bottom: 24px;
-  }
-
-  .formal-divider {
-    width: min(100%, 52rem);
-  }
-
-  .header-latin {
-    font-size: clamp(0.92rem, 2.1vw, 1.24rem);
-  }
-
-  .header-english {
-    font-size: clamp(0.92rem, 2.7vw, 1.6rem);
-  }
-
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -267,17 +259,29 @@ a {
       linear-gradient(
         180deg,
         rgba(6, 20, 38, 0),
-        rgba(15, 31, 52, 0.08)
+        rgba(15, 31, 52, 0.1)
       ),
       url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
   }
 
   .hero-copy {
-    padding: 34px 34px 40px;
+    padding: 52px 44px 60px;
   }
 
-  .mission-panel {
-    max-width: 100%;
+  .formal-lockup {
+    width: min(100%, 38rem);
+  }
+
+  .latin-inscription {
+    margin-bottom: 24px;
+  }
+
+  .latin-line {
+    font-size: clamp(1.05rem, 2.1vw, 1.5rem);
+  }
+
+  .formal-english {
+    font-size: clamp(1.7rem, 3.3vw, 2.55rem);
   }
 }
 
@@ -289,35 +293,30 @@ a {
   }
 
   .site-header {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 22px;
+    padding-bottom: 26px;
   }
 
   .top-nav {
-    gap: 24px;
-    margin-bottom: 24px;
+    gap: 28px;
+    margin-bottom: 22px;
     font-size: 0.72rem;
     letter-spacing: 0.16em;
   }
 
-  .header-latin {
-    font-size: clamp(0.74rem, 3.25vw, 0.98rem);
-    letter-spacing: 0.12em;
-    line-height: 1.05;
-  }
-
-  .formal-divider {
+  .site-name {
     gap: 10px;
-    margin: 14px auto 14px;
+    font-size: 1.78rem;
+    letter-spacing: 0.07em;
+    line-height: 0.9;
   }
 
-  .divider-cross {
-    font-size: 1.2rem;
+  .site-name > span:nth-child(2) {
+    max-width: 280px;
   }
 
-  .header-english {
-    font-size: clamp(0.7rem, 2.55vw, 1rem);
-    letter-spacing: 0.004em;
+  .site-cross {
+    font-size: 0.38em;
   }
 
   .hero {
@@ -331,26 +330,42 @@ a {
   }
 
   .hero-copy {
-    padding: 20px 0 0;
+    padding: 38px 24px 44px;
   }
 
-  .mission-panel {
-    padding: 28px 24px 30px;
-    border-radius: 0 0 22px 22px;
-    box-shadow: none;
+  .formal-lockup {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .latin-inscription {
+    margin-bottom: 20px;
+    padding: 15px 16px 14px;
+    border-radius: 10px;
+  }
+
+  .latin-line {
+    font-size: clamp(0.92rem, 4.2vw, 1.12rem);
+    letter-spacing: 0.12em;
+    line-height: 1.08;
+  }
+
+  .formal-english {
+    font-size: clamp(1.38rem, 6vw, 1.85rem);
+    line-height: 0.98;
   }
 
   .mission {
-    margin-bottom: 24px;
-    font-size: 0.84rem;
+    margin-bottom: 26px;
+    font-size: 0.8rem;
     letter-spacing: 0.075em;
     line-height: 1.68;
   }
 
   .scripture p {
-    margin-bottom: 12px;
-    font-size: 1.08rem;
-    line-height: 1.5;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    line-height: 1.52;
   }
 
   .scripture cite {
@@ -360,24 +375,24 @@ a {
 }
 
 @media (max-width: 390px) {
-  .header-latin {
-    font-size: 0.69rem;
-    letter-spacing: 0.1em;
-  }
-
-  .header-english {
-    font-size: 0.63rem;
-  }
-
-  .divider-cross {
-    font-size: 1.05rem;
+  .site-name {
+    font-size: 1.58rem;
   }
 
   .hero-art {
     min-height: 360px;
   }
 
-  .mission-panel {
-    padding: 26px 20px 28px;
+  .hero-copy {
+    padding: 34px 20px 38px;
+  }
+
+  .latin-line {
+    font-size: 0.86rem;
+    letter-spacing: 0.1em;
+  }
+
+  .formal-english {
+    font-size: 1.25rem;
   }
 }
