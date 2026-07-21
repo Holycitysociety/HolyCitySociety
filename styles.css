@@ -162,16 +162,16 @@ a {
   text-transform: uppercase;
 }
 
-/* Broad classical Roman Latin */
+/* Latin: Cinzel Regular 400 */
 
 .formal-latin {
   margin-bottom: 17px;
   color: var(--gold);
-  font-family: "Marcellus", "Times New Roman", serif;
+  font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
 }
 
-/* Narrower contrasting English */
+/* English remains Cormorant */
 
 .formal-english {
   color: var(--text);
@@ -196,30 +196,43 @@ a {
   transform-origin: left center;
 }
 
+/*
+  Latin spacing:
+  1.5 × the previous letter tracking.
+  Additional word space approximates 1.5 × normal.
+*/
+
 .formal-latin .fit-text {
-  --tracking-em: 0.02;
+  --tracking-em: 0.0375;
+  --word-spacing-em: 0.125;
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
-  font-family: "Marcellus", "Times New Roman", serif;
+  font-family: "Cinzel", "Times New Roman", serif;
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.0375em;
+  word-spacing: 0.125em;
 }
+
+/* English */
 
 .formal-english .fit-text {
   --tracking-em: 0.017;
+  --word-spacing-em: 0;
   --minimum-fit-size: 10;
   --maximum-fit-size: 180;
 
   font-family: "Cormorant", Garamond, serif;
   font-weight: 500;
   letter-spacing: 0.017em;
+  word-spacing: normal;
 }
 
 /* Mission */
 
 .mission {
   --tracking-em: 0.11;
+  --word-spacing-em: 0;
   --minimum-group-size: 10;
   --maximum-group-size: 28;
 
@@ -253,6 +266,7 @@ a {
 
 .scripture p {
   --tracking-em: 0;
+  --word-spacing-em: 0;
   --minimum-group-size: 10;
   --maximum-group-size: 32;
 
@@ -411,8 +425,11 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.016;
-    letter-spacing: 0.016em;
+    --tracking-em: 0.027;
+    --word-spacing-em: 0.1;
+
+    letter-spacing: 0.027em;
+    word-spacing: 0.1em;
   }
 
   .formal-english .fit-text {
@@ -462,8 +479,11 @@ a {
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.012;
-    letter-spacing: 0.012em;
+    --tracking-em: 0.021;
+    --word-spacing-em: 0.09;
+
+    letter-spacing: 0.021em;
+    word-spacing: 0.09em;
   }
 
   .formal-english .fit-text {
