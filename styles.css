@@ -7,6 +7,7 @@
   --shell: 1380px;
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
+  --wordmark-width: 34rem;
 }
 
 * {
@@ -128,55 +129,52 @@ a {
 .bilingual-wordmark {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  align-items: flex-start;
+  width: min(100%, var(--wordmark-width));
   margin-bottom: 42px;
 }
 
 .formal-title {
-  max-width: 650px;
+  width: 100%;
   margin: 0;
   font-family: "Cormorant Garamond", Garamond, serif;
   font-weight: 500;
   font-kerning: normal;
-  line-height: 0.96;
+  line-height: 0.98;
   text-align: left;
 }
 
-.title-line {
+.fitted-title-line {
   display: block;
-  width: max-content;
-  max-width: 100%;
+  width: 100%;
   white-space: nowrap;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
-
-/* Latin is uppercase and 15% smaller than English */
 
 .formal-latin {
   color: var(--gold);
-  font-size: clamp(1.683rem, 2.448vw, 2.907rem);
-  letter-spacing: 0.045em;
+  font-size: clamp(1.52rem, 2.2vw, 2.62rem);
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
-/* Slightly expand the shorter second Latin line */
-
-.formal-latin .title-line-two {
-  letter-spacing: 0.12em;
-}
-
-/* English remains in normal title case */
-
 .formal-english {
   color: var(--text);
-  font-size: clamp(1.98rem, 2.88vw, 3.42rem);
+  font-size: clamp(1.79rem, 2.59vw, 3.08rem);
   letter-spacing: 0;
   text-transform: none;
 }
 
-/* Slightly expand the shorter second English line */
-
-.formal-english .title-line-two {
-  letter-spacing: 0.045em;
+.translation-equivalence {
+  align-self: center;
+  margin: 0.52em 0 0.58em;
+  color: var(--gold);
+  font-family: "Cormorant Garamond", Garamond, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  opacity: 0.8;
 }
 
 /* Mission */
@@ -230,8 +228,8 @@ a {
     padding: 48px 42px;
   }
 
-  .formal-title {
-    max-width: 100%;
+  .bilingual-wordmark {
+    width: 100%;
   }
 }
 
@@ -256,14 +254,18 @@ a {
     padding: 48px 42px 56px;
   }
 
-  .formal-title {
-    max-width: 760px;
+  .bilingual-wordmark {
+    width: min(100%, 42rem);
   }
 }
 
 /* Mobile */
 
 @media (max-width: 640px) {
+  :root {
+    --wordmark-width: 100%;
+  }
+
   .site-shell {
     width: min(calc(100% - 24px), var(--shell));
   }
@@ -310,36 +312,22 @@ a {
   }
 
   .bilingual-wordmark {
-    gap: 14px;
+    width: 100%;
     margin-bottom: 30px;
   }
 
-  .formal-title {
-    max-width: 100%;
-  }
-
-  .title-line {
-    width: auto;
-    white-space: nowrap;
-  }
-
   .formal-latin {
-    font-size: clamp(1.305rem, 6.12vw, 1.683rem);
-    letter-spacing: 0.025em;
-    line-height: 0.98;
-  }
-
-  .formal-latin .title-line-two {
-    letter-spacing: 0.075em;
+    font-size: clamp(1.12rem, 5vw, 1.5rem);
   }
 
   .formal-english {
-    font-size: clamp(1.53rem, 7.2vw, 1.98rem);
-    line-height: 0.98;
+    font-size: clamp(1.32rem, 5.88vw, 1.76rem);
   }
 
-  .formal-english .title-line-two {
-    letter-spacing: 0.025em;
+  .translation-equivalence {
+    margin-top: 0.5em;
+    margin-bottom: 0.55em;
+    font-size: 0.84rem;
   }
 
   .mission {
@@ -362,7 +350,7 @@ a {
 }
 
 @media (max-width: 430px) {
-  .title-line {
+  .fitted-title-line {
     white-space: normal;
   }
 }
@@ -381,10 +369,10 @@ a {
   }
 
   .formal-latin {
-    font-size: 1.224rem;
+    font-size: 1.08rem;
   }
 
   .formal-english {
-    font-size: 1.44rem;
+    font-size: 1.27rem;
   }
 }
