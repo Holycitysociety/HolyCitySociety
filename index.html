@@ -18,37 +18,21 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="site-shell">
-      <nav class="top-nav" aria-label="Primary">
-        <a href="./index.html" aria-current="page">Praxis</a>
-        <a href="./virtues.html">Energeia</a>
-      </nav>
+  <header class="site-header site-shell">
+    <nav class="top-nav" aria-label="Primary">
+      <a href="./index.html" aria-current="page">Praxis</a>
+      <a href="./virtues.html">Energeia</a>
+    </nav>
 
-      <div
-        class="header-lockup"
-        aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
-      >
-        <p class="header-latin">
-          <span class="latin-line">Societas et</span>
-          <span class="latin-line">Ordo Equestris Civitatis Sanctae</span>
-        </p>
-
-        <div class="formal-divider" aria-hidden="true">
-          <span class="divider-cross">✠</span>
-          <span class="divider-line"></span>
-          <span class="divider-cross">✠</span>
-        </div>
-
-        <h1 class="header-english">
-          The Society and Equestrian Order of the Holy City
-        </h1>
-      </div>
+    <div class="site-name" aria-label="Holy City Society">
+      <span class="site-cross" aria-hidden="true">✠</span>
+      <span>Holy City Society</span>
+      <span class="site-cross" aria-hidden="true">✠</span>
     </div>
   </header>
 
   <main class="site-shell">
-    <section class="hero" aria-labelledby="mission-title">
+    <section class="hero" aria-labelledby="formal-title">
       <div
         class="hero-art"
         role="img"
@@ -56,20 +40,31 @@
       ></div>
 
       <div class="hero-copy">
-        <div class="mission-panel">
-          <h2 class="visually-hidden" id="mission-title">Mission</h2>
+        <div
+          class="formal-lockup"
+          aria-label="Societas et Ordo Equestris Civitatis Sanctae. The Society and Equestrian Order of the Holy City."
+        >
+          <div class="latin-inscription" aria-hidden="false">
+            <span class="latin-line">SOCIETAS ET ORDO EQUESTRIS</span>
+            <span class="latin-line">CIVITATIS SANCTAE</span>
+          </div>
 
-          <p class="mission">
-            Continuing the quest to build an illuminated, free, and holy society
-          </p>
-
-          <blockquote class="scripture">
-            <p>
-              “Ye are the light of the world. A city that is set on a hill cannot be hid.”
-            </p>
-            <cite>Matthew 5:14</cite>
-          </blockquote>
+          <h1 class="formal-english" id="formal-title">
+            <span class="english-line">The Society and Equestrian Order</span>
+            <span class="english-line">of the Holy City</span>
+          </h1>
         </div>
+
+        <p class="mission">
+          Continuing the quest to build an illuminated, free, and holy society
+        </p>
+
+        <blockquote class="scripture">
+          <p>
+            “Ye are the light of the world. A city that is set on a hill cannot be hid.”
+          </p>
+          <cite>Matthew 5:14</cite>
+        </blockquote>
       </div>
     </section>
   </main>
