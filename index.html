@@ -10,11 +10,211 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&display=swap"
     rel="stylesheet"
   />
 
   <link rel="stylesheet" href="./styles.css" />
+
+  <!-- =====================================================
+       TRILINGUAL HIERARCHY OVERRIDES
+       ===================================================== -->
+  <style>
+    /* -----------------------------------------------------
+       FORMAL IDENTITY
+       English remains primary.
+       Latin and Japanese are deliberately subordinate.
+       ----------------------------------------------------- */
+
+    .bilingual-wordmark {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .formal-latin {
+      margin-top: 1.55rem;
+      opacity: 0.76;
+    }
+
+    .formal-japanese {
+      margin-top: 0.45rem;
+      margin-bottom: 0;
+      font-family:
+        "Noto Serif JP",
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+      font-weight: 300;
+      line-height: 1.25;
+      opacity: 0.9;
+    }
+
+    /*
+      The fitting script normally expands short Japanese lines
+      dramatically. These caps deliberately keep the Japanese
+      identity subordinate to the English wordmark.
+    */
+
+    .formal-latin .fit-text {
+      font-size: clamp(
+        17px,
+        3.7vw,
+        28px
+      ) !important;
+    }
+
+    .formal-japanese .fit-text {
+      font-size: clamp(
+        23px,
+        5.25vw,
+        34px
+      ) !important;
+      letter-spacing: 0.055em;
+    }
+
+    .formal-japanese .title-line + .title-line {
+      margin-top: 0.12em;
+    }
+
+    /* -----------------------------------------------------
+       MISSION
+       Treat all three translations as one textual unit.
+       ----------------------------------------------------- */
+
+    .mission-group {
+      margin-top: 3.4rem;
+    }
+
+    .mission-group .mission {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .mission-group .mission-latin {
+      margin-top: 1.5rem;
+      opacity: 0.7;
+      line-height: 1.45;
+    }
+
+    .mission-group .mission-japanese {
+      margin-top: 1.05rem;
+      opacity: 0.78;
+      font-family:
+        "Noto Serif JP",
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.035em;
+    }
+
+    .mission-latin .equal-size-line {
+      font-size: clamp(
+        15px,
+        3.25vw,
+        23px
+      ) !important;
+    }
+
+    .mission-japanese .equal-size-line {
+      font-size: clamp(
+        17px,
+        3.7vw,
+        25px
+      ) !important;
+    }
+
+    /* -----------------------------------------------------
+       SCRIPTURE
+       English is the principal quotation.
+       Latin and Japanese function as accompanying witnesses.
+       ----------------------------------------------------- */
+
+    .scripture {
+      margin-top: 3.1rem;
+    }
+
+    .scripture > p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .scripture-english {
+      margin-bottom: 1.15rem !important;
+    }
+
+    .scripture-latin {
+      margin-bottom: 0.85rem !important;
+      opacity: 0.72;
+    }
+
+    .scripture-japanese {
+      margin-bottom: 1.25rem !important;
+      opacity: 0.78;
+      font-family:
+        "Noto Serif JP",
+        "Yu Mincho",
+        "Hiragino Mincho ProN",
+        serif;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 1.65;
+      letter-spacing: 0.025em;
+    }
+
+    .scripture-latin .equal-size-line {
+      font-size: clamp(
+        17px,
+        3.7vw,
+        25px
+      ) !important;
+    }
+
+    .scripture-japanese .equal-size-line {
+      font-size: clamp(
+        18px,
+        3.9vw,
+        26px
+      ) !important;
+    }
+
+    .scripture cite {
+      display: block;
+      margin-top: 0.4rem;
+      opacity: 0.65;
+    }
+
+    /* -----------------------------------------------------
+       MOBILE REFINEMENT
+       ----------------------------------------------------- */
+
+    @media (max-width: 600px) {
+      .formal-latin {
+        margin-top: 1.35rem;
+      }
+
+      .formal-japanese {
+        margin-top: 0.4rem;
+      }
+
+      .mission-group {
+        margin-top: 3rem;
+      }
+
+      .mission-group .mission-latin {
+        margin-top: 1.3rem;
+      }
+
+      .mission-group .mission-japanese {
+        margin-top: 0.9rem;
+      }
+
+      .scripture {
+        margin-top: 2.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -40,17 +240,24 @@
       ></div>
 
       <div class="hero-copy">
+
+        <!-- ===============================================
+             FORMAL IDENTITY
+             =============================================== -->
+
         <div
           class="bilingual-wordmark wordmark-english-first"
-          aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
+          aria-label="The Society and Equestrian Order of the Holy City. Societas et Ordo Equestris Civitatis Sanctae. Seitō-kai. Seitō Kishidan."
         >
+
           <h1
             class="formal-title formal-english"
             id="formal-title"
+            lang="en"
           >
             <span class="title-line">
               <span class="fit-text">
-                The Society  &amp;
+                The Society &amp;
               </span>
             </span>
 
@@ -61,7 +268,10 @@
             </span>
           </h1>
 
-          <p class="formal-title formal-latin">
+          <p
+            class="formal-title formal-latin"
+            lang="la"
+          >
             <span class="title-line">
               <span class="fit-text">
                 Societas Et
@@ -74,20 +284,83 @@
               </span>
             </span>
           </p>
+
+          <p
+            class="formal-title formal-japanese"
+            lang="ja"
+          >
+            <span class="title-line">
+              <span class="fit-text">
+                聖都会
+              </span>
+            </span>
+
+            <span class="title-line">
+              <span class="fit-text">
+                聖都騎士団
+              </span>
+            </span>
+          </p>
+
         </div>
 
-        <p class="mission equal-size-group">
-          <span class="equal-size-line">
-            Continuing the Quest to Build an
-          </span>
+        <!-- ===============================================
+             MISSION
+             =============================================== -->
 
-          <span class="equal-size-line">
-            Illuminated, Free, and Holy Society
-          </span>
-        </p>
+        <div class="mission-group">
+
+          <p
+            class="mission equal-size-group"
+            lang="en"
+          >
+            <span class="equal-size-line">
+              Continuing the Quest to Build an
+            </span>
+
+            <span class="equal-size-line">
+              Illuminated, Free, and Holy Society
+            </span>
+          </p>
+
+          <p
+            class="mission mission-latin equal-size-group"
+            lang="la"
+          >
+            <span class="equal-size-line">
+              Perseverantes in studio societatis
+            </span>
+
+            <span class="equal-size-line">
+              illuminatae, liberae sanctaeque aedificandae.
+            </span>
+          </p>
+
+          <p
+            class="mission mission-japanese equal-size-group"
+            lang="ja"
+          >
+            <span class="equal-size-line">
+              光に照らされ、自由で、聖なる社会を築く
+            </span>
+
+            <span class="equal-size-line">
+              探求を続ける。
+            </span>
+          </p>
+
+        </div>
+
+        <!-- ===============================================
+             SCRIPTURE
+             =============================================== -->
 
         <blockquote class="scripture">
-          <p class="equal-size-group">
+
+          <p
+            class="equal-size-group scripture-english"
+            lang="en"
+          >
             <span class="equal-size-line">
               “Ye are the light of the world.
             </span>
@@ -97,8 +370,38 @@
             </span>
           </p>
 
-          <cite>Matthew 5:14</cite>
+          <p
+            class="equal-size-group scripture-latin"
+            lang="la"
+          >
+            <span class="equal-size-line">
+              “Vos estis lux mundi.
+            </span>
+
+            <span class="equal-size-line">
+              Non potest civitas abscondi supra montem posita.”
+            </span>
+          </p>
+
+          <p
+            class="equal-size-group scripture-japanese"
+            lang="ja"
+          >
+            <span class="equal-size-line">
+              「汝らは世の光なり。
+            </span>
+
+            <span class="equal-size-line">
+              山の上にある町は隱るること能はず。」
+            </span>
+          </p>
+
+          <cite>
+            Matthew 5:14 · Matthaeus 5:14 · マタイ傳 5:14
+          </cite>
+
         </blockquote>
+
       </div>
     </section>
   </main>
