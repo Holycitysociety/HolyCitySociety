@@ -193,8 +193,6 @@ a {
 
 /* =====================================================
    TRILINGUAL GRID
-
-   Japanese | Rule | English + Latin
    ===================================================== */
 
 .trilingual-layout {
@@ -286,9 +284,7 @@ a {
 }
 
 
-/* -----------------------------------------------------
-   Japanese page breaks
-   ----------------------------------------------------- */
+/* Japanese page breaks */
 
 .japanese-mission::before,
 .japanese-scripture::before {
@@ -318,9 +314,6 @@ a {
 
 /* =====================================================
    JAPANESE VERTICAL COLUMNS
-
-   Columns progress right-to-left.
-   Characters read top-to-bottom.
    ===================================================== */
 
 .japanese-columns {
@@ -373,9 +366,9 @@ a {
 .japanese-identity .japanese-column {
   font-size:
     clamp(
-      24px,
-      2.8vw,
-      38px
+      22px,
+      2.45vw,
+      34px
     );
 
   font-weight: 400;
@@ -421,13 +414,13 @@ a {
   font-size:
     clamp(
       10px,
-      1vw,
-      14px
+      1.15vw,
+      16px
     );
 
   letter-spacing: 0.09em;
 
-  opacity: 0.7;
+  opacity: 0.72;
 }
 
 
@@ -487,6 +480,8 @@ a {
 }
 
 .formal-latin {
+  margin-top: 20px;
+
   color: var(--accent-blue);
 }
 
@@ -517,11 +512,11 @@ a {
 }
 
 .formal-english .fit-text {
-  --tracking-em: 0.02;
+  --tracking-em: 0.018;
   --word-spacing-em: 0;
 
-  --minimum-fit-size: 8;
-  --maximum-fit-size: 180;
+  --minimum-fit-size: 11;
+  --maximum-fit-size: 52;
 
   font-family:
     "Cormorant Garamond",
@@ -530,15 +525,15 @@ a {
 
   font-weight: 300;
 
-  letter-spacing: 0.02em;
+  letter-spacing: 0.018em;
 }
 
 .formal-latin .fit-text {
-  --tracking-em: 0.05;
-  --word-spacing-em: 0.1;
+  --tracking-em: 0.045;
+  --word-spacing-em: 0.08;
 
-  --minimum-fit-size: 8;
-  --maximum-fit-size: 180;
+  --minimum-fit-size: 10;
+  --maximum-fit-size: 36;
 
   color: var(--accent-blue);
 
@@ -549,8 +544,8 @@ a {
 
   font-weight: 300;
 
-  letter-spacing: 0.05em;
-  word-spacing: 0.1em;
+  letter-spacing: 0.045em;
+  word-spacing: 0.08em;
 }
 
 
@@ -575,52 +570,45 @@ a {
 }
 
 .mission-english {
-  --tracking-em: 0.06;
+  --tracking-em: 0.05;
   --word-spacing-em: 0;
 
-  --minimum-group-size: 8;
-  --maximum-group-size: 20;
+  --minimum-group-size: 10;
+  --maximum-group-size: 25;
 
-  color:
-    rgba(
-      247,
-      246,
-      240,
-      0.8
-    );
+  color: rgba(
+    247,
+    246,
+    240,
+    0.84
+  );
 
   font-variant-caps: small-caps;
 
-  letter-spacing: 0.06em;
-  line-height: 1.5;
+  letter-spacing: 0.05em;
+  line-height: 1.45;
 }
 
 .mission-latin {
-  --tracking-em: 0.045;
+  --tracking-em: 0.04;
   --word-spacing-em: 0;
 
-  --minimum-group-size: 8;
-  --maximum-group-size: 16;
+  --minimum-group-size: 9;
+  --maximum-group-size: 18;
 
-  margin-top:
-    clamp(
-      20px,
-      2vw,
-      30px
-    );
+  margin-top: 22px;
 
-  color:
-    rgba(
-      168,
-      194,
-      222,
-      0.7
-    );
+  color: rgba(
+    168,
+    194,
+    222,
+    0.7
+  );
 
   font-variant-caps: small-caps;
 
-  letter-spacing: 0.045em;
-  line-height: 1.5;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
 }
 
 .equal-size-line {
@@ -669,31 +657,25 @@ a {
   --tracking-em: 0;
   --word-spacing-em: 0;
 
-  --minimum-group-size: 8;
-  --maximum-group-size: 22;
+  --minimum-group-size: 10;
+  --maximum-group-size: 25;
 }
 
 .scripture-latin {
   --tracking-em: 0;
   --word-spacing-em: 0;
 
-  --minimum-group-size: 8;
-  --maximum-group-size: 17;
+  --minimum-group-size: 9;
+  --maximum-group-size: 18;
 
-  margin-top:
-    clamp(
-      18px,
-      2vw,
-      28px
-    ) !important;
+  margin-top: 19px !important;
 
-  color:
-    rgba(
-      168,
-      194,
-      222,
-      0.7
-    );
+  color: rgba(
+    168,
+    194,
+    222,
+    0.7
+  );
 }
 
 .scripture cite {
@@ -931,9 +913,9 @@ a {
   .japanese-identity .japanese-column {
     font-size:
       clamp(
-        22px,
-        5.7vw,
-        30px
+        21px,
+        5.3vw,
+        28px
       );
   }
 
@@ -951,8 +933,8 @@ a {
     font-size:
       clamp(
         9px,
-        2.45vw,
-        12px
+        2.6vw,
+        13px
       );
   }
 
@@ -960,19 +942,25 @@ a {
     margin-bottom: 15px;
   }
 
-  .fit-text {
-    line-height: 1.1;
-  }
-
   .formal-english .fit-text {
     --tracking-em: 0.012;
 
+    --minimum-fit-size: 9;
+    --maximum-fit-size: 32;
+
     letter-spacing: 0.012em;
+  }
+
+  .formal-latin {
+    margin-top: 16px;
   }
 
   .formal-latin .fit-text {
     --tracking-em: 0.03;
     --word-spacing-em: 0.07;
+
+    --minimum-fit-size: 8;
+    --maximum-fit-size: 23;
 
     letter-spacing: 0.03em;
     word-spacing: 0.07em;
@@ -980,7 +968,7 @@ a {
 
   .mission-english {
     --tracking-em: 0.045;
-    --maximum-group-size: 17;
+    --maximum-group-size: 19;
 
     letter-spacing: 0.045em;
   }
@@ -995,7 +983,7 @@ a {
   }
 
   .scripture-english {
-    --maximum-group-size: 19;
+    --maximum-group-size: 21;
   }
 
   .scripture-latin {
@@ -1062,8 +1050,8 @@ a {
     font-size:
       clamp(
         20px,
-        5.5vw,
-        26px
+        5.2vw,
+        25px
       );
   }
 
@@ -1081,13 +1069,16 @@ a {
     font-size:
       clamp(
         8px,
-        2.25vw,
-        10px
+        2.35vw,
+        11px
       );
   }
 
   .formal-english .fit-text {
     --tracking-em: 0.008;
+
+    --minimum-fit-size: 9;
+    --maximum-fit-size: 32;
 
     letter-spacing: 0.008em;
   }
@@ -1096,29 +1087,32 @@ a {
     --tracking-em: 0.024;
     --word-spacing-em: 0.055;
 
+    --minimum-fit-size: 8;
+    --maximum-fit-size: 23;
+
     letter-spacing: 0.024em;
     word-spacing: 0.055em;
   }
 
   .mission-english {
     --tracking-em: 0.035;
-    --maximum-group-size: 16;
+    --maximum-group-size: 19;
 
     letter-spacing: 0.035em;
   }
 
   .mission-latin {
     --tracking-em: 0.025;
-    --maximum-group-size: 13;
+    --maximum-group-size: 14;
 
     letter-spacing: 0.025em;
   }
 
   .scripture-english {
-    --maximum-group-size: 18;
+    --maximum-group-size: 21;
   }
 
   .scripture-latin {
-    --maximum-group-size: 14;
+    --maximum-group-size: 15;
   }
 }
