@@ -58,6 +58,7 @@ a {
   margin-inline: auto;
 }
 
+
 /* HEADER */
 
 .site-header {
@@ -135,6 +136,7 @@ a {
   font-weight: 300;
 }
 
+
 /* HERO */
 
 .hero {
@@ -184,6 +186,7 @@ a {
   overflow: hidden;
 }
 
+
 /* TRILINGUAL GRID */
 
 .trilingual-layout {
@@ -217,6 +220,7 @@ a {
   min-width: 0;
 }
 
+
 /* CENTRAL RULE */
 
 .language-rule {
@@ -228,6 +232,7 @@ a {
 
   background: var(--language-rule);
 }
+
 
 /* JAPANESE COLUMN */
 
@@ -268,6 +273,7 @@ a {
   grid-row: 3;
 }
 
+
 /* JAPANESE PAGE BREAKS */
 
 .japanese-mission::before,
@@ -294,6 +300,7 @@ a {
 
   opacity: 0.52;
 }
+
 
 /* JAPANESE VERTICAL COLUMNS */
 
@@ -329,6 +336,7 @@ a {
   letter-spacing: 0.065em;
 }
 
+
 /* JAPANESE IDENTITY */
 
 .identity-columns {
@@ -353,6 +361,7 @@ a {
   letter-spacing: 0.11em;
 }
 
+
 /* JAPANESE MISSION */
 
 .japanese-mission .japanese-column {
@@ -366,6 +375,7 @@ a {
   letter-spacing: 0.065em;
 }
 
+
 /* JAPANESE SCRIPTURE */
 
 .japanese-scripture .japanese-column {
@@ -378,6 +388,7 @@ a {
 
   letter-spacing: 0.055em;
 }
+
 
 /* WESTERN COLUMN */
 
@@ -402,6 +413,7 @@ a {
   grid-row: 3;
 }
 
+
 /* FORMAL WORDMARK */
 
 .formal-title {
@@ -416,7 +428,6 @@ a {
     serif;
 
   font-kerning: normal;
-
   font-weight: 300;
 
   text-align: left;
@@ -498,6 +509,7 @@ a {
   word-spacing: 0.08em;
 }
 
+
 /* MISSION */
 
 .mission {
@@ -567,6 +579,7 @@ a {
   white-space: nowrap;
 }
 
+
 /* SCRIPTURE */
 
 .scripture {
@@ -622,58 +635,6 @@ a {
   );
 }
 
-/* SMALL LAPTOP / LANDSCAPE TABLET */
-
-@media (max-width: 1400px) {
-  .hero {
-    grid-template-columns:
-      minmax(0, 1.08fr)
-      minmax(410px, 0.92fr);
-  }
-
-  .hero-copy {
-    padding: 48px 36px;
-  }
-
-  .trilingual-layout {
-    grid-template-columns:
-      minmax(105px, 29%)
-      1px
-      minmax(0, 1fr);
-
-    column-gap: 22px;
-  }
-}
-
-/* LANDSCAPE TABLET */
-
-@media (max-width: 1180px) {
-  .hero {
-    grid-template-columns:
-      minmax(0, 1fr)
-      minmax(390px, 0.98fr);
-  }
-
-  .hero-copy {
-    padding: 46px 32px;
-  }
-
-  .trilingual-layout {
-    grid-template-columns:
-      minmax(100px, 29%)
-      1px
-      minmax(0, 1fr);
-
-    column-gap: 20px;
-
-    row-gap: 48px;
-  }
-
-  .japanese-mission::before,
-  .japanese-scripture::before {
-    top: -24px;
-  }
-}
 
 /* PORTRAIT TABLET */
 
@@ -720,6 +681,7 @@ a {
     gap: 11px;
   }
 }
+
 
 /* MOBILE */
 
@@ -772,6 +734,7 @@ a {
 
   .hero-art {
     min-height: 390px;
+
     background-position: center top;
   }
 
@@ -789,12 +752,14 @@ a {
       minmax(0, 1fr);
 
     column-gap: 20px;
+
     row-gap: 42px;
   }
 
   .japanese-mission::before,
   .japanese-scripture::before {
     top: -21px;
+
     left: 16%;
     right: 16%;
   }
@@ -882,6 +847,7 @@ a {
   }
 }
 
+
 /* NARROW MOBILE */
 
 @media (max-width: 390px) {
@@ -907,12 +873,14 @@ a {
       minmax(0, 1fr);
 
     column-gap: 16px;
+
     row-gap: 38px;
   }
 
   .japanese-mission::before,
   .japanese-scripture::before {
     top: -19px;
+
     left: 16%;
     right: 16%;
   }
@@ -948,6 +916,7 @@ a {
 
   .formal-english .fit-text {
     --tracking-em: 0.008;
+
     --minimum-fit-size: 9;
     --maximum-fit-size: 32;
 
