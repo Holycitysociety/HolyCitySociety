@@ -58,7 +58,6 @@ a {
   margin-inline: auto;
 }
 
-
 /* =====================================================
    HEADER
    ===================================================== */
@@ -138,7 +137,6 @@ a {
   font-weight: 300;
 }
 
-
 /* =====================================================
    HERO
    ===================================================== */
@@ -190,7 +188,6 @@ a {
   overflow: hidden;
 }
 
-
 /* =====================================================
    TRILINGUAL GRID
    ===================================================== */
@@ -226,7 +223,6 @@ a {
   min-width: 0;
 }
 
-
 /* =====================================================
    CENTRAL RULE
    ===================================================== */
@@ -240,7 +236,6 @@ a {
 
   background: var(--language-rule);
 }
-
 
 /* =====================================================
    JAPANESE COLUMN
@@ -283,7 +278,6 @@ a {
   grid-row: 3;
 }
 
-
 /* Japanese page breaks */
 
 .japanese-mission::before,
@@ -311,7 +305,6 @@ a {
   opacity: 0.75;
 }
 
-
 /* =====================================================
    JAPANESE VERTICAL COLUMNS
    ===================================================== */
@@ -334,8 +327,7 @@ a {
     );
 }
 
-.japanese-column,
-.japanese-reference {
+.japanese-column {
   writing-mode: vertical-rl;
   text-orientation: upright;
 
@@ -348,7 +340,6 @@ a {
 
   letter-spacing: 0.065em;
 }
-
 
 /* =====================================================
    JAPANESE IDENTITY
@@ -366,16 +357,15 @@ a {
 .japanese-identity .japanese-column {
   font-size:
     clamp(
-      22px,
-      2.45vw,
-      34px
+      24px,
+      2.8vw,
+      42px
     );
 
   font-weight: 400;
 
   letter-spacing: 0.1em;
 }
-
 
 /* =====================================================
    JAPANESE MISSION
@@ -392,7 +382,6 @@ a {
   letter-spacing: 0.065em;
 }
 
-
 /* =====================================================
    JAPANESE SCRIPTURE
    ===================================================== */
@@ -407,22 +396,6 @@ a {
 
   letter-spacing: 0.055em;
 }
-
-.japanese-reference {
-  color: var(--accent-blue-soft);
-
-  font-size:
-    clamp(
-      10px,
-      1.15vw,
-      16px
-    );
-
-  letter-spacing: 0.09em;
-
-  opacity: 0.72;
-}
-
 
 /* =====================================================
    WESTERN COLUMN
@@ -448,7 +421,6 @@ a {
 .western-scripture {
   grid-row: 3;
 }
-
 
 /* =====================================================
    FORMAL WORDMARK
@@ -548,7 +520,6 @@ a {
   word-spacing: 0.08em;
 }
 
-
 /* =====================================================
    MISSION
    ===================================================== */
@@ -574,7 +545,7 @@ a {
   --word-spacing-em: 0;
 
   --minimum-group-size: 10;
-  --maximum-group-size: 25;
+  --maximum-group-size: 28;
 
   color: rgba(
     247,
@@ -594,7 +565,7 @@ a {
   --word-spacing-em: 0;
 
   --minimum-group-size: 9;
-  --maximum-group-size: 18;
+  --maximum-group-size: 20;
 
   margin-top: 22px;
 
@@ -619,7 +590,6 @@ a {
 
   white-space: nowrap;
 }
-
 
 /* =====================================================
    SCRIPTURE
@@ -658,7 +628,7 @@ a {
   --word-spacing-em: 0;
 
   --minimum-group-size: 10;
-  --maximum-group-size: 25;
+  --maximum-group-size: 27;
 }
 
 .scripture-latin {
@@ -666,7 +636,7 @@ a {
   --word-spacing-em: 0;
 
   --minimum-group-size: 9;
-  --maximum-group-size: 18;
+  --maximum-group-size: 19;
 
   margin-top: 19px !important;
 
@@ -677,36 +647,6 @@ a {
     0.7
   );
 }
-
-.scripture cite {
-  display: block;
-
-  margin-top:
-    clamp(
-      20px,
-      2.5vw,
-      32px
-    );
-
-  color: var(--accent-blue-soft);
-
-  font-family:
-    "Cormorant Garamond",
-    Garamond,
-    serif;
-
-  font-size: 0.72rem;
-
-  font-style: normal;
-  font-weight: 300;
-
-  letter-spacing: 0.18em;
-
-  line-height: 1.45;
-
-  text-transform: uppercase;
-}
-
 
 /* =====================================================
    SMALL LAPTOP / LANDSCAPE TABLET
@@ -732,7 +672,6 @@ a {
     column-gap: 22px;
   }
 }
-
 
 /* =====================================================
    LANDSCAPE TABLET
@@ -766,7 +705,6 @@ a {
   }
 }
 
-
 /* =====================================================
    PORTRAIT TABLET
    ===================================================== */
@@ -774,7 +712,6 @@ a {
 @media (max-width: 980px) {
   .hero {
     grid-template-columns: 1fr;
-
     min-height: auto;
   }
 
@@ -815,7 +752,6 @@ a {
   }
 }
 
-
 /* =====================================================
    MOBILE
    ===================================================== */
@@ -839,19 +775,14 @@ a {
 
   .top-nav {
     gap: 28px;
-
     margin-bottom: 22px;
-
     font-size: 0.76rem;
-
     letter-spacing: 0.18em;
   }
 
   .site-name {
     gap: 10px;
-
     font-size: 1.78rem;
-
     letter-spacing: 0.075em;
     line-height: 0.9;
   }
@@ -866,13 +797,11 @@ a {
 
   .hero {
     margin-bottom: 28px;
-
     border-radius: 22px;
   }
 
   .hero-art {
     min-height: 390px;
-
     background-position: center top;
   }
 
@@ -897,7 +826,6 @@ a {
   .japanese-mission::before,
   .japanese-scripture::before {
     top: -21px;
-
     left: 8%;
     right: 8%;
   }
@@ -913,9 +841,9 @@ a {
   .japanese-identity .japanese-column {
     font-size:
       clamp(
-        21px,
-        5.3vw,
-        28px
+        22px,
+        5.7vw,
+        32px
       );
   }
 
@@ -929,22 +857,12 @@ a {
       );
   }
 
-  .japanese-reference {
-    font-size:
-      clamp(
-        9px,
-        2.6vw,
-        13px
-      );
-  }
-
   .formal-english {
     margin-bottom: 15px;
   }
 
   .formal-english .fit-text {
     --tracking-em: 0.012;
-
     --minimum-fit-size: 9;
     --maximum-fit-size: 32;
 
@@ -968,14 +886,14 @@ a {
 
   .mission-english {
     --tracking-em: 0.045;
-    --maximum-group-size: 19;
+    --maximum-group-size: 20;
 
     letter-spacing: 0.045em;
   }
 
   .mission-latin {
     --tracking-em: 0.03;
-    --maximum-group-size: 14;
+    --maximum-group-size: 15;
 
     margin-top: 18px;
 
@@ -983,24 +901,14 @@ a {
   }
 
   .scripture-english {
-    --maximum-group-size: 21;
+    --maximum-group-size: 22;
   }
 
   .scripture-latin {
-    --maximum-group-size: 15;
-
+    --maximum-group-size: 16;
     margin-top: 17px !important;
   }
-
-  .scripture cite {
-    margin-top: 22px;
-
-    font-size: 0.63rem;
-
-    letter-spacing: 0.12em;
-  }
 }
-
 
 /* =====================================================
    NARROW MOBILE
@@ -1050,8 +958,8 @@ a {
     font-size:
       clamp(
         20px,
-        5.2vw,
-        25px
+        5.4vw,
+        28px
       );
   }
 
@@ -1065,18 +973,8 @@ a {
       );
   }
 
-  .japanese-reference {
-    font-size:
-      clamp(
-        8px,
-        2.35vw,
-        11px
-      );
-  }
-
   .formal-english .fit-text {
     --tracking-em: 0.008;
-
     --minimum-fit-size: 9;
     --maximum-fit-size: 32;
 
