@@ -88,7 +88,11 @@
               </p>
 
               <p class="japanese-column">
-                聖都騎士団
+                聖都
+              </p>
+
+              <p class="japanese-column">
+                騎士団
               </p>
             </div>
           </section>
@@ -518,95 +522,6 @@
         });
       }
 
-      function fitJapaneseIdentity() {
-        const section =
-          document.querySelector(
-            ".japanese-identity"
-          );
-
-        const group =
-          section?.querySelector(
-            ".identity-columns"
-          );
-
-        const columns = group
-          ? Array.from(
-              group.querySelectorAll(
-                ".japanese-column"
-              )
-            )
-          : [];
-
-        const westernIdentity =
-          document.querySelector(
-            ".western-identity"
-          );
-
-        if (
-          !section ||
-          !group ||
-          !columns.length ||
-          !westernIdentity
-        ) {
-          return;
-        }
-
-        columns.forEach((column) => {
-          column.style.fontSize = "";
-        });
-
-        const availableWidth =
-          Math.max(
-            section.clientWidth - 2,
-            0
-          );
-
-        const availableHeight =
-          Math.max(
-            westernIdentity.clientHeight - 2,
-            0
-          );
-
-        if (
-          availableWidth <= 0 ||
-          availableHeight <= 0
-        ) {
-          return;
-        }
-
-        let low = 12;
-        let high = 96;
-        let best = 12;
-
-        for (let i = 0; i < 24; i += 1) {
-          const mid = (low + high) / 2;
-
-          columns.forEach((column) => {
-            column.style.fontSize =
-              `${mid}px`;
-          });
-
-          const rect =
-            group.getBoundingClientRect();
-
-          const fits =
-            rect.width <= availableWidth &&
-            rect.height <= availableHeight;
-
-          if (fits) {
-            best = mid;
-            low = mid;
-          } else {
-            high = mid;
-          }
-        }
-
-        columns.forEach((column) => {
-          column.style.fontSize =
-            `${best}px`;
-        });
-      }
-
       function fitAllTypography() {
         document
           .querySelectorAll(
@@ -619,8 +534,6 @@
             ".western-section .equal-size-group"
           )
           .forEach(fitEqualSizeGroup);
-
-        fitJapaneseIdentity();
       }
 
       let resizeFrame;
