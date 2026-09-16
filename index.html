@@ -72,15 +72,10 @@
       <div class="hero-copy">
         <div class="trilingual-layout">
 
-          <!-- CENTRAL DIVIDING RULE -->
-
           <div
             class="language-rule"
             aria-hidden="true"
           ></div>
-
-
-          <!-- JAPANESE: IDENTITY -->
 
           <section
             class="japanese-section japanese-identity"
@@ -97,9 +92,6 @@
               </p>
             </div>
           </section>
-
-
-          <!-- ENGLISH + LATIN: IDENTITY -->
 
           <section class="western-section western-identity">
             <h1
@@ -150,9 +142,6 @@
             </p>
           </section>
 
-
-          <!-- JAPANESE: MISSION -->
-
           <section
             class="japanese-section japanese-mission"
             lang="ja"
@@ -172,9 +161,6 @@
               </p>
             </div>
           </section>
-
-
-          <!-- ENGLISH + LATIN: MISSION -->
 
           <section class="western-section western-mission">
             <p
@@ -204,9 +190,6 @@
             </p>
           </section>
 
-
-          <!-- JAPANESE: SCRIPTURE -->
-
           <section
             class="japanese-section japanese-scripture"
             lang="ja"
@@ -224,15 +207,8 @@
               <p class="japanese-column">
                 隱るること能はず。
               </p>
-
-              <p class="japanese-reference">
-                マタイ傳五章十四節
-              </p>
             </div>
           </section>
-
-
-          <!-- ENGLISH + LATIN: SCRIPTURE -->
 
           <section class="western-section western-scripture">
             <blockquote class="scripture">
@@ -261,10 +237,6 @@
                   Non potest civitas abscondi supra montem posita.”
                 </span>
               </p>
-
-              <cite>
-                Matthew 5:14 · Matthaeus 5:14
-              </cite>
             </blockquote>
           </section>
 
@@ -546,6 +518,95 @@
         });
       }
 
+      function fitJapaneseIdentity() {
+        const section =
+          document.querySelector(
+            ".japanese-identity"
+          );
+
+        const group =
+          section?.querySelector(
+            ".identity-columns"
+          );
+
+        const columns = group
+          ? Array.from(
+              group.querySelectorAll(
+                ".japanese-column"
+              )
+            )
+          : [];
+
+        const westernIdentity =
+          document.querySelector(
+            ".western-identity"
+          );
+
+        if (
+          !section ||
+          !group ||
+          !columns.length ||
+          !westernIdentity
+        ) {
+          return;
+        }
+
+        columns.forEach((column) => {
+          column.style.fontSize = "";
+        });
+
+        const availableWidth =
+          Math.max(
+            section.clientWidth - 2,
+            0
+          );
+
+        const availableHeight =
+          Math.max(
+            westernIdentity.clientHeight - 2,
+            0
+          );
+
+        if (
+          availableWidth <= 0 ||
+          availableHeight <= 0
+        ) {
+          return;
+        }
+
+        let low = 12;
+        let high = 96;
+        let best = 12;
+
+        for (let i = 0; i < 24; i += 1) {
+          const mid = (low + high) / 2;
+
+          columns.forEach((column) => {
+            column.style.fontSize =
+              `${mid}px`;
+          });
+
+          const rect =
+            group.getBoundingClientRect();
+
+          const fits =
+            rect.width <= availableWidth &&
+            rect.height <= availableHeight;
+
+          if (fits) {
+            best = mid;
+            low = mid;
+          } else {
+            high = mid;
+          }
+        }
+
+        columns.forEach((column) => {
+          column.style.fontSize =
+            `${best}px`;
+        });
+      }
+
       function fitAllTypography() {
         document
           .querySelectorAll(
@@ -558,6 +619,8 @@
             ".western-section .equal-size-group"
           )
           .forEach(fitEqualSizeGroup);
+
+        fitJapaneseIdentity();
       }
 
       let resizeFrame;
