@@ -334,23 +334,23 @@ a {
 .identity-columns {
   gap:
     clamp(
-      8px,
-      1.1vw,
-      14px
+      11px,
+      1.4vw,
+      18px
     );
 }
 
 .japanese-identity .japanese-column {
   font-size:
     clamp(
-      22px,
-      2.45vw,
-      34px
+      26px,
+      2.8vw,
+      39px
     );
 
   font-weight: 400;
 
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
 }
 
 /* JAPANESE MISSION */
@@ -804,18 +804,18 @@ a {
   }
 
   .identity-columns {
-    gap: 6px;
+    gap: 9px;
   }
 
   .japanese-identity .japanese-column {
     font-size:
       clamp(
-        24px,
-        6.2vw,
-        34px
+        28px,
+        7vw,
+        39px
       );
 
-    letter-spacing: 0.085em;
+    letter-spacing: 0.1em;
   }
 
   .japanese-mission .japanese-column,
@@ -922,18 +922,18 @@ a {
   }
 
   .identity-columns {
-    gap: 4px;
+    gap: 7px;
   }
 
   .japanese-identity .japanese-column {
     font-size:
       clamp(
-        22px,
-        6vw,
-        30px
+        25px,
+        6.6vw,
+        34px
       );
 
-    letter-spacing: 0.075em;
+    letter-spacing: 0.09em;
   }
 
   .japanese-mission .japanese-column,
