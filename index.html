@@ -1,18 +1,23 @@
-Make just those changes. Full code
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Holy City Society</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&display=swap"
     rel="stylesheet"
   />
 
@@ -22,19 +27,42 @@ Make just those changes. Full code
 <body>
   <header class="site-header site-shell">
     <nav class="top-nav" aria-label="Primary">
-      <a href="./index.html" aria-current="page">Praxis</a>
-      <a href="./virtues.html">Energeia</a>
+      <a href="./index.html" aria-current="page">
+        Praxis
+      </a>
+
+      <a href="./virtues.html">
+        Energeia
+      </a>
     </nav>
 
-    <div class="site-name" aria-label="Holy City Society">
-      <span class="site-cross" aria-hidden="true">✠</span>
+    <div
+      class="site-name"
+      aria-label="Holy City Society"
+    >
+      <span
+        class="site-cross"
+        aria-hidden="true"
+      >
+        ✠
+      </span>
+
       <span>Holy City Society</span>
-      <span class="site-cross" aria-hidden="true">✠</span>
+
+      <span
+        class="site-cross"
+        aria-hidden="true"
+      >
+        ✠
+      </span>
     </div>
   </header>
 
   <main class="site-shell">
-    <section class="hero" aria-labelledby="formal-title">
+    <section
+      class="hero"
+      aria-labelledby="formal-title"
+    >
       <div
         class="hero-art"
         role="img"
@@ -42,65 +70,207 @@ Make just those changes. Full code
       ></div>
 
       <div class="hero-copy">
-        <div
-          class="bilingual-wordmark wordmark-english-first"
-          aria-label="The Society and Equestrian Order of the Holy City. Societas atque Ordo Equestris Civitatis Sanctae."
-        >
-          <h1
-            class="formal-title formal-english"
-            id="formal-title"
+        <div class="trilingual-layout">
+
+          <!-- =========================
+               CENTRAL DIVIDING RULE
+               ========================= -->
+
+          <div
+            class="language-rule"
+            aria-hidden="true"
+          ></div>
+
+
+          <!-- =========================
+               JAPANESE — IDENTITY
+               ========================= -->
+
+          <section
+            class="japanese-section japanese-identity"
+            lang="ja"
+            aria-label="Japanese institutional name"
           >
-            <span class="title-line">
-              <span class="fit-text">
-                The Society  &amp;
-              </span>
-            </span>
+            <div class="japanese-columns identity-columns">
+              <p class="japanese-column">
+                聖都会
+              </p>
 
-            <span class="title-line">
-              <span class="fit-text">
-                Equestrian Order of the Holy City
-              </span>
-            </span>
-          </h1>
+              <p class="japanese-column">
+                聖都騎士団
+              </p>
+            </div>
+          </section>
 
-          <p class="formal-title formal-latin">
-            <span class="title-line">
-              <span class="fit-text">
-                Societas Et
-              </span>
-            </span>
 
-            <span class="title-line">
-              <span class="fit-text">
-                Ordo Equestris Civitatis Sanctae
+          <!-- =========================
+               ENGLISH + LATIN — IDENTITY
+               ========================= -->
+
+          <section class="western-section western-identity">
+            <h1
+              class="formal-title formal-english"
+              id="formal-title"
+              lang="en"
+            >
+              <span class="title-line">
+                <span class="fit-text">
+                  The Society &amp;
+                </span>
               </span>
-            </span>
-          </p>
+
+              <span class="title-line">
+                <span class="fit-text">
+                  Equestrian Order of the Holy City
+                </span>
+              </span>
+            </h1>
+
+            <p
+              class="formal-title formal-latin"
+              lang="la"
+            >
+              <span class="title-line">
+                <span class="fit-text">
+                  Societas Et
+                </span>
+              </span>
+
+              <span class="title-line">
+                <span class="fit-text">
+                  Ordo Equestris Civitatis Sanctae
+                </span>
+              </span>
+            </p>
+          </section>
+
+
+          <!-- =========================
+               JAPANESE — MISSION
+               ========================= -->
+
+          <section
+            class="japanese-section japanese-mission"
+            lang="ja"
+            aria-label="Japanese mission"
+          >
+            <div class="japanese-columns">
+              <p class="japanese-column">
+                光に照らされ、自由で、
+              </p>
+
+              <p class="japanese-column">
+                聖なる社会を築く
+              </p>
+
+              <p class="japanese-column">
+                探求を続ける。
+              </p>
+            </div>
+          </section>
+
+
+          <!-- =========================
+               ENGLISH + LATIN — MISSION
+               ========================= -->
+
+          <section class="western-section western-mission">
+            <p
+              class="mission mission-english equal-size-group"
+              lang="en"
+            >
+              <span class="equal-size-line">
+                Continuing the Quest to Build an
+              </span>
+
+              <span class="equal-size-line">
+                Illuminated, Free, and Holy Society
+              </span>
+            </p>
+
+            <p
+              class="mission mission-latin equal-size-group"
+              lang="la"
+            >
+              <span class="equal-size-line">
+                Perseverantes in studio societatis
+              </span>
+
+              <span class="equal-size-line">
+                illuminatae, liberae sanctaeque aedificandae.
+              </span>
+            </p>
+          </section>
+
+
+          <!-- =========================
+               JAPANESE — SCRIPTURE
+               ========================= -->
+
+          <section
+            class="japanese-section japanese-scripture"
+            lang="ja"
+            aria-label="Japanese Matthew 5:14"
+          >
+            <div class="japanese-columns scripture-columns">
+              <p class="japanese-column">
+                汝らは世の光なり。
+              </p>
+
+              <p class="japanese-column">
+                山の上にある町は
+              </p>
+
+              <p class="japanese-column">
+                隱るること能はず。
+              </p>
+
+              <p class="japanese-reference">
+                マタイ傳五章十四節
+              </p>
+            </div>
+          </section>
+
+
+          <!-- =========================
+               ENGLISH + LATIN — SCRIPTURE
+               ========================= -->
+
+          <section class="western-section western-scripture">
+            <blockquote class="scripture">
+              <p
+                class="scripture-english equal-size-group"
+                lang="en"
+              >
+                <span class="equal-size-line">
+                  “Ye are the light of the world.
+                </span>
+
+                <span class="equal-size-line">
+                  A city that is set on a hill cannot be hid.”
+                </span>
+              </p>
+
+              <p
+                class="scripture-latin equal-size-group"
+                lang="la"
+              >
+                <span class="equal-size-line">
+                  “Vos estis lux mundi.
+                </span>
+
+                <span class="equal-size-line">
+                  Non potest civitas abscondi supra montem posita.”
+                </span>
+              </p>
+
+              <cite>
+                Matthew 5:14 · Matthaeus 5:14
+              </cite>
+            </blockquote>
+          </section>
+
         </div>
-
-        <p class="mission equal-size-group">
-          <span class="equal-size-line">
-            Continuing the Quest to Build an
-          </span>
-
-          <span class="equal-size-line">
-            Illuminated, Free, and Holy Society
-          </span>
-        </p>
-
-        <blockquote class="scripture">
-          <p class="equal-size-group">
-            <span class="equal-size-line">
-              “Ye are the light of the world.
-            </span>
-
-            <span class="equal-size-line">
-              A city that is set on a hill cannot be hid.”
-            </span>
-          </p>
-
-          <cite>Matthew 5:14</cite>
-        </blockquote>
       </div>
     </section>
   </main>
@@ -108,10 +278,18 @@ Make just those changes. Full code
   <script>
     (() => {
       const referenceFontSize = 100;
-      const widthSafetyAllowance = 2;
 
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
+      /*
+        Slight extra allowance protects against
+        fractional-width clipping on mobile Safari.
+      */
+      const widthSafetyAllowance = 6;
+
+      const canvas =
+        document.createElement("canvas");
+
+      const context =
+        canvas.getContext("2d");
 
       function numericCustomProperty(
         element,
@@ -130,7 +308,9 @@ Make just those changes. Full code
       }
 
       function transformedText(element) {
-        const text = element.textContent.trim();
+        const text =
+          element.textContent.trim();
+
         const transform =
           getComputedStyle(element).textTransform;
 
@@ -146,8 +326,11 @@ Make just those changes. Full code
       }
 
       function measureTextAtReferenceSize(element) {
-        const styles = getComputedStyle(element);
-        const text = transformedText(element);
+        const styles =
+          getComputedStyle(element);
+
+        const text =
+          transformedText(element);
 
         const fontStyle =
           styles.fontStyle || "normal";
@@ -168,20 +351,25 @@ Make just those changes. Full code
         const glyphWidth =
           context.measureText(text).width;
 
-        const trackingEm = numericCustomProperty(
-          element,
-          "--tracking-em",
-          0
-        );
+        const trackingEm =
+          numericCustomProperty(
+            element,
+            "--tracking-em",
+            0
+          );
 
-        const wordSpacingEm = numericCustomProperty(
-          element,
-          "--word-spacing-em",
-          0
-        );
+        const wordSpacingEm =
+          numericCustomProperty(
+            element,
+            "--word-spacing-em",
+            0
+          );
 
         const characterGaps =
-          Math.max(text.length - 1, 0);
+          Math.max(
+            text.length - 1,
+            0
+          );
 
         const spaces =
           (text.match(/\s/g) || []).length;
@@ -211,11 +399,12 @@ Make just those changes. Full code
           return 0;
         }
 
-        const targetWidth = Math.max(
-          line.clientWidth -
-            widthSafetyAllowance,
-          0
-        );
+        const targetWidth =
+          Math.max(
+            line.clientWidth -
+              widthSafetyAllowance,
+            0
+          );
 
         if (targetWidth <= 0) {
           return 0;
@@ -228,21 +417,26 @@ Make just those changes. Full code
           return 0;
         }
 
-        const minimumSize = numericCustomProperty(
-          element,
-          "--minimum-fit-size",
-          10
-        );
+        const minimumSize =
+          numericCustomProperty(
+            element,
+            "--minimum-fit-size",
+            8
+          );
 
-        const maximumSize = numericCustomProperty(
-          element,
-          "--maximum-fit-size",
-          180
-        );
+        const maximumSize =
+          numericCustomProperty(
+            element,
+            "--maximum-fit-size",
+            180
+          );
 
         const calculatedSize =
           referenceFontSize *
-          (targetWidth / referenceWidth);
+          (
+            targetWidth /
+            referenceWidth
+          );
 
         return Math.max(
           minimumSize,
@@ -262,10 +456,16 @@ Make just those changes. Full code
           return;
         }
 
+        lines.forEach((line) => {
+          line.style.fontSize = "";
+        });
+
         const calculatedSizes =
           lines
             .map(calculateLineSize)
-            .filter((size) => size > 0);
+            .filter(
+              (size) => size > 0
+            );
 
         if (!calculatedSizes.length) {
           return;
@@ -291,11 +491,16 @@ Make just those changes. Full code
           return;
         }
 
-        const targetWidth = Math.max(
-          group.clientWidth -
-            widthSafetyAllowance,
-          0
-        );
+        lines.forEach((line) => {
+          line.style.fontSize = "";
+        });
+
+        const targetWidth =
+          Math.max(
+            group.clientWidth -
+              widthSafetyAllowance,
+            0
+          );
 
         if (targetWidth <= 0) {
           return;
@@ -316,7 +521,7 @@ Make just those changes. Full code
           numericCustomProperty(
             group,
             "--minimum-group-size",
-            10
+            8
           );
 
         const maximumSize =
@@ -333,13 +538,14 @@ Make just those changes. Full code
             longestReferenceWidth
           );
 
-        const finalSize = Math.max(
-          minimumSize,
-          Math.min(
-            calculatedSize,
-            maximumSize
-          )
-        );
+        const finalSize =
+          Math.max(
+            minimumSize,
+            Math.min(
+              calculatedSize,
+              maximumSize
+            )
+          );
 
         lines.forEach((line) => {
           line.style.fontSize =
@@ -349,12 +555,14 @@ Make just those changes. Full code
 
       function fitAllTypography() {
         document
-          .querySelectorAll(".formal-title")
+          .querySelectorAll(
+            ".western-section .formal-title"
+          )
           .forEach(fitFormalTitle);
 
         document
           .querySelectorAll(
-            ".equal-size-group"
+            ".western-section .equal-size-group"
           )
           .forEach(fitEqualSizeGroup);
       }
