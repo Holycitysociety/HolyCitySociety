@@ -11,10 +11,9 @@
   --radius: 30px;
   --shadow: 0 30px 90px rgba(0, 0, 0, 0.26);
 
-  --wordmark-width: 30rem;
-  --supporting-width: 30rem;
-
   --content-inset: 24px;
+
+  --language-rule: rgba(168, 194, 222, 0.8);
 }
 
 * {
@@ -29,11 +28,18 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
+
   background: var(--bg);
   color: var(--text);
-  font-family: "Cormorant Garamond", Garamond, serif;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-size: 18px;
   font-weight: 300;
+
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -44,11 +50,18 @@ a {
 }
 
 .site-shell {
-  width: min(calc(100% - 48px), var(--shell));
+  width: min(
+    calc(100% - 48px),
+    var(--shell)
+  );
+
   margin-inline: auto;
 }
 
-/* Header */
+
+/* =====================================================
+   HEADER
+   ===================================================== */
 
 .site-header {
   padding-top: 32px;
@@ -58,12 +71,21 @@ a {
 .top-nav {
   display: flex;
   justify-content: center;
+
   gap: 44px;
+
   margin-bottom: 28px;
+
   color: var(--muted);
-  font-family: "Cormorant Garamond", Garamond, serif;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-size: 0.88rem;
   font-weight: 300;
+
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -82,41 +104,68 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 22px;
+
   color: var(--text);
-  font-family: "Cormorant Garamond", Garamond, serif;
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
+  font-size: clamp(
+    2rem,
+    3.5vw,
+    3.5rem
+  );
+
   font-weight: 300;
+
   letter-spacing: 0.12em;
   line-height: 0.9;
+
   text-align: center;
   text-transform: uppercase;
 }
 
 .site-cross {
   flex: 0 0 auto;
+
   color: var(--accent-blue);
+
   font-size: 0.78em;
   font-weight: 300;
 }
 
-/* Hero */
+
+/* =====================================================
+   HERO
+   ===================================================== */
 
 .hero {
   display: grid;
+
   grid-template-columns:
     minmax(0, 1.08fr)
     minmax(430px, 0.92fr);
+
   min-height: 720px;
+
   margin-bottom: 48px;
+
   overflow: hidden;
+
   background: var(--panel);
+
   border-radius: var(--radius);
+
   box-shadow: var(--shadow);
 }
 
 .hero-art {
   min-height: 720px;
+
   background-image:
     linear-gradient(
       90deg,
@@ -125,174 +174,563 @@ a {
       rgba(15, 31, 52, 0.46)
     ),
     url("./B34EE0E8-7698-45C1-A5B6-EF87853A96F7.jpeg");
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .hero-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   min-width: 0;
-  padding: clamp(54px, 5.4vw, 82px);
+
+  padding:
+    clamp(54px, 5.4vw, 82px)
+    clamp(34px, 4vw, 62px);
+
+  overflow: hidden;
 }
 
-/* Bilingual formal wordmark */
 
-.bilingual-wordmark {
-  position: relative;
-  width: min(100%, var(--wordmark-width));
-  max-width: 100%;
-  margin-bottom: 38px;
-  padding-left: var(--content-inset);
+/* =====================================================
+   TRILINGUAL GRID
+
+   Japanese | Rule | English + Latin
+   ===================================================== */
+
+.trilingual-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(116px, 30%)
+    1px
+    minmax(0, 1fr);
+
+  grid-template-rows:
+    auto
+    auto
+    auto;
+
+  column-gap:
+    clamp(
+      18px,
+      2.8vw,
+      34px
+    );
+
+  row-gap:
+    clamp(
+      42px,
+      5vw,
+      62px
+    );
+
+  width: 100%;
+  min-width: 0;
 }
 
-.bilingual-wordmark::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+
+/* =====================================================
+   CENTRAL RULE
+   ===================================================== */
+
+.language-rule {
+  grid-column: 2;
+  grid-row: 1 / 4;
+
   width: 1px;
-  background: var(--accent-blue);
+  height: 100%;
+
+  background: var(--language-rule);
 }
+
+
+/* =====================================================
+   JAPANESE COLUMN
+   ===================================================== */
+
+.japanese-section {
+  position: relative;
+
+  grid-column: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  min-width: 0;
+
+  color: rgba(
+    228,
+    237,
+    245,
+    0.9
+  );
+
+  font-family:
+    "Noto Serif JP",
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+}
+
+.japanese-identity {
+  grid-row: 1;
+}
+
+.japanese-mission {
+  grid-row: 2;
+}
+
+.japanese-scripture {
+  grid-row: 3;
+}
+
+
+/* -----------------------------------------------------
+   Japanese page breaks
+   ----------------------------------------------------- */
+
+.japanese-mission::before,
+.japanese-scripture::before {
+  content: "";
+
+  position: absolute;
+
+  top:
+    calc(
+      clamp(
+        42px,
+        5vw,
+        62px
+      ) / -2
+    );
+
+  left: 10%;
+  right: 10%;
+
+  height: 1px;
+
+  background: var(--language-rule);
+
+  opacity: 0.75;
+}
+
+
+/* =====================================================
+   JAPANESE VERTICAL COLUMNS
+
+   Columns progress right-to-left.
+   Characters read top-to-bottom.
+   ===================================================== */
+
+.japanese-columns {
+  display: flex;
+
+  flex-direction: row-reverse;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+
+  gap:
+    clamp(
+      7px,
+      1vw,
+      13px
+    );
+}
+
+.japanese-column,
+.japanese-reference {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-weight: 300;
+  line-height: 1;
+
+  letter-spacing: 0.065em;
+}
+
+
+/* =====================================================
+   JAPANESE IDENTITY
+   ===================================================== */
+
+.identity-columns {
+  gap:
+    clamp(
+      10px,
+      1.25vw,
+      17px
+    );
+}
+
+.japanese-identity .japanese-column {
+  font-size:
+    clamp(
+      24px,
+      2.8vw,
+      38px
+    );
+
+  font-weight: 400;
+
+  letter-spacing: 0.1em;
+}
+
+
+/* =====================================================
+   JAPANESE MISSION
+   ===================================================== */
+
+.japanese-mission .japanese-column {
+  font-size:
+    clamp(
+      16px,
+      1.65vw,
+      23px
+    );
+
+  letter-spacing: 0.065em;
+}
+
+
+/* =====================================================
+   JAPANESE SCRIPTURE
+   ===================================================== */
+
+.japanese-scripture .japanese-column {
+  font-size:
+    clamp(
+      16px,
+      1.65vw,
+      23px
+    );
+
+  letter-spacing: 0.055em;
+}
+
+.japanese-reference {
+  color: var(--accent-blue-soft);
+
+  font-size:
+    clamp(
+      10px,
+      1vw,
+      14px
+    );
+
+  letter-spacing: 0.09em;
+
+  opacity: 0.7;
+}
+
+
+/* =====================================================
+   WESTERN COLUMN
+   ===================================================== */
+
+.western-section {
+  grid-column: 3;
+
+  width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+}
+
+.western-identity {
+  grid-row: 1;
+}
+
+.western-mission {
+  grid-row: 2;
+}
+
+.western-scripture {
+  grid-row: 3;
+}
+
+
+/* =====================================================
+   FORMAL WORDMARK
+   ===================================================== */
 
 .formal-title {
   width: 100%;
   min-width: 0;
+
   margin: 0;
-  font-family: "Cormorant Garamond", Garamond, serif;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-kerning: normal;
+
   font-weight: 300;
+
   text-align: left;
   text-transform: uppercase;
 }
 
 .formal-english {
-  margin-bottom: 17px;
+  margin-bottom: 18px;
+
   color: var(--text);
 }
 
 .formal-latin {
-  margin-bottom: 0;
   color: var(--accent-blue);
 }
 
 .title-line {
   display: flex;
   align-items: baseline;
+
   width: 100%;
   min-width: 0;
+
   overflow: visible;
+
   white-space: nowrap;
 }
 
 .fit-text {
   display: inline-block;
+
   flex: 0 0 auto;
+
+  max-width: 100%;
+
   white-space: nowrap;
+
   line-height: 1.08;
+
   transform-origin: left center;
 }
 
 .formal-english .fit-text {
-  --tracking-em: 0.025;
+  --tracking-em: 0.02;
   --word-spacing-em: 0;
-  --minimum-fit-size: 10;
+
+  --minimum-fit-size: 8;
   --maximum-fit-size: 180;
 
-  font-family: "Cormorant Garamond", Garamond, serif;
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-weight: 300;
-  letter-spacing: 0.025em;
-  word-spacing: normal;
+
+  letter-spacing: 0.02em;
 }
 
 .formal-latin .fit-text {
-  --tracking-em: 0.055;
-  --word-spacing-em: 0.12;
-  --minimum-fit-size: 10;
+  --tracking-em: 0.05;
+  --word-spacing-em: 0.1;
+
+  --minimum-fit-size: 8;
   --maximum-fit-size: 180;
 
   color: var(--accent-blue);
-  font-family: "Cormorant Garamond", Garamond, serif;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-weight: 300;
-  letter-spacing: 0.055em;
-  word-spacing: 0.12em;
+
+  letter-spacing: 0.05em;
+  word-spacing: 0.1em;
 }
 
-/* Mission */
+
+/* =====================================================
+   MISSION
+   ===================================================== */
 
 .mission {
-  --tracking-em: 0.075;
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
+  font-weight: 300;
+
+  text-transform: none;
+}
+
+.mission-english {
+  --tracking-em: 0.06;
   --word-spacing-em: 0;
-  --minimum-group-size: 10;
+
+  --minimum-group-size: 8;
   --maximum-group-size: 20;
 
-  width: min(100%, var(--supporting-width));
-  max-width: 100%;
-  margin: 0 0 32px;
-  padding-left: var(--content-inset);
-  color: rgba(247, 246, 240, 0.78);
-  font-family: "Cormorant Garamond", Garamond, serif;
+  color:
+    rgba(
+      247,
+      246,
+      240,
+      0.8
+    );
+
   font-variant-caps: small-caps;
-  font-weight: 300;
-  letter-spacing: 0.075em;
+
+  letter-spacing: 0.06em;
   line-height: 1.5;
-  text-transform: none;
+}
+
+.mission-latin {
+  --tracking-em: 0.045;
+  --word-spacing-em: 0;
+
+  --minimum-group-size: 8;
+  --maximum-group-size: 16;
+
+  margin-top:
+    clamp(
+      20px,
+      2vw,
+      30px
+    );
+
+  color:
+    rgba(
+      168,
+      194,
+      222,
+      0.7
+    );
+
+  font-variant-caps: small-caps;
+
+  letter-spacing: 0.045em;
+  line-height: 1.5;
 }
 
 .equal-size-line {
   display: block;
+
   width: max-content;
   max-width: 100%;
+
   white-space: nowrap;
 }
 
-/* Scripture */
+
+/* =====================================================
+   SCRIPTURE
+   ===================================================== */
 
 .scripture {
-  width: min(100%, var(--supporting-width));
+  width: 100%;
   max-width: 100%;
+
   margin: 0;
-  padding: 0 0 0 var(--content-inset);
+  padding: 0;
+
   color: var(--accent-blue);
 }
 
 .scripture p {
-  --tracking-em: 0;
-  --word-spacing-em: 0;
-  --minimum-group-size: 10;
-  --maximum-group-size: 22;
-
   width: 100%;
-  margin: 0 0 10px;
-  font-family: "Cormorant Garamond", Garamond, serif;
+
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-style: italic;
   font-weight: 300;
+
   letter-spacing: 0;
+
   line-height: 1.4;
+}
+
+.scripture-english {
+  --tracking-em: 0;
+  --word-spacing-em: 0;
+
+  --minimum-group-size: 8;
+  --maximum-group-size: 22;
+}
+
+.scripture-latin {
+  --tracking-em: 0;
+  --word-spacing-em: 0;
+
+  --minimum-group-size: 8;
+  --maximum-group-size: 17;
+
+  margin-top:
+    clamp(
+      18px,
+      2vw,
+      28px
+    ) !important;
+
+  color:
+    rgba(
+      168,
+      194,
+      222,
+      0.7
+    );
 }
 
 .scripture cite {
   display: block;
+
+  margin-top:
+    clamp(
+      20px,
+      2.5vw,
+      32px
+    );
+
   color: var(--accent-blue-soft);
-  font-family: "Cormorant Garamond", Garamond, serif;
+
+  font-family:
+    "Cormorant Garamond",
+    Garamond,
+    serif;
+
   font-size: 0.72rem;
+
   font-style: normal;
   font-weight: 300;
+
   letter-spacing: 0.18em;
+
+  line-height: 1.45;
+
   text-transform: uppercase;
 }
 
-/* Small laptop and landscape tablet */
+
+/* =====================================================
+   SMALL LAPTOP / LANDSCAPE TABLET
+   ===================================================== */
 
 @media (max-width: 1400px) {
-  :root {
-    --wordmark-width: 27rem;
-    --supporting-width: 27rem;
-  }
-
   .hero {
     grid-template-columns:
       minmax(0, 1.08fr)
@@ -300,18 +738,25 @@ a {
   }
 
   .hero-copy {
-    padding: 48px 42px;
+    padding: 48px 36px;
+  }
+
+  .trilingual-layout {
+    grid-template-columns:
+      minmax(105px, 29%)
+      1px
+      minmax(0, 1fr);
+
+    column-gap: 22px;
   }
 }
 
-/* Landscape tablet */
+
+/* =====================================================
+   LANDSCAPE TABLET
+   ===================================================== */
 
 @media (max-width: 1180px) {
-  :root {
-    --wordmark-width: 25rem;
-    --supporting-width: 25rem;
-  }
-
   .hero {
     grid-template-columns:
       minmax(0, 1fr)
@@ -319,25 +764,41 @@ a {
   }
 
   .hero-copy {
-    padding: 46px 38px;
+    padding: 46px 32px;
+  }
+
+  .trilingual-layout {
+    grid-template-columns:
+      minmax(100px, 29%)
+      1px
+      minmax(0, 1fr);
+
+    column-gap: 20px;
+
+    row-gap: 48px;
+  }
+
+  .japanese-mission::before,
+  .japanese-scripture::before {
+    top: -24px;
   }
 }
 
-/* Portrait tablet */
+
+/* =====================================================
+   PORTRAIT TABLET
+   ===================================================== */
 
 @media (max-width: 980px) {
-  :root {
-    --wordmark-width: 32rem;
-    --supporting-width: 32rem;
-  }
-
   .hero {
     grid-template-columns: 1fr;
+
     min-height: auto;
   }
 
   .hero-art {
     min-height: 520px;
+
     background-image:
       linear-gradient(
         180deg,
@@ -350,19 +811,43 @@ a {
   .hero-copy {
     padding: 50px 44px 58px;
   }
+
+  .trilingual-layout {
+    grid-template-columns:
+      minmax(150px, 29%)
+      1px
+      minmax(0, 1fr);
+
+    column-gap: 32px;
+
+    row-gap: 54px;
+  }
+
+  .japanese-mission::before,
+  .japanese-scripture::before {
+    top: -27px;
+  }
+
+  .japanese-columns {
+    gap: 11px;
+  }
 }
 
-/* Mobile */
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
 
 @media (max-width: 640px) {
   :root {
-    --wordmark-width: 100%;
-    --supporting-width: 100%;
     --content-inset: 16px;
   }
 
   .site-shell {
-    width: min(calc(100% - 24px), var(--shell));
+    width: min(
+      calc(100% - 24px),
+      var(--shell)
+    );
   }
 
   .site-header {
@@ -372,14 +857,19 @@ a {
 
   .top-nav {
     gap: 28px;
+
     margin-bottom: 22px;
+
     font-size: 0.76rem;
+
     letter-spacing: 0.18em;
   }
 
   .site-name {
     gap: 10px;
+
     font-size: 1.78rem;
+
     letter-spacing: 0.075em;
     line-height: 0.9;
   }
@@ -394,22 +884,76 @@ a {
 
   .hero {
     margin-bottom: 28px;
+
     border-radius: 22px;
   }
 
   .hero-art {
     min-height: 390px;
+
     background-position: center top;
   }
 
   .hero-copy {
-    padding: 36px 24px 44px;
+    padding:
+      38px
+      24px
+      46px;
   }
 
-  .bilingual-wordmark {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 32px;
+  .trilingual-layout {
+    grid-template-columns:
+      minmax(106px, 31%)
+      1px
+      minmax(0, 1fr);
+
+    column-gap: 20px;
+
+    row-gap: 42px;
+  }
+
+  .japanese-mission::before,
+  .japanese-scripture::before {
+    top: -21px;
+
+    left: 8%;
+    right: 8%;
+  }
+
+  .japanese-columns {
+    gap: 7px;
+  }
+
+  .identity-columns {
+    gap: 9px;
+  }
+
+  .japanese-identity .japanese-column {
+    font-size:
+      clamp(
+        22px,
+        5.7vw,
+        30px
+      );
+  }
+
+  .japanese-mission .japanese-column,
+  .japanese-scripture .japanese-column {
+    font-size:
+      clamp(
+        15px,
+        3.85vw,
+        20px
+      );
+  }
+
+  .japanese-reference {
+    font-size:
+      clamp(
+        9px,
+        2.45vw,
+        12px
+      );
   }
 
   .formal-english {
@@ -421,47 +965,60 @@ a {
   }
 
   .formal-english .fit-text {
-    --tracking-em: 0.016;
-    letter-spacing: 0.016em;
+    --tracking-em: 0.012;
+
+    letter-spacing: 0.012em;
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.04;
-    --word-spacing-em: 0.09;
+    --tracking-em: 0.03;
+    --word-spacing-em: 0.07;
 
-    letter-spacing: 0.04em;
-    word-spacing: 0.09em;
+    letter-spacing: 0.03em;
+    word-spacing: 0.07em;
   }
 
-  .mission {
-    --tracking-em: 0.055;
+  .mission-english {
+    --tracking-em: 0.045;
     --maximum-group-size: 17;
 
-    margin-bottom: 28px;
-    letter-spacing: 0.055em;
-    line-height: 1.45;
+    letter-spacing: 0.045em;
   }
 
-  .scripture p {
-    --maximum-group-size: 19;
+  .mission-latin {
+    --tracking-em: 0.03;
+    --maximum-group-size: 14;
 
-    margin-bottom: 10px;
-    line-height: 1.4;
+    margin-top: 18px;
+
+    letter-spacing: 0.03em;
+  }
+
+  .scripture-english {
+    --maximum-group-size: 19;
+  }
+
+  .scripture-latin {
+    --maximum-group-size: 15;
+
+    margin-top: 17px !important;
   }
 
   .scripture cite {
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
+    margin-top: 22px;
+
+    font-size: 0.63rem;
+
+    letter-spacing: 0.12em;
   }
 }
 
-/* Narrow mobile */
+
+/* =====================================================
+   NARROW MOBILE
+   ===================================================== */
 
 @media (max-width: 390px) {
-  :root {
-    --content-inset: 14px;
-  }
-
   .site-name {
     font-size: 1.58rem;
   }
@@ -471,30 +1028,97 @@ a {
   }
 
   .hero-copy {
-    padding: 32px 20px 38px;
+    padding:
+      34px
+      20px
+      40px;
+  }
+
+  .trilingual-layout {
+    grid-template-columns:
+      minmax(90px, 29%)
+      1px
+      minmax(0, 1fr);
+
+    column-gap: 16px;
+
+    row-gap: 38px;
+  }
+
+  .japanese-mission::before,
+  .japanese-scripture::before {
+    top: -19px;
+  }
+
+  .japanese-columns {
+    gap: 5px;
+  }
+
+  .identity-columns {
+    gap: 7px;
+  }
+
+  .japanese-identity .japanese-column {
+    font-size:
+      clamp(
+        20px,
+        5.5vw,
+        26px
+      );
+  }
+
+  .japanese-mission .japanese-column,
+  .japanese-scripture .japanese-column {
+    font-size:
+      clamp(
+        14px,
+        3.7vw,
+        18px
+      );
+  }
+
+  .japanese-reference {
+    font-size:
+      clamp(
+        8px,
+        2.25vw,
+        10px
+      );
   }
 
   .formal-english .fit-text {
-    --tracking-em: 0.012;
-    letter-spacing: 0.012em;
+    --tracking-em: 0.008;
+
+    letter-spacing: 0.008em;
   }
 
   .formal-latin .fit-text {
-    --tracking-em: 0.032;
-    --word-spacing-em: 0.08;
+    --tracking-em: 0.024;
+    --word-spacing-em: 0.055;
 
-    letter-spacing: 0.032em;
-    word-spacing: 0.08em;
+    letter-spacing: 0.024em;
+    word-spacing: 0.055em;
   }
 
-  .mission {
-    --tracking-em: 0.045;
+  .mission-english {
+    --tracking-em: 0.035;
     --maximum-group-size: 16;
 
-    letter-spacing: 0.045em;
+    letter-spacing: 0.035em;
   }
 
-  .scripture p {
+  .mission-latin {
+    --tracking-em: 0.025;
+    --maximum-group-size: 13;
+
+    letter-spacing: 0.025em;
+  }
+
+  .scripture-english {
     --maximum-group-size: 18;
+  }
+
+  .scripture-latin {
+    --maximum-group-size: 14;
   }
 }
